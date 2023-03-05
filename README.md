@@ -1,17 +1,17 @@
 # placeholder
 # stuff to do 
 - create pages
- - home page
- - user sign up
- - user login 
- - worker sign up
- - worker login
+  - home page
+  - user sign up
+  - user login 
+  - worker sign up
+  - worker login
 - backend requests
- - sign up 
-  - user
-  - worker
-  - company
+  - sign up 
+    - user
+    - worker
+    - company
  - login 
-  - user 
-  - worker
-  - company
+   - user 
+   - worker
+   - company
