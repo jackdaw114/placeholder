@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { AppBar, ThemeProvider, CssBaseline, Typography } from "@mui/material"
+import theme from "./design/palette"
+import Navbar from "./components/Navbar"
+import { Box } from '@mui/system';
+import MainContent from './components/MainContent'
+import Services from './components/Services';
+import Image from './img/bgtest.jpg'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Box >
+      <CssBaseline />
+
+      <Navbar />
+      <Services />
+
+    </Box>
   );
+
 }
 
 export default App;
