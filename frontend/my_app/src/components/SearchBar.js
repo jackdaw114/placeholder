@@ -38,7 +38,7 @@ export default function SearchBar() {
         <Paper className="main-div" sx={{ backgroundColor: 'transparent', marginTop: 2 }} elevation='0'>
             <Box component={'form'} onMouseOver={handleSearchOpen} elevation='0' sx={{ display: 'flex', flexShrink: 1, justifyContent: 'center', borderRadius: 100, display: 'flex', alignItems: 'center', width: 'auto', padding: 1, backgroundColor: theme.palette.secondary.main }}>
                 <IconButton size='large' sx={{ color: 'white' }} ><SearchIcon /></IconButton>
-                <InputBase onBlur={handleSearchClose} sx={{ fontSize: 20, backgroundColor: theme.palette.secondary.main, borderRadius: 5, ...(!searchToggle && { display: 'none' }), width: 400 }}>test
+                <InputBase onBlur={handleSearchClose} sx={{ fontSize: 20, backgroundColor: theme.palette.secondary.main, borderRadius: 5, ...(!searchToggle && { display: 'none' }), width: 400 }} placeholder="enter service name to search for">
                 </InputBase>
             </Box>
         </Paper >

@@ -7,11 +7,13 @@ import { Box } from "@mui/system";
 import Services from "./components/Services.js";
 import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
+import ImageHandler from './components/ImageHandler'
 
 function App() {
   return (
     <Box>
       <ThemeProvider theme={theme}>
+        <ImageHandler />
         <Navbar />
         <SearchBar />
         <Services />
