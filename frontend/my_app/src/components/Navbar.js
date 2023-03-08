@@ -104,9 +104,9 @@ function Navbar() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', zIndex: 10 }}>
                 <CssBaseline />
-                < AppBar position='static' className="Nav-main" open={open}
+                < AppBar position='sticky' className="Nav-main" open={open}
                     sx={{
                         borderBottom: 1, borderColor: 'black.main', position: 'fixed'
                     }
@@ -152,8 +152,7 @@ function Navbar() {
 
                     </DrawerHeader>
                 </Drawer>
-
-                <DrawerHeader />
+                <Toolbar />
             </Box >
 
             <br></br>
