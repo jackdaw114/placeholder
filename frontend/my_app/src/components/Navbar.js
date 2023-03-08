@@ -14,7 +14,29 @@ import EggIcon from '@mui/icons-material/Egg';
 import MuiToolbar from '@mui/material/Toolbar';
 import MuiBox from '@mui/material/Paper';
 import Select from '@mui/icons-material/BubbleChart';
+import { useNavigate } from "react-router";
 //import MenuIcon from '@mui/icons-material'
+import {
+    CheckBoxOutlineBlankOutlined,
+    DraftsOutlined,
+    HomeOutlined,
+    InboxOutlined,
+    MailOutline,
+    ReceiptOutlined, AccountCircle, Add
+} from "@mui/icons-material";
+import { margin } from "@mui/system";
+
+const data = [
+    {
+        name: "Home",
+        icon: <HomeOutlined />, nav: 'navigateToHome()',
+    },
+    { name: "Catagories", icon: <InboxOutlined /> },
+    { name: "temp", icon: <Add /> },
+    { name: "temp", icon: <Add /> },
+    { name: "Login", icon: <AccountCircle />, nav: 'navigateToLogin()' },
+    { name: "Signup", icon: <AccountCircle /> },
+];
 
 const drawerWidth = 240;
 
@@ -55,6 +77,15 @@ const DrawerBox = styled(MuiBox, {
 
 
 function Navbar() {
+
+    const navigate = useNavigate();
+    const navigateToHome = () => {
+        navigate('/home')
+    }
+
+    const navigateToLogin = () => {
+        navigate('/login')
+    }
     const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
@@ -66,9 +97,8 @@ function Navbar() {
     };
 
     const DrawerHeader = styled('div')(({ theme }) => ({
-        display: 'flex',
+        display: 'block',
         alignItems: 'center',
-        justifyContent: 'flex-end',
         ...theme.mixins.toolbar,
     }));
 
@@ -100,30 +130,26 @@ function Navbar() {
                     anchor="left"
                     open={open}
                     variant='persistent'>
-                    <DrawerHeader><Toolbar>
-                        <Typography variant="h6" sx={{ color: theme.palette.primary.contrastText }}>
+                    <DrawerHeader><Toolbar sx={{ justifyContent: 'space-between' }}>
+                        <Typography variant="h6" sx={{ color: theme.palette.primary.contrastText, margin: 0 }}>
                             MENU
-                        </Typography> <IconButton sx={{ ml: 2 }} edge="end" onClick={handleDrawerClose}>{theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: theme.palette.primary.contrastText }} /> : <ChevronRightIcon color="primary" />}</IconButton>
+                        </Typography> <IconButton sx={{ ml: 2, color: theme.palette.secondary.main }} edge="end" onClick={handleDrawerClose}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon color="primary" />}</IconButton>
 
                     </Toolbar></DrawerHeader>
 
                     <Divider sx={{ background: theme.palette.black.main }} />
                     <DrawerHeader>
-                        <List className="Drawer-list">
-                            {['TEST', 'TEST'].map((text, index) =>
-                                <ListItem >
-                                    <ListItemText primary={text} sx={{ textAlign: 'right', opacity: open ? 1 : 0, color: theme.palette.primary.contrastText }}>
-                                    </ListItemText>
-                                    <ListItemIcon  >
-                                        <IconButton sx={{ ml: 2, color: theme.palette.primary.contrastText }} edge='end' >
-                                            <Select />
-                                        </IconButton>
-                                    </ListItemIcon>
+                        <List>
 
+                            {data.map((item, index) => (
+
+                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => eval(item.nav)}>
+                                    <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.name} />
                                 </ListItem>
-
-                            )}
+                            ))}
                         </List>
+
                     </DrawerHeader>
                 </Drawer>
 

@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, CardMedia, TextField } from '@mui/material'
+import { Card, CardContent, Typography, CardMedia, TextField, Icon } from '@mui/material'
 import { Box } from '@mui/system'
 import { ThemeProvider } from '@emotion/react'
 import theme from '../design/palette'
@@ -6,42 +6,36 @@ import './Services.css'
 import img from '../img/plumbing.jpg'
 
 import img2 from '../img/hairdresser.jpg'
+import DryCleaningIcon from '@mui/icons-material/DryCleaning';
+import { ContentCut, ElectricBolt, FormatPaint, Handyman, Plumbing } from '@mui/icons-material'
+
+const data = [
+    {
+        name: "Hairdresser",
+        icon: <ContentCut />,
+    },
+    { name: "plumbing", icon: <Plumbing /> },
+    { name: "electrician", icon: <ElectricBolt /> },
+    { name: "dry cleaning", icon: <DryCleaningIcon /> },
+    { name: "repair", icon: <Handyman /> },
+    { name: "painting", icon: <FormatPaint /> },
+];
+
 
 export default function Services() {
     return (
         <ThemeProvider theme={theme}>
             <Box className="home_row">
 
-                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        sx={{ marginTop: 0 }}
-                        image={img}
-                        alt="Image"
-                    />
-                    <CardContent><Typography>service</Typography></CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        sx={{ marginTop: 0 }}
-                        image={img2}
-                        alt="Image"
-                    />
-                    <CardContent><Typography>service</Typography></CardContent>
-                </Card>
-                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        sx={{ marginTop: 0 }}
-                        image={img}
-                        alt="Image"
-                    />
-                    <CardContent><Typography>service</Typography></CardContent>
-                </Card>
+                {data.map((item, index) => (
+
+                    <Card className='card' sx={{ boxShadow: 2, maxWidth: 200, minWidth: 200, minHeight: 100, maxHeight: 100, justifyContent: 'space-between', textAlign: 'center' }}>
+                        <CardContent >
+                            <Typography variant='h6'>{item.name}</Typography>
+                            <Icon sx={{ margin: 1, color: '#52FFB8' }}>{item.icon}</Icon>
+                        </CardContent>
+                    </Card>
+                ))}
             </Box>
         </ThemeProvider>
 

@@ -1,12 +1,42 @@
-.Drawer-list {
+.drawer-list {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: flex-end;
+    position: absolute;
+    bottom: 0px;
 }
 
 .listdiv {
     display: flex;
     flex-direction: column;
 
+}
+
+.Drawer-list-bot {
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 1px;
+    float: bottom;
+}
+
+.bot {
+    justify-content: baseline;
+}
+
+.div-top {
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+    justify-content: space-between;
+}
+
+.botdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    text-align: right;
 }

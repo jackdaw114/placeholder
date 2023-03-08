@@ -1,5 +1,6 @@
 import { modalUnstyledClasses } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
+import shadows from '@mui/material/styles/shadows';
 
 const theme = createTheme({
     typography: {
@@ -38,6 +39,10 @@ const theme = createTheme({
         background: {
             default: '#0A100D',
             paper: '#2c302e'
+        },
+        shadows: {
+            default: '#ffffff',
+            main: '#ffffff'
         }
     },
 })

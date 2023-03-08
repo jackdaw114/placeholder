@@ -20,3 +20,11 @@
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
     position: absolute;
 }
+
+.card {
+    background-image: linear-gradient(to right, rgb(37, 37, 37), #353535, rgb(37, 37, 37));
+}
+
+.card:hover {
+    transform: scale3d(1.05, 1.05, 1);
+}
