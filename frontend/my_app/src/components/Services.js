@@ -1,28 +1,49 @@
-import { Card, CardContent, Typography } from '@mui/material'
-import { Box, ThemeProvider } from '@mui/system'
-import { useState } from 'react'
+import { Card, CardContent, Typography, CardMedia, TextField } from '@mui/material'
+import { Box } from '@mui/system'
+import { ThemeProvider } from '@emotion/react'
 import theme from '../design/palette'
 import './Services.css'
-import data from './Services.json'
-import Image from '../img/bgtest3.jpg'
+import img from '../img/plumbing.jpg'
 
-
+import img2 from '../img/hairdresser.jpg'
 
 export default function Services() {
     return (
         <ThemeProvider theme={theme}>
-
-
-            <img className="home_image" src={Image}></img>
             <Box className="home_row">
 
-                {Object.keys(data.service).map((service) => (
-                    <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
-
-                        <CardContent><Typography>service: {service.service_name}</Typography></CardContent>
-                    </Card>
-                ))}
+                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        sx={{ marginTop: 0 }}
+                        image={img}
+                        alt="Image"
+                    />
+                    <CardContent><Typography>service</Typography></CardContent>
+                </Card>
+                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        sx={{ marginTop: 0 }}
+                        image={img2}
+                        alt="Image"
+                    />
+                    <CardContent><Typography>service</Typography></CardContent>
+                </Card>
+                <Card sx={{ maxWidth: 345, minWidth: 345, minHeight: 200 }}>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        sx={{ marginTop: 0 }}
+                        image={img}
+                        alt="Image"
+                    />
+                    <CardContent><Typography>service</Typography></CardContent>
+                </Card>
             </Box>
         </ThemeProvider>
+
     )
 }

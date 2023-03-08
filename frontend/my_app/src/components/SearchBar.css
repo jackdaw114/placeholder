@@ -1,0 +1,7 @@
+.main-div {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    padding: top 500px;
+
+}
