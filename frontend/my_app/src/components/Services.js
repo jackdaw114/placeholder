@@ -29,7 +29,7 @@ export default function Services() {
 
                 {data.map((item, index) => (
 
-                    <Card className='card' sx={{ boxShadow: 2, borderRadius: 10, maxWidth: 200, minWidth: 200, minHeight: 100, maxHeight: 100, justifyContent: 'space-between', textAlign: 'center' }}>
+                    <Card className='card' elevation={10} sx={{ borderRadius: 10, maxWidth: 200, minWidth: 200, minHeight: 100, maxHeight: 100, justifyContent: 'space-between', textAlign: 'center' }}>
                         <CardContent >
                             <Typography variant='h6'>{item.name}</Typography>
                             <Icon sx={{ margin: 1, color: '#52FFB8' }}>{item.icon}</Icon>

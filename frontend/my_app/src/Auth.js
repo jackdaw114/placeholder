@@ -79,19 +79,19 @@ const Auth = () => {
 
                     padding={3}
                     borderRadius={4}
-                    boxShadow={"6px 6px 10px #ccc"}
+                    boxShadow={"0px 0px 10px #00000A"}
 
                     sx={{
                         backgroundColor: theme.palette.black.main,
                         ":hover": {
-                            boxShadow: "10px 10px 20px #ccc",
+                            boxShadow: "0px 0px 20px #000",
                         },
                         //   fontFamily: 'Ubuntu',
                     }}>
                     <Typography
                         variant="h2"
                         padding={3}
-
+                        color={theme.palette.secondary.main}
                         textAlign="center">{isSignup ? "Sign Up" : "Login"}</Typography>
 
                     <Box
@@ -214,6 +214,7 @@ const Auth = () => {
 
                     >{isSignup ? "Sign Up" : "Login"}</Button>
                     <Button
+
                         endIcon={isSignup ? <LoginIcon /> : <AppRegistrationIcon />}
                         onClick={resetState}
                         sx={{
@@ -221,11 +222,13 @@ const Auth = () => {
                             //     backgroundColor:"blanchedalmond",
                             //   }
                             marginTop: 3,
-                            borderRadius: 1.4
+                            borderRadius: 1.4,
+                            color: 'white'
                         }}
 
-                    >
-                        {isSignup ? "Login" : "New Here? Signup instead"}
+                    ><Typography color={'white'}>
+                            {isSignup ? "Login" : "New Here? Signup instead"}
+                        </Typography>
                     </Button>
                 </Box>
             </form>
