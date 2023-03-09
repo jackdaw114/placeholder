@@ -1,5 +1,5 @@
 .image-list {
-    filter: opacity(50%) blur(2px)
+    filter: blur(2px)
 }
 
 .crop {

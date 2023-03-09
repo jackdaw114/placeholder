@@ -23,6 +23,7 @@
 
 .card {
     background-image: linear-gradient(to right, rgb(37, 37, 37), #353535, rgb(37, 37, 37));
+
 }
 
 .card:hover {
