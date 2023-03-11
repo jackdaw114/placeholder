@@ -42,7 +42,7 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
-        fetch("http://localhost:3010/register", {
+        fetch(isSignup ? "http://localhost:3010/register" : "http://localhost:3010/login", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -56,7 +56,7 @@ const Auth = () => {
 
         }).then((res) => res.json()).then((data) => {
             console.log(data, "UserDetails")
-        })
+        });
 
 
     }
