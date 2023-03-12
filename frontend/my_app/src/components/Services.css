@@ -2,15 +2,21 @@
     display: flex;
     z-index: 1;
     flex-wrap: wrap;
+    width: auto;
     margin-top: 30px;
     margin-left: 5px;
     margin-right: 5px;
+    padding: 30px;
     justify-content: center;
+    border-radius: 10px;
+
 }
 
 .home_row>* {
     margin-left: 20px;
-    margin-top: 20px;
+    opacity: 100%;
+
+    background-color: aliceblue;
 }
 
 .home_image {
