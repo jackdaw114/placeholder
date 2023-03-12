@@ -56,7 +56,7 @@ const Auth = () => {
 
         }).then((res) => res.json()).then((data) => {
             console.log(data, "UserDetails")
-        });
+        }).catch(err => alert(err));
 
 
     }
