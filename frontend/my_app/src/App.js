@@ -9,6 +9,7 @@ import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
 import ImageHandler from './components/ImageHandler'
 import Home from "./components/Home";
+import Profile from "./components/myprofile"
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<><Home /></>}></Route>
             <Route path="/login" element={<><Auth /></>}></Route>
+            <Route path="/profile" element={<><Profile /></>}></Route>
           </Routes>
 
         </ThemeProvider>

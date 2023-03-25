@@ -25,6 +25,9 @@ import {
     ReceiptOutlined, AccountCircle, Add
 } from "@mui/icons-material";
 import { margin } from "@mui/system";
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange } from '@mui/material/colors';
 
 const data = [
     {
@@ -88,6 +91,10 @@ function Navbar() {
     }
     const [open, setOpen] = useState(false);
 
+    const navigatetoprofile = () => {
+        navigate('/profile')
+    }
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -115,9 +122,16 @@ function Navbar() {
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleDrawerOpen}><AddIcon></AddIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
                         <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Gloock"}  >
-                            WorkerConnect
+                            WorkConnect
                         </Typography>
                     </Toolbar>
+                    <Stack direction="row" spacing={2}>
+                        <Avatar
+                            sx={{position:"fixed",top:10,right:10}}
+                            onClick={navigatetoprofile}
+                            //src="/broken-image.jpg" 
+                        />
+                    </Stack>
                 </AppBar >
 
                 <Drawer sx={{
@@ -154,7 +168,6 @@ function Navbar() {
                 </Drawer>
                 <Toolbar />
             </Box >
-
             <br></br>
         </ThemeProvider>
     )
