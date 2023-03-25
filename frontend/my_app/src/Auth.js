@@ -64,8 +64,8 @@ const Auth = () => {
         setIsSignup(!isSignup);
         setInputs({ companyName: '', username: '', phoneNo: '', email: '', password: '' });
     }
-    console.log(isSignup);
-    console.log(isCompany);
+    // console.log(isSignup);
+    // console.log(isCompany);
     return (
         <div>
             <form onSubmit={handleSubmit}>

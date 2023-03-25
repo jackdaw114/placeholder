@@ -5,17 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-// const dotenv = require("dotenv");
 
-// dotenv.config(dotenv);
-
-// mongoose.connect("mongodb+srv://Nigel:<password>@cluster0.iifluj8.mongodb.net/test",
-//   { useNewUrlParser: true,
-//     useUnifiedTopology: true })
-//     .then(() => console.log('Connected to MongoDB!'))
-//     .catch((e) => console.log(e));
-    
-//     module.exports = app;
 
 app.use(express.json());
 app.use(cors());
