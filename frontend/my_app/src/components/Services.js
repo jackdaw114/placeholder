@@ -7,12 +7,11 @@ import img from '../img/plumbing.jpg'
 import data from './Services.json'
 import img2 from '../img/hairdresser.jpg'
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-import { ContentCut, ElectricBolt, FormatPaint, Handyman, Plumbing, SportsRugbySharp } from '@mui/icons-material'
+import { ContentCut, ElectricBolt, FormatPaint, Handyman, MotionPhotosAuto, Plumbing, SportsRugbySharp } from '@mui/icons-material'
 import { createElement, useRef } from 'react'
 import HTMLstring from 'react-html-string';
-
-
-
+import { motion } from 'framer-motion'
+import Tilt from 'react-parallax-tilt'
 // const data = [
 //     {
 //         name: "Hairdresser",
@@ -25,35 +24,50 @@ import HTMLstring from 'react-html-string';
 //     { name: "painting", icon: <FormatPaint /> },
 // ];
 
+const service_info = [
+    {
+        name: "Hairdresser",
+        icon: <ContentCut />,
+    },
+    { name: "plumbing", icon: <Plumbing /> },
+    { name: "electrician", icon: <ElectricBolt /> },
+    { name: "dry cleaning", icon: <DryCleaningIcon /> },
+    { name: "repair", icon: <Handyman /> },
+    { name: "painting", icon: <FormatPaint /> },
 
-export default function Services() {
-    function Test(item, props) {
-        // const TestIcon = createSvgIcon(
-        //     <path d={item} />,
-        //     'testicon'
-        // )
-        // return (<TestIcon />)
-        return (<SvgIcon {...props} >
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-        </SvgIcon>)
+]
+
+export default function Services(props) {
+    if (props.data.length > 0) {
+        service_info.filter((service) => {
+
+            return service.name.match(props.data)
+        })
     }
     return (
         <ThemeProvider theme={theme} >
-            <Paper sx={{ display: 'flex', justifyContent: 'center', backgroundColor: 'transparent', border: 0, boxShadow: 0 }}>
-                <Box className="home_row" sx={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
+            <Paper sx={{ marginTop: 1, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', backgroundColor: 'transparent', border: 0, boxShadow: 0 }}>
 
-                    {data.service.map((item, index) => (
 
-                        <Card className='card' elevation={10} sx={{ borderRadius: 10, maxWidth: 200, minWidth: 200, minHeight: 100, maxHeight: 100, justifyContent: 'space-between', textAlign: 'center' }}>
-                            <CardContent >
-                                <Typography variant='h6'>{item.name}</Typography>
-                                <Icon sx={{ margin: 1, color: '#52FFB8' }}>{Test(item.icon)}</Icon>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </Box>
+                {service_info.filter(service => service.name.toLowerCase().match(props.data.toLowerCase())).map((item, index) => (
+                    <Tilt className='motion' tiltReverse={true}>
+                        <motion.div className='motion' whileHover={{ scale: [null, 1.2, 1.2] }} transition={{ duration: 0.3, type: "spring" }} >
+                            <Card options={{ max: 45, scale: 1, speed: 450, }} className='card' elevation={10} sx={{
+                                marginRight: 2.5, marginLeft: 2.5, marginTop: 5, borderRadius: 5,
+                                maxWidth: 200, minWidth: 200, minHeight: 150, maxHeight: 100, justifyContent: 'center', textAlign: 'center', boxShadow: 'theme.shadow.md'
+                            }}>
+                                <CardContent >
+
+                                    <Icon sx={{ margin: 2, color: '#e8f6f4' }} className='svg_icon'>{item.icon}</Icon>
+                                    <Typography variant='h6' sx={{ marginTop: 2 }}>{item.name}</Typography>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
+                    </Tilt>
+                ))}
+
             </Paper>
-        </ThemeProvider>
+        </ThemeProvider >
 
     )
 }
