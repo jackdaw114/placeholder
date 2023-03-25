@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 3010;
+const port = 3001;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
 const jwt = require("jsonwebtoken");
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 app.use(express.json());
 app.use(cors());
@@ -49,15 +52,27 @@ app.post("/register", async(req, res) => {
 });
 // Login API
 app.post("/login", async (req, res) => {
+<<<<<<< Updated upstream
     const inputs = req.body;
+=======
+    console.log("Connected to Login api");
+    const { inputs }  = req.body;
+>>>>>>> Stashed changes
     const user = await User.findOne({ username: inputs.username });
     if (!user) {
         return res.json({error:"User not found"})
     }
+<<<<<<< Updated upstream
     console.log(`Inputs: ${inputs}`);
     console.log(`User: ${user}`);
     if (await bcryptjs.compare(inputs.password, user.password)) {
         const token = jwt.sign({}, JWT_SECRET);
+=======
+    // console.log(`Inputs: ${inputs}`);
+    console.log(`User: ${user}`);
+    if (await bcryptjs.compare(inputs.password, user.password)) {
+        const token = jwt.sign({email:user.email}, JWT_SECRET);
+>>>>>>> Stashed changes
         if (res.status(201)) {
             return res.json({ status: "ok", data: token });
         }

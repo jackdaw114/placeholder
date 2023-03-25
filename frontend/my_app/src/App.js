@@ -8,7 +8,8 @@ import { Box } from "@mui/system";
 // import img from './img/plumbing.jpg'
 // import SearchBar from "./components/SearchBar";
 import ImageHandler from './components/ImageHandler'
-import Home from "./components/Home";
+import Categories from "./components/categories";
+import Home from "./components/HomeNigel";
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 const express = require('express');
 express.Router();
@@ -17,10 +18,11 @@ function App() {
     <Box>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <ImageHandler />
+          {/* <ImageHandler /> */}
           <Navbar />
           <Routes>
             <Route path="/home" element={<><Home /></>}></Route>
+            <Route path="/categories" element={<><Categories /></>}></Route>
             <Route path="/login" element={<><Auth /></>}></Route>
           </Routes>
 

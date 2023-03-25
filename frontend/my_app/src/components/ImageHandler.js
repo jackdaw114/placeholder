@@ -3,6 +3,7 @@ import Image1 from '../img/salon.jpg';
 import Image2 from '../img/tools.jpg';
 import Image3 from '../img/pipes.jpg';
 import zIndex from "@mui/material/styles/zIndex";
+import Map from '../img/maps.jpeg';
 import './ImageHandler.css'
 import theme from "../design/palette";
 
@@ -17,6 +18,7 @@ export default function ImageHandler() {
 
                 <ImageListItem key={Image1}><img src={Image2} loading="lazy" /></ImageListItem>
                 <ImageListItem key={Image1}><img src={Image3} loading="lazy" /></ImageListItem>
+                {/* <ImageListItem key={Map} sx={{ position: "absolute", width: '100vw'}} ><img src={ Map}loading="lazy" /></ImageListItem> */}
             </ImageList>
         </div >
     )

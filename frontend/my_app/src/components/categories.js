@@ -4,7 +4,7 @@ import ImageHandler from "./ImageHandler";
 import SearchBar from "./SearchBar";
 import Services from "./Services";
 
-export default function Home() {
+export default function Categories() {
     return (
         <Box>
             <SearchBar />

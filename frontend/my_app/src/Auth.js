@@ -31,14 +31,9 @@ const Auth = () => {
         setInputs((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-            // companyName =inputs.companyName,
-            // username = inputs.username,
-            // phoneNo= inputs.phoneNo,
-            // email=inputs.email,
-            // password=inputs.password,
-
         }))
     }
+<<<<<<< Updated upstream
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
@@ -57,9 +52,27 @@ const Auth = () => {
         }).then((res) => res.json()).then((data) => {
             console.log(data, "UserDetails")
         }).catch(err => alert(err));
+=======
+        const handleSubmit = (e) => {
+            console.log(inputs);
+            fetch(isSignup ? "http://localhost:3001/register" : "http://localhost:3001/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                },
+                body: JSON.stringify({
+                    inputs
+                })
+            }).then((res) => res.json()).then((data) => {
+                console.log(data, "UserDetails");
+            }).catch(err => alert(err));
+        };
+>>>>>>> Stashed changes
 
 
-    }
+    
     const resetState = () => {
         setIsSignup(!isSignup);
         setInputs({ companyName: '', username: '', phoneNo: '', email: '', password: '' });

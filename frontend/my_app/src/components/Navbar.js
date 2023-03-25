@@ -31,11 +31,11 @@ const data = [
         name: "Home",
         icon: <HomeOutlined />, nav: 'navigateToHome()',
     },
-    { name: "Catagories", icon: <InboxOutlined /> },
+    { name: "Catagories", icon: <InboxOutlined /> , nav: 'navigateToCategories()'},
     { name: "temp", icon: <Add /> },
     { name: "temp", icon: <Add /> },
     { name: "Login", icon: <AccountCircle />, nav: 'navigateToLogin()' },
-    { name: "Signup", icon: <AccountCircle /> },
+    // { name: "Signup", icon: <AccountCircle /> },
 ];
 
 const drawerWidth = 240;
@@ -79,8 +79,12 @@ const DrawerBox = styled(MuiBox, {
 function Navbar() {
 
     const navigate = useNavigate();
+
     const navigateToHome = () => {
         navigate('/home')
+    }
+    const navigateToCategories = () => {
+        navigate('/categories')
     }
 
     const navigateToLogin = () => {
@@ -114,8 +118,8 @@ function Navbar() {
                     <Toolbar open={open}>
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleDrawerOpen}><AddIcon></AddIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
-                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Gloock"}  >
-                            WorkerConnect
+                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon , Gloock"}  >
+                            WorkConnect
                         </Typography>
                     </Toolbar>
                 </AppBar >
