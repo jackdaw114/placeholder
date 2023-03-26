@@ -3,7 +3,7 @@
 }
 
 .typography-h1 {
-    background: linear-gradient(to right, #02f1cb 0%, #64f102 100%);
+    background: linear-gradient(to right, #02f1cb 0%, #A63446 100%);
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -12,7 +12,7 @@
 }
 
 .typography-h4 {
-    background: linear-gradient(to right, #64f102 70%, #02f1cb 100%);
+    background: linear-gradient(to right, #A63446 70%, #02f1cb 100%);
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -28,7 +28,7 @@
 
 .add_image {
     object-fit: cover;
-    width: 20vw;
+    width: 30vw;
     height: 100%;
 }
 

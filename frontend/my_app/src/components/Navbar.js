@@ -146,7 +146,10 @@ function Navbar() {
 
                             {data.map((item, index) => (
 
-                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => eval(item.nav)}>
+                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
+                                    eval(item.nav)
+                                    handleDrawerClose()
+                                }}>
                                     <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.name} />
                                 </ListItem>
