@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
@@ -6,6 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import theme from './design/palette';
+import { useLocation } from 'react-router';
 // import { JavascriptTwoTone } from '@mui/icons-material';
 // import { bgcolor } from '@mui/system';
 const Auth = () => {
@@ -27,6 +28,7 @@ const Auth = () => {
         password: ""
 
     })
+
     const handleChange = (e) => {
         setInputs((prevState) => ({
             ...prevState,

@@ -31,7 +31,7 @@ const data = [
         name: "Home",
         icon: <HomeOutlined />, nav: 'navigateToHome()',
     },
-    { name: "Catagories", icon: <InboxOutlined /> },
+    { name: "Catagories", icon: <InboxOutlined />, nav: 'navigateToCatagories()' },
     { name: "temp", icon: <Add /> },
     { name: "temp", icon: <Add /> },
     { name: "Login", icon: <AccountCircle />, nav: 'navigateToLogin()' },
@@ -79,6 +79,9 @@ const DrawerBox = styled(MuiBox, {
 function Navbar() {
 
     const navigate = useNavigate();
+    const navigateToCatagories = () => {
+        navigate('/catagories')
+    }
     const navigateToHome = () => {
         navigate('/home')
     }
