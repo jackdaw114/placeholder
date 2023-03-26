@@ -20,21 +20,23 @@ export default function Catagories() {
     return (
         <Box>
             <SearchBar childToParent={childToParent} />
-            <Box sx={{ marginTop: '2em', width: '100%', height: "100%" }}>
-                <AnimatePresence>
-                    <motion.div initial={{ opacity: 0, x: [-50, -150, -50] }}
-                        animate={{ x: 50, opacity: 1 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.5,
-                            type: 'spring'
-                        }}
-                        exit={{ opacity: 0 }}
-                    >
-                        <Typography className="typography-h1"
-                            variant="h1">Select a service.</Typography>
-                    </motion.div>
-                </AnimatePresence>
+            <div className="framer-div">
+
+                <motion.div initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, x: 50 }}
+                    transition={{
+                        duration: 0.8,
+                        delay: 0.5,
+                        type: 'spring'
+                    }}
+
+                    exit={{ opacity: 0 }}
+                >
+                    <Typography variant="h1" className="typography-h1"
+                    >Select a service.</Typography>
+                </motion.div>
+            </div>
+            <div className="framer-div">
                 <motion.div initial={{ opacity: 0 }}
                     animate={{ x: -50, opacity: 1 }}
                     transition={{
@@ -42,8 +44,9 @@ export default function Catagories() {
                         delay: 0.5,
                         type: 'spring'
                     }}>
-                    <Typography variant="h4" className="typography-h1" sx={{ paddingLeft: '20em' }}>we provide the best</Typography>
-                </motion.div></Box>
+                    <Typography className="typography-h1" variant="h4" sx={{ paddingLeft: '30vw' }}>we provide the best</Typography>
+                </motion.div>
+            </div>
 
             <Services data={data} />
 

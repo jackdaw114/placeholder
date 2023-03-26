@@ -35,3 +35,10 @@
 .typoh4 {
     height: 100%;
 }
+
+.framer-div {
+    margin-top: 1em;
+    max-width: 85vw;
+    display: flex;
+    width: auto;
+}
