@@ -6,16 +6,14 @@ import zIndex from "@mui/material/styles/zIndex";
 import './ImageHandler.css'
 import theme from "../design/palette";
 import image from '../img/png4.png'
+import { Box } from "@mui/system";
 
 export default function ImageHandler() {
     return (
-        <div sx={{ position: "absolute", width: '100vw', zIndex: -1 }}>
+        <Box sx={{ zIndex: -1, position: 'absolute', width: '100vw', height: '100vw', background: 'radial-gradient(circle at right 40%,rgba(166, 52, 70, 0.2),transparent 50% )' }}>
+            <ImageList className='opacity' cols={1} sx={{ position: "absolute", width: '100vw', zIndex: -1, transform: 'translate(-50vw,0)' }} gap={0}>
 
-
-            <ImageList className='opacity' cols={1} sx={{ position: "absolute", width: '100vw', zIndex: -1 }} gap={0}>
-
-                <ImageListItem key={image}><img src={image} loading="lazy" /></ImageListItem>
             </ImageList>
-        </div >
+        </Box>
     )
 }

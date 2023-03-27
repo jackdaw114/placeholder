@@ -6,20 +6,18 @@ const theme = createTheme({
     typography: {
         fontFamily: 'Tilt Neon',
     },
-    shadows: {
-        md: '5 4 6 3 #ffffff'
-    },
+
 
     palette:
     {
         primary: {
-            main: '#0A100D',
+            main: '#000000  ',
             contrastText: '#FFFFFF',
-            light: '#222B30'
+            light: '#34a694'
 
         },
         secondary: {
-            light: '#fcdebe',
+            light: '#358b7e',
             main: '#A63446  ',
             contrastText: '#fcdebe',
         },
@@ -40,7 +38,7 @@ const theme = createTheme({
             main: '#2c302e',
         },
         background: {
-            default: '#0d100a',
+            default: '#010000 ',
             paper: '#2c302e'
         },
 

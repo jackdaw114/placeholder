@@ -1,0 +1,44 @@
+.flexdiv {
+    display: flex;
+}
+
+.typography-h1 {
+    background: linear-gradient(to right, #02f1cb 0%, #A63446 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.typography-h4 {
+    background: linear-gradient(to right, #A63446 70%, #02f1cb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.add_card::after {
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 15px black;
+
+}
+
+.add_image {
+    object-fit: cover;
+    width: 30vw;
+    height: 100%;
+}
+
+.typoh4 {
+    height: 100%;
+}
+
+.framer-div {
+    margin-top: 1em;
+    max-width: 85vw;
+    display: flex;
+    width: auto;
+}

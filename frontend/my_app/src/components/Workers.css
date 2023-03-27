@@ -1,0 +1,23 @@
+.flexdiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 3em;
+    flex-wrap: wrap;
+    border-radius: 20px;
+
+}
+
+.flexdiv2 {
+    display: flex;
+    justify-content: left;
+
+    flex-wrap: wrap;
+    border-radius: 20px;
+
+}
+
+.coldiv {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}

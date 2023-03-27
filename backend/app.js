@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3010;
+const port = 8000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -14,7 +14,7 @@ mongoose.connect(mongoUrl, {
     .catch((e) => console.log(e));
 
 app.listen(port, () => {
-    console.log(`Server started at port ${port}`); 
+    console.log(`Server started at port ${port}`);
 });
 
 // app.post("/post", (req, res) => {
@@ -27,7 +27,7 @@ app.listen(port, () => {
 //         else {
 //             res.send("User not found");
 //         }
-        
+
 //     } catch (error) {
 //         res.send({ status: "Something went wrong!" });
 //     }
@@ -35,19 +35,19 @@ app.listen(port, () => {
 
 require("./UserDetails");
 const User = mongoose.model("UserDetails");
-app.post("/register", async(req, res) => {
+app.post("/register", async (req, res) => {
     const { inputs } = req.body;
-    
+
     try {
         await User.create({
-            companyName:inputs.companyName,
-            username:inputs.username,
-            phoneNo:inputs.phoneNo,
-            email:inputs.email,
-            password:inputs.password
+            companyName: inputs.companyName,
+            username: inputs.username,
+            phoneNo: inputs.phoneNo,
+            email: inputs.email,
+            password: inputs.password
         });
         res.send({ status: "ok" });
-        
+
     } catch (error) {
         console.log(error);
         res.send({ status: "error" });

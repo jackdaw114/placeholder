@@ -31,7 +31,7 @@ const data = [
         name: "Home",
         icon: <HomeOutlined />, nav: 'navigateToHome()',
     },
-    { name: "Catagories", icon: <InboxOutlined /> },
+    { name: "Catagories", icon: <InboxOutlined />, nav: 'navigateToCatagories()' },
     { name: "temp", icon: <Add /> },
     { name: "temp", icon: <Add /> },
     { name: "Login", icon: <AccountCircle />, nav: 'navigateToLogin()' },
@@ -79,6 +79,9 @@ const DrawerBox = styled(MuiBox, {
 function Navbar() {
 
     const navigate = useNavigate();
+    const navigateToCatagories = () => {
+        navigate('/catagories')
+    }
     const navigateToHome = () => {
         navigate('/home')
     }
@@ -108,7 +111,7 @@ function Navbar() {
                 <CssBaseline />
                 < AppBar position='sticky' className="Nav-main" open={open}
                     sx={{
-                        borderBottom: 1, borderColor: 'black.main', position: 'fixed'
+                        borderBottom: 1, borderColor: 'black.main', position: 'fixed', zIndex: 1
                     }
                     }>
                     <Toolbar open={open}>
@@ -143,7 +146,10 @@ function Navbar() {
 
                             {data.map((item, index) => (
 
-                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => eval(item.nav)}>
+                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
+                                    eval(item.nav)
+                                    handleDrawerClose()
+                                }}>
                                     <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.name} />
                                 </ListItem>
