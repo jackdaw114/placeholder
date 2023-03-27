@@ -7,7 +7,7 @@ import img from '../img/plumbing.jpg'
 import data from './Services.json'
 import img2 from '../img/hairdresser.jpg'
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-import { ContentCut, ElectricBolt, FormatPaint, Handyman, MotionPhotosAuto, Plumbing, SportsRugbySharp } from '@mui/icons-material'
+import { AssistantPhoto, AutoAwesome, ContentCut, ElectricBolt, FormatPaint, Handyman, MotionPhotosAuto, NotStarted, Plumbing, SportsRugbySharp, Star, Verified } from '@mui/icons-material'
 import { createElement, useRef, useState } from 'react'
 import HTMLstring from 'react-html-string';
 import { motion } from 'framer-motion'
@@ -37,10 +37,11 @@ const service_info = [
     { name: "dry cleaning", icon: <DryCleaningIcon /> },
     { name: "repair", icon: <Handyman /> },
     { name: "painting", icon: <FormatPaint /> },
-    { name: 'test' }, { name: 'test' },
-    { name: 'test' },
-    { name: 'test', main: 3 },
-    { name: 'test', main: 5, desc: 'this is a test service asdasdfhaksjdflhjasfdlkdfa' },
+    { name: 'test', icon: <AutoAwesome /> },
+    { name: 'test', icon: <Verified /> },
+    { name: 'test', icon: <AssistantPhoto /> },
+    { name: 'test', main: 2, icon: <NotStarted /> },
+    { name: 'test', icon: <Star />, main: 2 },
 
 ]
 
@@ -88,7 +89,7 @@ export default function Services(props) {
 
                         className='motion' whileHover={{
                             scale: [null, 1.1, 1.1],
-
+                            zIndex: 1
                         }} transition={{ duration: 0.5, type: "spring" }}
                     >
                         <Tilt tiltReverse={true} tiltMaxAngleY={10} glareColor={theme.palette.secondary.main} glareEnable={true} glareBorderRadius={'15px'} glarePosition='all' >

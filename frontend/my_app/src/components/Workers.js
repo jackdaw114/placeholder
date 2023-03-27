@@ -6,9 +6,10 @@ import SearchBar from "./SearchBar";
 import './Workers.css'
 import axios from 'axios'
 import theme from "../design/palette";
-import Column from './Column'
-
 import Row from './Row'
+import Tilt from 'react-parallax-tilt'
+import Workerccard from "./Workercard";
+import { motion } from 'framer-motion'
 
 const url = "http://localhost:8000/worker";
 export default function Worker() {
@@ -44,18 +45,22 @@ export default function Worker() {
             <SearchBar />
             <Box className="flexdiv">
 
-                <Box className="flexdiv2" sx={{ maxWidth: '90vw', minWidth: '90vw', backgroundColor: theme.palette.primary.paper, height: '100%', borderRadius: 2 }}>
-                    <Box sx={{ height: '100%', width: '100%', textAlign: 'center' }}>
+                <Box className="flexdiv2" >
 
-                        <Typography fontFamily={['Ariel', 'sans-serif']} className='work-typo' variant="h4">{page.toUpperCase()}</Typography>
+                    <Box sx={{ height: '100%', width: '100%', textAlign: 'center', boxShadow: 'inset 0px 0px 5px 1px black' }}>
 
-                        <Divider />
+                        <Typography className='work-typo-grad' variant="h3">{page.toUpperCase()}</Typography>
+
                     </Box>
-                    {data.map((item, index) => (
-                        <Row data={item.name}></Row>
-                    ))}
 
+                    <div className="worker-div-card">
+                        {data.map((item, index) => (
+
+                            <Workerccard />
+                        ))}
+                    </div>
                 </Box>
+
             </Box>
         </Box >
     )
