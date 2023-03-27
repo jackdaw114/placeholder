@@ -111,7 +111,7 @@ function Navbar() {
                 <CssBaseline />
                 < AppBar position='sticky' className="Nav-main" open={open}
                     sx={{
-                        borderBottom: 1, borderColor: 'black.main', position: 'fixed'
+                        borderBottom: 1, borderColor: 'black.main', position: 'fixed', zIndex: 1
                     }
                     }>
                     <Toolbar open={open}>
