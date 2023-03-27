@@ -4,13 +4,33 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import SearchBar from "./SearchBar";
 import './Workers.css'
+import axios from 'axios'
+
+const url = "http://localhost:8000/worker";
 
 export default function Worker() {
 
     const location = useLocation();
     useEffect(() => {
+        if (location.state.reqpage) {
+            axios.get(url, {
+                params: {
+                    page: location.state.reqpage,
+                }
+            }).then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
 
-        console.log(location.state)
+        else {
+            axios.get(url).then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     })
     return (
         <Box >
