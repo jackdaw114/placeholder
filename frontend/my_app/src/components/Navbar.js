@@ -118,7 +118,7 @@ function Navbar() {
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleDrawerOpen}><AddIcon></AddIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
                         <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Gloock"}  >
-                            WorkerConnect
+                            WorkConnect
                         </Typography>
                     </Toolbar>
                 </AppBar >

@@ -21,3 +21,8 @@
     justify-content: left;
     flex-wrap: wrap;
 }
+
+.work-typo {
+    color: black;
+    font-family: gloock;
+}

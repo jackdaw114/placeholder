@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 app.use(express.json());
 app.use(cors());
-
+app.use(require('./jason/worker'))
 const mongoUrl = "mongodb+srv://Nigel:Nigel@cluster0.iifluj8.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true
