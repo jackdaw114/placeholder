@@ -5,27 +5,16 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-// const dotenv = require("dotenv");
 
-// dotenv.config(dotenv);
+const connectDB = require('./jason/connect')
 
-// mongoose.connect("mongodb+srv://Nigel:<password>@cluster0.iifluj8.mongodb.net/test",
-//   { useNewUrlParser: true,
-//     useUnifiedTopology: true })
-//     .then(() => console.log('Connected to MongoDB!'))
-//     .catch((e) => console.log(e));
-    
-//     module.exports = app;
+connectDB()
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(cors());
-
-const JWT_SECRET = "kajsbjsdnvjwguweb()gaygayvqd129i903486347ndvldsnvndjsbvksdbkvdsjvkjsnv";
-const mongoUrl = "mongodb+srv://Nigel:Nigel@cluster0.iifluj8.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(mongoUrl, {
-    useNewUrlParser: true
-}).then(() => { console.log("Connected to database!"); })
-    .catch((e) => console.log(e));
+app.use('/worker', require('./jason/worker'))
+app.use('/user', require('./jason/user'))
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`); 

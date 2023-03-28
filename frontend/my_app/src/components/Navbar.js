@@ -138,8 +138,10 @@ function Navbar() {
                     <Toolbar open={open}>
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><AddIcon></AddIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
+
                         <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
                             worKonnect
+
                         </Typography>
                     </Toolbar>
                 </AppBar >
