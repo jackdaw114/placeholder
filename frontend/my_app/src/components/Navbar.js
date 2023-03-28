@@ -4,7 +4,7 @@ import { Palette } from "@mui/material";
 import styled from "@emotion/styled";
 import theme from "../design/palette";
 import "./Navbar.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { AppBar, Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -15,6 +15,8 @@ import MuiToolbar from '@mui/material/Toolbar';
 import MuiBox from '@mui/material/Paper';
 import Select from '@mui/icons-material/BubbleChart';
 import { useNavigate } from "react-router";
+import FocusTrap from '@mui/base/FocusTrap';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 //import MenuIcon from '@mui/icons-material'
 import {
     CheckBoxOutlineBlankOutlined,
@@ -91,13 +93,32 @@ function Navbar() {
     }
     const [open, setOpen] = useState(false);
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+    useEffect(() => {
+        if (open) {
+        //   document.body.style.opacity = 0.4
+            
+        }
+        else {
+            // document.body.style.opacity = 1
+        }
+    }, [open])
+    
 
-    const handleDrawerClose = () => {
+    // const handleDrawerOpen = () => {
+    //     setOpen(true);
+    // };
+
+    // const handleDrawerClose = () => {
+    //     setOpen(false);
+    // };
+
+    const handleClick = () => {
+        setOpen((prev) => !prev);
+      };
+    
+    const handleClickAway = () => {
         setOpen(false);
-    };
+      };
 
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'block',
@@ -115,28 +136,32 @@ function Navbar() {
                     }
                     }>
                     <Toolbar open={open}>
-                        <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleDrawerOpen}><AddIcon></AddIcon></IconButton>
+                        <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><AddIcon></AddIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
-                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Gloock"}  >
-                            WorkerConnect
+                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
+                            worKonnect
                         </Typography>
                     </Toolbar>
                 </AppBar >
 
-                <Drawer sx={{
+                {/* {open
+                    &&
+                <div className="overlay"></div>} */}
+                <Drawer className='drawer' sx={{
                     width: drawerWidth,
                     flexShrink: 0,
-
-
                 }}
-                    PaperProps={{ sx: { width: drawerWidth, boxSizing: 'border-box', background: theme.palette.primary.main, borderColor: theme.palette.black.main } }}
-                    anchor="left"
-                    open={open}
-                    variant='persistent'>
+                    PaperProps={{ sx: { width: drawerWidth, boxSizing: 'border-box', background: theme.palette.primary.main, borderColor: theme.palette.black.main} }}
+                anchor="left"
+                open={open}
+                variant='persistent'>
                     <DrawerHeader><Toolbar sx={{ justifyContent: 'space-between' }}>
                         <Typography variant="h6" sx={{ color: theme.palette.primary.contrastText, margin: 0 }}>
                             MENU
-                        </Typography> <IconButton sx={{ ml: 2, color: theme.palette.secondary.main }} edge="end" onClick={handleDrawerClose}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon color="primary" />}</IconButton>
+                            </Typography>
+                <ClickAwayListener onClickAway={handleClickAway}>
+                            <IconButton sx={{ ml: 2, color: theme.palette.secondary.main }} edge="end" onClick={handleClick}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon color="primary" />}</IconButton>
+                </ClickAwayListener>
 
                     </Toolbar></DrawerHeader>
 
@@ -145,10 +170,10 @@ function Navbar() {
                         <List>
 
                             {data.map((item, index) => (
-
+                                
                                 <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
                                     eval(item.nav)
-                                    handleDrawerClose()
+                                    handleClick()
                                 }}>
                                     <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.name} />

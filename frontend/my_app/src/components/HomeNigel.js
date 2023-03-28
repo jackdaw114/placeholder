@@ -1,11 +1,14 @@
 // import { CardTravelSharp } from '@mui/icons-material';
-import { Typography, CssBaseline, CardContent, Grid, Card, CardMedia } from '@mui/material';
+import { Typography, CssBaseline, CardContent, Grid, Card, CardMedia,Avatar } from '@mui/material';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Container } from '@mui/system';
 import { AnimatePresence, motion } from 'framer-motion';
 import './HomeNigel.css'
 import VerticalLinearStepper from './HomeComponents/stepper'
+import image1 from '../img/greta.jpeg';
+import image2 from '../img/MODI.jpeg';
+import image3 from '../img/walter2.jpeg';
 // import makeStyles from '@mui/styles';
 
 // const useStyles = makeStyles((theme) => ({
@@ -13,8 +16,40 @@ import VerticalLinearStepper from './HomeComponents/stepper'
 //         backgroundColor: theme.palette.background.paper
 //     }
 // }));
-const review_cards = [1,2,3]
-const footer_test = [1,2,3,4,4,6,7,8,9]
+const review_cards = [
+    {
+        name: "Greta Thunderberg" ,
+        avatar: image1,
+        review_content: "This website has helped me so much. Urban clap is so bad .I really really appreciate the amazing help that worKonnect could provide me. I once again recommend worKonnect to ALL my fellow indians."
+    },
+    {
+        name: "Mahindra Bodi" ,
+        avatar: image2,
+        review_content: "मेरे प्यारे भाई बहनों को नमस्कार। मैं यहां आपको वर्ककनेक्ट से प्राप्त अद्भुत पेडीक्योर के बारे में बताने चाहता हूॅं। मैं वास्तव में पसंद करता हूं कि वे स्थानीय श्रमिकों को अधिक रोजगार देकर वे अच्छा काम कर रहे हैं। मुझे उम्मीद है कि यह समीक्षा इस बात की पुष्टि कर सकती है कि यह वेबसाइट कितनी अच्छी है।"
+    },
+    {
+        name: "Travis Scott" ,
+        avatar: image3,
+        review_content: "In my honest opinion, UrbanClap < worKonnect. This website is a saving grace for those skilled workers who really deserve a chance."
+    },
+]
+const footer_test = [
+    {
+        label:"FAQs"
+    },
+    {
+        label:"Contact Us"
+    },
+    {
+        label:"Oppurtunities"
+    },
+    {
+        label:"More about us"
+    },
+    {
+        label:"Feedback"
+    },
+]
 
 export default function HomeNigel() {
     // const classes = useStyles();
@@ -68,17 +103,15 @@ export default function HomeNigel() {
                         
                     <Grid item key={card} xs={12} sm={6} md={4}>
                             <Card className='review-card'>
-                                <CardMedia
-                                    className='reviewer-pfp'
-                                    image='https://source.unsplash.com/random'
-                                    title="Image title"
-                                    />
+                                <CardMedia className='reviewer-pfp'>    
+                                <Avatar alt="Remy Sharp" src={card.avatar} sx={{ width: 156, height: 156 }}/>
+                                </CardMedia>
                                 <CardContent className='review-content'>
                                     <Typography variant='h4' gutterBottom>
-                                                John Doe
+                                                {card.name}
                                     </Typography>
                                     <Typography>
-                                        "This website has helped me so much. Urban clap is so bad lmao ded.I really really appreciate the amazing help that they could provide me. i once again recommend workConnect to ALL my fellow indians."
+                                        "{card.review_content}"
                                     </Typography>
 
                                 </CardContent>
@@ -94,7 +127,7 @@ export default function HomeNigel() {
                     <Container className="mission-container">
                         <Typography variant='h2' align='center' className='typography-h1'>
                             Our mission
-                            <WorkspacePremiumIcon/>
+                            <WorkspacePremiumIcon sx={{ width: 40 , height:40}} />
                         </Typography>
                         <Typography variant='subtitle1'>
                         The internet has transformed the way that we access and interact with services. Today, it is possible to access a wide range of services, including home services, through online platforms. Even so , other online platforms have their own limitations such as :
@@ -109,7 +142,7 @@ export default function HomeNigel() {
                         Limited amount of services (also dictated by location). 
                         </Typography>
                         <Typography variant='subtitle1'>
-                            Our main aim is to revolutionize the platforms by providing local daily-wage workers employment through our website and allow workers to , based on their merit , be rewarded.
+                            Our aim is to revolutionize the platforms by providing local daily-wage workers employment through our website and allow workers to , based on their merit , be rewarded.
                             We guarantee you with the best workers in your area.
                         </Typography>
                         <Typography variant='h6' className='typography-h4'>
@@ -135,20 +168,21 @@ export default function HomeNigel() {
                             </Typography>
                         </Container>
                     </Container>
-
+                    <div className="div-stepper">
                     <VerticalLinearStepper className='stepper-container'/>
+                    </div>
 
                 </mission>
                 <footer className='home-footer'>
-                    <Typography variant='h6' align='center' gutterBottom>
-                        Footer
+                    <Typography variant='h6' className='typography-h1' align='center' gutterBottom>
+                        worKonnect
                     </Typography>
                     <Grid className='footer-grid' container spacing={7} >
-                    {footer_test.map(() => (
+                    {footer_test.map((label) => (
                         
                             <Grid item>
                                 <Typography variant='subtitle1' align='center' color='#9c9c9c'>
-                                    Test
+                                    {label.label}
                         </Typography>
                             </Grid>
                     ))}

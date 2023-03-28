@@ -40,15 +40,17 @@ export default function VerticalLinearStepper() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400 }}>
+    <Box sx={{ width:640}}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel>
+              <Typography variant='h4' className='typography-h1'>
               {step.label}
+              </Typography>
             </StepLabel>
             <StepContent>
-              <Typography>{step.description}</Typography>
+              <Typography variant='h7'>{step.description}</Typography>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
@@ -56,14 +58,19 @@ export default function VerticalLinearStepper() {
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
                   >
+                    <Typography variant='subtitle1' color={'white'}>
+
                     {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                    </Typography>
                   </Button>
                   <Button
                     disabled={index === 0}
                     onClick={handleBack}
                     sx={{ mt: 1, mr: 1 }}
                   >
+                    <Typography variant='subtitle1' color={'white'}>
                     Back
+                    </Typography>
                   </Button>
                 </div>
               </Box>
@@ -75,7 +82,9 @@ export default function VerticalLinearStepper() {
         <Paper square elevation={0} sx={{ p: 3 }}>
           <Typography>All steps completed - you're finished</Typography>
           <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+            <Typography color={'white'}>
             Reset
+            </Typography>
           </Button>
         </Paper>
       )}
