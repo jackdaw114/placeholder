@@ -1,20 +1,26 @@
 const express = require('express');
 const app = express();
-const port = 3010;
+const port = 8000;
 const cors = require('cors');
 const mongoose = require('mongoose');
+const connectDB = require('./jason/connect')
+
+connectDB()
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(cors());
+app.use('/worker', require('./jason/worker'))
+app.use('/user', require('./jason/user'))
 
-const mongoUrl = "mongodb+srv://Nigel:Nigel@cluster0.iifluj8.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(mongoUrl, {
-    useNewUrlParser: true
-}).then(() => { console.log("Connected to database!"); })
-    .catch((e) => console.log(e));
 
+// const mongoUrl = "mongodb+srv://Nigel:Nigel@cluster0.iifluj8.mongodb.net/?retryWrites=true&w=majority";
+// mongoose.connect(mongoUrl, {
+//     useNewUrlParser: true
+// }).then(() => { console.log("Connected to database!"); })
+//     .catch((e) => console.log(e));
 app.listen(port, () => {
-    console.log(`Server started at port ${port}`); 
+    console.log(`Server started at port ${port}`);
 });
 
 // app.post("/post", (req, res) => {
@@ -27,7 +33,7 @@ app.listen(port, () => {
 //         else {
 //             res.send("User not found");
 //         }
-        
+
 //     } catch (error) {
 //         res.send({ status: "Something went wrong!" });
 //     }
@@ -35,19 +41,19 @@ app.listen(port, () => {
 
 require("./UserDetails");
 const User = mongoose.model("UserDetails");
-app.post("/register", async(req, res) => {
+app.post("/register", async (req, res) => {
     const { inputs } = req.body;
-    
+
     try {
         await User.create({
-            companyName:inputs.companyName,
-            username:inputs.username,
-            phoneNo:inputs.phoneNo,
-            email:inputs.email,
-            password:inputs.password
+            companyName: inputs.companyName,
+            username: inputs.username,
+            phoneNo: inputs.phoneNo,
+            email: inputs.email,
+            password: inputs.password
         });
         res.send({ status: "ok" });
-        
+
     } catch (error) {
         console.log(error);
         res.send({ status: "error" });

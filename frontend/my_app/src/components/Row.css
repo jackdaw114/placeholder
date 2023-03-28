@@ -1,0 +1,19 @@
+.row-motion {
+    width: 100%
+}
+
+.row-box {
+    margin: 10px;
+}
+
+.row-typo {
+    height: auto;
+    width: auto;
+    padding-left: 1em;
+    border-radius: 5px;
+    color: black;
+}
+
+.row-shadow {
+    box-shadow: inset 0px 0px 10px 2px black;
+}
