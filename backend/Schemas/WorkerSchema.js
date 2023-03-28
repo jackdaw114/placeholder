@@ -24,7 +24,7 @@ const WorkerSchema = mongoose.Schema({
         // required: true
     },
     job: {
-        type: String,
+        type: Array,
     }
 });
 
