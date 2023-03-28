@@ -44,7 +44,7 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
-        fetch("http://localhost:3010/register", {
+        fetch(isSignup ? "http://localhost:3001/register" : "http://localhost:3001/login",{
             method: "POST",
             crossDomain: true,
             headers: {
@@ -58,10 +58,11 @@ const Auth = () => {
 
         }).then((res) => res.json()).then((data) => {
             console.log(data, "UserDetails")
-        })
+        }).catch(err => alert(err));
+    };
 
 
-    }
+    
     const resetState = () => {
         setIsSignup(!isSignup);
         setInputs({ companyName: '', username: '', phoneNo: '', email: '', password: '' });
