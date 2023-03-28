@@ -13,18 +13,25 @@ const WorkerSchema = mongoose.Schema({
     },
     firstname: {
         type: String,
-        // required: true
+        required: true
     },
     lastname: {
         type: String,
-        // required: true,
+        required: true,
     },
     password: {
         type: String,
-        // required: true
+        required: true
     },
-    job: {
+    jobs: {
         type: Array,
+    },
+    location: {
+        type: String,
+        required: true,
+    },
+    rating: {
+        type: Number,
     }
 });
 

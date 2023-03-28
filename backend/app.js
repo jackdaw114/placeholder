@@ -8,15 +8,17 @@ const connectDB = require('./jason/connect')
 connectDB()
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use(cors());
-app.use(require('./jason/worker'))
+app.use('/worker', require('./jason/worker'))
+app.use('/user', require('./jason/user'))
+
 
 // const mongoUrl = "mongodb+srv://Nigel:Nigel@cluster0.iifluj8.mongodb.net/?retryWrites=true&w=majority";
 // mongoose.connect(mongoUrl, {
 //     useNewUrlParser: true
 // }).then(() => { console.log("Connected to database!"); })
 //     .catch((e) => console.log(e));
-
 app.listen(port, () => {
     console.log(`Server started at port ${port}`);
 });
