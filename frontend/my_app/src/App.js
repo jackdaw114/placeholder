@@ -10,6 +10,7 @@ import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
 import ImageHandler from './components/ImageHandler'
 import Catagories from "./components/Catagories";
+import HomeNigel from "./components/HomeNigel"
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
 
             <Route path="/catagories" element={<><Catagories /></>}></Route>
+            <Route path="/home" element={<><HomeNigel /></>}></Route>
             <Route path="/login" element={<><Auth /></>}></Route>
             <Route path='/worker' element={<><Worker /></>}></Route>
           </Routes>

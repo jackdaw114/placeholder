@@ -11,6 +11,7 @@ import theme from "../design/palette";
 import image2 from '../img/hairdresser.jpg'
 import { AnimatePresence, motion } from 'framer-motion'
 
+
 export default function Catagories() {
 
     const [data, setData] = useState('');

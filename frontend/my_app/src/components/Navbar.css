@@ -40,3 +40,22 @@
     justify-content: right;
     text-align: right;
 }
+
+/* .overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(126, 124, 124, 0.5);
+    filter: blur(8px);
+    z-index: -1; 
+}
+
+.drawer{
+    z-index: 1;
+}
+
+.Nav-main{
+    z-index: 1;
+} */

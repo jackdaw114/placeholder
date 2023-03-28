@@ -51,6 +51,7 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
+
         let url;
         if (isUser) {
             url = '/user'
@@ -84,7 +85,7 @@ const Auth = () => {
         })
 
 
-    }
+    
     const resetState = () => {
         setIsSignup(!isSignup);
         setInputs({ companyname: '', username: '', phoneNo: '', email: '', password: '' });
