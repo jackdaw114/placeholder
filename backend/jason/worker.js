@@ -4,8 +4,17 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 
 router.get("/getworkers", async (req, res) => {
+
+    const query = () => {
+        if (req.query.job) {
+            return { jobs: req.query.job }
+        }
+        else return {}
+    }
+    console.log(query())
     try {
-        const find = await Worker.find({ jobs: [req.query.job] })
+
+        const find = await Worker.find(query())
         if (find) {
             console.log(find)
             res.send(find).status(200)

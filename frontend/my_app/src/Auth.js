@@ -79,7 +79,7 @@ const Auth = () => {
             localStorage.setItem('username', res.data.username)
             console.log(res.data)
             if (res.data) {
-                navigate('/home')
+                navigate('/')
             }
         })
 

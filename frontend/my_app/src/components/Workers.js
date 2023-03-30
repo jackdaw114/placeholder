@@ -11,7 +11,7 @@ import Tilt from 'react-parallax-tilt'
 import Workerccard from "./Workercard";
 import { motion } from 'framer-motion'
 
-const url = "http://localhost:8000/worker/getworkers";
+const url = "/worker/getworkers";
 export default function Worker() {
 
     const [page, setPage] = useState('')
@@ -36,6 +36,8 @@ export default function Worker() {
         else {
             axios.get(url).then((res) => {
                 console.log(res)
+
+                setData(res.data)
             }).catch((err) => {
                 console.log(err)
             })
@@ -57,7 +59,7 @@ export default function Worker() {
                     <div className="worker-div-card">
                         {data.map((item, index) => (
 
-                            <Workerccard name={item.firstname} rating={item.rating} />
+                            <Workerccard name={item.firstname} rating={item.rating} jobs={item.jobs} />
 
                         ))}
                     </div>

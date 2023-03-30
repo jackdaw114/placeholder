@@ -1,10 +1,10 @@
 import { ClassNames, ThemeProvider } from "@emotion/react";
-import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper } from "@mui/material"
+import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper, MenuItem } from "@mui/material"
 import { Palette } from "@mui/material";
 import styled from "@emotion/styled";
 import theme from "../design/palette";
 import "./Navbar.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AppBar, Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -17,6 +17,7 @@ import Select from '@mui/icons-material/BubbleChart';
 import { useNavigate } from "react-router";
 import FocusTrap from '@mui/base/FocusTrap';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+import MenuIcon from '@mui/icons-material/Menu';
 //import MenuIcon from '@mui/icons-material'
 import {
     CheckBoxOutlineBlankOutlined,
@@ -24,7 +25,7 @@ import {
     HomeOutlined,
     InboxOutlined,
     MailOutline,
-    ReceiptOutlined, AccountCircle, Add
+    ReceiptOutlined, AccountCircle, Add, BuildCircleOutlined
 } from "@mui/icons-material";
 import { margin } from "@mui/system";
 
@@ -33,11 +34,10 @@ const data = [
         name: "Home",
         icon: <HomeOutlined />, nav: 'navigateToHome()',
     },
-    { name: "Catagories", icon: <InboxOutlined />, nav: 'navigateToCatagories()' },
-    { name: "temp", icon: <Add /> },
-    { name: "temp", icon: <Add /> },
-    { name: "Login", icon: <AccountCircle />, nav: 'navigateToLogin()' },
-    { name: "Signup", icon: <AccountCircle /> },
+    { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+
+    { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+    { name: "Login/Signup", icon: <AccountCircle />, nav: 'navigateToLogin()' },
 ];
 
 const drawerWidth = 240;
@@ -79,13 +79,15 @@ const DrawerBox = styled(MuiBox, {
 
 
 function Navbar() {
-
     const navigate = useNavigate();
-    const navigateToCatagories = () => {
-        navigate('/catagories')
+    const navigateToCategories = () => {
+        navigate('/categories')
+    }
+    const navigateToWorkers = () => {
+        navigate('/rel')
     }
     const navigateToHome = () => {
-        navigate('/home')
+        navigate('/')
     }
 
     const navigateToLogin = () => {
@@ -95,14 +97,14 @@ function Navbar() {
 
     useEffect(() => {
         if (open) {
-        //   document.body.style.opacity = 0.4
-            
+            //   document.body.style.opacity = 0.4
+
         }
         else {
             // document.body.style.opacity = 1
         }
     }, [open])
-    
+
 
     // const handleDrawerOpen = () => {
     //     setOpen(true);
@@ -114,11 +116,11 @@ function Navbar() {
 
     const handleClick = () => {
         setOpen((prev) => !prev);
-      };
-    
+    };
+
     const handleClickAway = () => {
         setOpen(false);
-      };
+    };
 
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'block',
@@ -136,7 +138,7 @@ function Navbar() {
                     }
                     }>
                     <Toolbar open={open}>
-                        <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><AddIcon></AddIcon></IconButton>
+                        <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><MenuIcon></MenuIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
 
                         <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
@@ -153,17 +155,17 @@ function Navbar() {
                     width: drawerWidth,
                     flexShrink: 0,
                 }}
-                    PaperProps={{ sx: { width: drawerWidth, boxSizing: 'border-box', background: theme.palette.primary.main, borderColor: theme.palette.black.main} }}
-                anchor="left"
-                open={open}
-                variant='persistent'>
+                    PaperProps={{ sx: { width: drawerWidth, boxSizing: 'border-box', background: theme.palette.primary.main, borderColor: theme.palette.black.main } }}
+                    anchor="left"
+                    open={open}
+                    variant='persistent'>
                     <DrawerHeader><Toolbar sx={{ justifyContent: 'space-between' }}>
                         <Typography variant="h6" sx={{ color: theme.palette.primary.contrastText, margin: 0 }}>
                             MENU
-                            </Typography>
-                <ClickAwayListener onClickAway={handleClickAway}>
+                        </Typography>
+                        <ClickAwayListener onClickAway={handleClickAway}>
                             <IconButton sx={{ ml: 2, color: theme.palette.secondary.main }} edge="end" onClick={handleClick}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon color="primary" />}</IconButton>
-                </ClickAwayListener>
+                        </ClickAwayListener>
 
                     </Toolbar></DrawerHeader>
 
@@ -172,7 +174,7 @@ function Navbar() {
                         <List>
 
                             {data.map((item, index) => (
-                                
+
                                 <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
                                     eval(item.nav)
                                     handleClick()

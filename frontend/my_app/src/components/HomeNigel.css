@@ -1,13 +1,14 @@
 .typography-h1 {
-    background: linear-gradient(to right, #02f1cb 0%, #A63446 100%);
+    background: linear-gradient(to right, #DDC54A 0%, #A63446 100%);
     -webkit-background-clip: text;
     background-clip: text;
 
     -webkit-text-fill-color: transparent;
 
 }
+
 .typography-h4 {
-    background: linear-gradient(to right, #A63446 70%, #02f1cb 100%);
+    background: #A63446;
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -15,53 +16,54 @@
 
 }
 
-.div-container{
+.div-container {
     /* background-color: rgb(33, 22, 9); */
 }
 
-.review-container-heading{
+.review-container-heading {
     /* margin-left: 20px; */
     margin-bottom: 10px;
 }
-.reviewer-pfp{
-    padding-top:6.26%;
+
+.reviewer-pfp {
+    padding-top: 6.26%;
     /* justify-self: center; */
 }
 
-.review-container{
+.review-container {
     margin-top: 70px;
     padding: 20px 0px;
 }
 
-.review-card{
-    height:100%;
+.review-card {
+    height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.review-content{
+.review-content {
     flex-grow: 1;
 }
 
-.home-footer{
+.home-footer {
     margin: 200px 0px;
 }
 
-.footer-grid{
+.footer-grid {
     display: flex;
     flex-direction: row;
-    
+
     justify-content: center;
     /* max-height: 0px; */
 }
 
-.mission-container{
+.mission-container {
     margin-top: 70px;
 }
 
-.mission-scenario-us-container{
+.mission-scenario-us-container {
     margin-top: 30px;
 
 }
@@ -73,13 +75,13 @@
     justify-content: center;
 } */
 
-.stepper-container{
+.stepper-container {
     /* margin-left: 100px;
      */
     justify-self: center;
 }
 
-.div-stepper{
+.div-stepper {
     margin-top: 100px;
     display: flex;
     justify-content: center;

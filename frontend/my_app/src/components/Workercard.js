@@ -2,7 +2,7 @@ import { Card, Divider, Grid, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import './Workercard.css'
 import Tilt from 'react-parallax-tilt'
-import image from '../img/png3.png'
+import image from '../img/de.png'
 import theme from "../design/palette";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
@@ -28,6 +28,8 @@ const WorkerRating = ({ val }) => {
 }
 
 export default function Workerccard(props) {
+    const length = props.jobs.length - 1
+    console.log(length)
     let iter = [];
     let i = 0;
     while (i++ < 5) {
@@ -50,6 +52,17 @@ export default function Workerccard(props) {
             <div className="workercard-div">{props.name}</div>
 
             <Box className="workercard-div" sx={{ height: 18 }} />
+            <div className="workercard-row">
+                {props.jobs.map((item, index) => {
+                    return (
+
+                        <div className="workercard-div">{item}{(index === length) ? "" : ",\xa0"}</div>
+                    )
+                })}
+            </div>
+
+            <Box className="workercard-div" sx={{ height: 10 }} />
+
             <div className="workercard-div" >
 
                 {iter.map((item, index) =>

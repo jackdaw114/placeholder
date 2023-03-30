@@ -30,7 +30,7 @@
 }
 
 .work-typo-grad {
-    background: #E7E5DF;
+    background: linear-gradient(to right, #CAA8F5 0%, #A63446 70%);
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -41,4 +41,11 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    flex-wrap: wrap;
+}
+
+.workercard-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }

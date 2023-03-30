@@ -33,7 +33,7 @@ export default function Catagories() {
 
                     exit={{ opacity: 0 }}
                 >
-                    <Typography variant="h1" className="typography-h1"
+                    <Typography variant="h1" className="c-typography-h1"
                     >Select a service.</Typography>
                 </motion.div>
             </div>
@@ -45,7 +45,7 @@ export default function Catagories() {
                         delay: 0.5,
                         type: 'spring'
                     }}>
-                    <Typography className="typography-h1" variant="h4" sx={{ paddingLeft: '30vw' }}>we provide the best</Typography>
+                    <Typography className="c-typography-h1" variant="h4" sx={{ paddingLeft: '30vw' }}>we provide the best</Typography>
                 </motion.div>
             </div>
 

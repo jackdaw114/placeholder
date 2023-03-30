@@ -2,17 +2,8 @@
     display: flex;
 }
 
-.typography-h1 {
+.c-typography-h1 {
     background: linear-gradient(to right, #02f1cb 0%, #A63446 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-}
-
-.typography-h4 {
-    background: linear-gradient(to right, #A63446 70%, #02f1cb 100%);
     -webkit-background-clip: text;
     background-clip: text;
 
