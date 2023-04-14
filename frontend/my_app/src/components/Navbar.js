@@ -1,5 +1,5 @@
 import { ClassNames, ThemeProvider } from "@emotion/react";
-import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper, MenuItem } from "@mui/material"
+import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper, MenuItem, Avatar } from "@mui/material"
 import { Palette } from "@mui/material";
 import styled from "@emotion/styled";
 import theme from "../design/palette";
@@ -18,6 +18,7 @@ import { useNavigate } from "react-router";
 import FocusTrap from '@mui/base/FocusTrap';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import MenuIcon from '@mui/icons-material/Menu';
+import { motion } from 'framer-motion'
 //import MenuIcon from '@mui/icons-material'
 import {
     CheckBoxOutlineBlankOutlined,
@@ -28,6 +29,7 @@ import {
     ReceiptOutlined, AccountCircle, Add, BuildCircleOutlined
 } from "@mui/icons-material";
 import { margin } from "@mui/system";
+import { MotionConfig } from "framer-motion";
 
 const data = [
     {
@@ -80,6 +82,9 @@ const DrawerBox = styled(MuiBox, {
 
 function Navbar() {
     const navigate = useNavigate();
+    const navigatetoprofile = () => {
+        navigate('/profile')
+    }
     const navigateToCategories = () => {
         navigate('/categories')
     }
@@ -137,14 +142,29 @@ function Navbar() {
                         borderBottom: 1, borderColor: 'black.main', position: 'fixed', zIndex: 1
                     }
                     }>
-                    <Toolbar open={open}>
+                    <Toolbar open={open} >
+
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><MenuIcon></MenuIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
+                        <Box sx={{ flexGrow: 1 }}>
+                            <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
+                                worKonnect
 
-                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
-                            worKonnect
+                            </Typography>
+                        </Box>
+                        <motion.div initial={{ borderRadius: '100%' }}
+                            whileHover={{
+                                scale: 1.1,
+                                outline: 'solid 3px #a63446'
+                            }}>
 
-                        </Typography>
+                            <Avatar
+
+                                onClick={navigatetoprofile}
+                            //src="/broken-image.jpg" 
+                            />
+
+                        </motion.div>
                     </Toolbar>
                 </AppBar >
 

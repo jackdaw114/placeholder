@@ -28,6 +28,6 @@
     background-color: transparent;
     margin-left: 1em;
     margin-top: 1em;
-
+    min-width: 12em;
     width: 15%;
 }
