@@ -10,9 +10,11 @@ import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
 import ImageHandler from './components/ImageHandler'
 import Catagories from "./components/Catagories";
-import HomeNigel from "./components/HomeNigel"
+import HomeNigel from "./components/HomeNigel";
+import WorkerProfile from "./components/WorkerProfile";
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom'
 import Rel from './components/Rel'
+import Hire from "./components/hire";
 function App() {
 
   return (
@@ -28,6 +30,8 @@ function App() {
             <Route path="/" element={<><HomeNigel /></>}></Route>
             <Route path="/login" element={<><Auth /></>}></Route>
             <Route path='/worker' element={<><Worker /></>}></Route>
+            <Route path='/workerProfile' element={<><WorkerProfile /></>}></Route>
+            <Route path='/hire' element={<><Hire /></>}></Route>
 
             <Route path='/rel' element={<><Rel /></>}></Route>
           </Routes>

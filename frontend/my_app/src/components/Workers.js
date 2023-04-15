@@ -8,7 +8,7 @@ import axios from 'axios'
 import theme from "../design/palette";
 import Row from './Row'
 import Tilt from 'react-parallax-tilt'
-import Workerccard from "./Workercard";
+import Workercard from "./Workercard";
 import { motion } from 'framer-motion'
 
 const url = "/worker/getworkers";
@@ -59,7 +59,7 @@ export default function Worker() {
                     <div className="worker-div-card">
                         {data.map((item, index) => (
 
-                            <Workerccard name={item.firstname} rating={item.rating} jobs={item.jobs} />
+                            <Workercard email={item.email} name={item.firstname + " " + item.lastname} rating={item.rating} jobs={item.jobs} location={item.location} phone={ item.phone} />
 
                         ))}
                     </div>

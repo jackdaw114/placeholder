@@ -1,4 +1,5 @@
 import { Card, Divider, Grid, Paper } from "@mui/material";
+import { useNavigate } from "react-router";
 import { Box } from "@mui/system";
 import './Workercard.css'
 import Tilt from 'react-parallax-tilt'
@@ -27,7 +28,9 @@ const WorkerRating = ({ val }) => {
     }
 }
 
-export default function Workerccard(props) {
+export default function Workercard(props) {
+    const navigate = useNavigate();
+    // const loc = props.location
     const length = props.jobs.length - 1
     console.log(length)
     let iter = [];
@@ -43,7 +46,9 @@ export default function Workerccard(props) {
 
 
 
-    return (<Box className="workercard-main">
+    return (<Box className="workercard-main" onClick={() => {
+        navigate('/workerProfile',{state: {props}})
+    }}>
         <Tilt className="workercard-component" glareEnable glareBorderRadius="1em" tiltMaxAngleY={10} tiltMaxAngleX={10} >
             <Box className="workercard-div" sx={{ marginTop: 2, height: 2, }} />
             <div className="workercard-div"><img className="workercard-img" src={image} /> </div>

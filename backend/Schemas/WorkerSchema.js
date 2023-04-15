@@ -32,6 +32,11 @@ const WorkerSchema = mongoose.Schema({
     },
     rating: {
         type: Number,
+    },
+    
+    phone: {
+        type: Number,
+        required: true
     }
 });
 
