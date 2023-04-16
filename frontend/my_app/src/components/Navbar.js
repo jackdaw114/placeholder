@@ -98,14 +98,10 @@ function Navbar() {
     }
     const [open, setOpen] = useState(false);
 
-<<<<<<< HEAD
     const navigatetoprofile = () => {
         navigate('/profile')
     }
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-=======
     useEffect(() => {
         if (open) {
             //   document.body.style.opacity = 0.4
@@ -127,7 +123,6 @@ function Navbar() {
 
     const handleClick = () => {
         setOpen((prev) => !prev);
->>>>>>> nigel3
     };
 
     const handleClickAway = () => {
@@ -152,15 +147,10 @@ function Navbar() {
                     <Toolbar open={open}>
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><MenuIcon></MenuIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
-<<<<<<< HEAD
-                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Gloock"}  >
-                            WorkConnect
-=======
 
                         <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
                             worKonnect
 
->>>>>>> nigel3
                         </Typography>
                     </Toolbar>
                     <Stack direction="row" spacing={2}>

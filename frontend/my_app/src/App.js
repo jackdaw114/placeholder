@@ -9,10 +9,8 @@ import Services from "./components/Services.js";
 import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
 import ImageHandler from './components/ImageHandler'
-import Home from "./components/Home";
+//import Home from "./components/Home";
 import Profile from "./components/myprofile"
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
-
 import Catagories from "./components/Catagories";
 import HomeNigel from "./components/HomeNigel";
 import WorkerProfile from "./components/WorkerProfile";
