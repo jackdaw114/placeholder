@@ -87,13 +87,14 @@ export default function Hire() {
    
                 
             }
+                 
+            <Button sx={{backgroundColor:"#A63446"}} variant="contaned" onClick={sendForm} >
+                submit
+                </Button>
    
 </Grid> 
                     
-                
-            <Button variant="contaned" onClick={sendForm}>
-                login
-                </Button>
+           
                 
             </Box>
             

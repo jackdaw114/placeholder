@@ -78,7 +78,8 @@ const Auth = () => {
             localStorage.clear();
             localStorage.setItem('username', res.data.username)
             console.log(res.data)
-            if (res.data) {
+            if (res.data._id) {
+
                 navigate('/')
             }
         })

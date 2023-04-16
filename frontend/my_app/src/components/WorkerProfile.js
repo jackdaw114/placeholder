@@ -85,9 +85,9 @@ export default function WorkerProfile() {
 					userID: localStorage.getItem("username")
 				}})
 			}}>
-
-				<Button variant='contained' sx={{backgroundColor:'red'}}>HIRE</Button>
-				
+			<Box sx={{display:'flex', justifyContent:'center'}}>
+			<Button variant='contained'  sx={{backgroundColor:'red' ,alignItems:'center'}}>HIRE</Button>	
+				</Box>
 		</Box>
 			
 		</>
