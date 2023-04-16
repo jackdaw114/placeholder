@@ -33,15 +33,12 @@ const WorkerSchema = mongoose.Schema({
     rating: {
         type: Number,
     },
-<<<<<<< Updated upstream
-    
-    phone: {
-=======
+
+
     rcount:{
         type:Number,
     },
     phoneNo: {
->>>>>>> Stashed changes
         type: Number,
         required: true
     }

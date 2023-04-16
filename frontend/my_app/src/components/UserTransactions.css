@@ -1,0 +1,5 @@
+.transactions_card {
+    background: linear-gradient(rgb(20, 20, 20), rgb(0, 0, 0)) padding-box,
+        radial-gradient(at center, rgb(95, 82, 110) 70%, #80295b) border-box;
+    border: 1px solid transparent;
+}

@@ -80,11 +80,14 @@ export default function WorkerProfile() {
 
 		</Box>
 			<Box classname="button-box" alignItems={'center'} onClick={() => {
-				navigate('/hire')
+				navigate('/hire',{state:{
+					workerID:location.state.props.email,
+					userID: localStorage.getItem("username")
+				}})
 			}}>
-
-				<Button variant='contained' sx={{backgroundColor:'red'}}>HIRE</Button>
-				
+			<Box sx={{display:'flex', justifyContent:'center'}}>
+			<Button variant='contained'  sx={{backgroundColor:'red' ,alignItems:'center'}}>HIRE</Button>	
+				</Box>
 		</Box>
 			
 		</>

@@ -43,12 +43,10 @@ router.post('/register', async (req, res) => {
                 password: hash,
                 location: req.body.location,
                 rating: 3,
-<<<<<<< Updated upstream
-=======
+
                 rcount: 1,
                 phoneNo: req.body.phoneNo
->>>>>>> Stashed changes
-            })
+         })
             try {
                 const saved = await newWorker.save()
                 res.send(saved).status(200)
@@ -58,6 +56,11 @@ router.post('/register', async (req, res) => {
 
         }
     })
+})
+
+
+router.get('/gettransactions',async(req,res)=>{
+    res.send('sdfa;l')
 })
 
 module.exports = router;    

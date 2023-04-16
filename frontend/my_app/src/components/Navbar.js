@@ -37,6 +37,8 @@ import { margin } from "@mui/system";
 
 
 
+let test = localStorage.getItem('username') ? 'login/signup' : 'logout';
+
 const drawerWidth = 240;
 
 const Toolbar = styled(MuiToolbar, {
