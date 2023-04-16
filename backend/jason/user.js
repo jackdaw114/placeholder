@@ -18,6 +18,11 @@ router.post('/register', async (req, res) => {
                 jobs: req.body.jobs,
                 password: hash,
                 location: req.body.location,
+<<<<<<< Updated upstream
+=======
+                username: req.body.username,
+                phoneNo: req.body.phoneNo
+>>>>>>> Stashed changes
             })
             newUser.save((error, user) => {
                 if (error) {

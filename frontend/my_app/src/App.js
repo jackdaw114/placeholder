@@ -15,6 +15,11 @@ import WorkerProfile from "./components/WorkerProfile";
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom'
 import Rel from './components/Rel'
 import Hire from "./components/hire";
+<<<<<<< Updated upstream
+=======
+import UserTransactions from "./components/UserTransactions";
+import Profile from "./components/MyProfile";
+>>>>>>> Stashed changes
 function App() {
 
   return (
@@ -34,6 +39,8 @@ function App() {
             <Route path='/hire' element={<><Hire /></>}></Route>
 
             <Route path='/rel' element={<><Rel /></>}></Route>
+            <Route path="/profile" element={<><Profile /></>}></Route>
+
           </Routes>
 
         </ThemeProvider>

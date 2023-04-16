@@ -43,6 +43,11 @@ router.post('/register', async (req, res) => {
                 password: hash,
                 location: req.body.location,
                 rating: 3,
+<<<<<<< Updated upstream
+=======
+                rcount: 1,
+                phoneNo: req.body.phoneNo
+>>>>>>> Stashed changes
             })
             try {
                 const saved = await newWorker.save()
