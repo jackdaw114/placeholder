@@ -1,5 +1,5 @@
 import { ClassNames, ThemeProvider } from "@emotion/react";
-import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper, MenuItem } from "@mui/material"
+import { List, ListItem, ListItemButton, TextField, Typography, Drawer, Box, ListItemText, IconButton, Divider, Tab, CssBaseline, ListItemIcon, Icon, Paper, MenuItem, Avatar } from "@mui/material"
 import { Palette } from "@mui/material";
 import styled from "@emotion/styled";
 import theme from "../design/palette";
@@ -18,6 +18,9 @@ import { useNavigate } from "react-router";
 import FocusTrap from '@mui/base/FocusTrap';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import MenuIcon from '@mui/icons-material/Menu';
+import { motion } from 'framer-motion'
+import { MotionConfig } from "framer-motion";
+
 //import MenuIcon from '@mui/icons-material'
 import {
     CheckBoxOutlineBlankOutlined,
@@ -29,16 +32,10 @@ import {
 } from "@mui/icons-material";
 import { margin } from "@mui/system";
 
-const data = [
-    {
-        name: "Home",
-        icon: <HomeOutlined />, nav: 'navigateToHome()',
-    },
-    { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
 
-    { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
-    { name: "Login/Signup", icon: <AccountCircle />, nav: 'navigateToLogin()' },
-];
+
+
+
 
 const drawerWidth = 240;
 
@@ -79,7 +76,62 @@ const DrawerBox = styled(MuiBox, {
 
 
 function Navbar() {
+
+    // let login_status_name = localStorage.getItem('username') ? 'Logout' : 'Login/Signup';
+const [loginStatusName,setLoginStatusName] = useState('Login/Signup')
+const [loginStatusFunc,setLoginStatusFunc] = useState('navigateToLogin()')
+
+// let login_status_function = localStorage.getItem('username') ? 'logout()' : 'navigateToLogin()';
+
+const [open, setOpen] = useState(false);
+const [data,setData] = useState([
+    {
+        name: "Home",
+        icon: <HomeOutlined />, nav: 'navigateToHome()',
+    },
+    { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+
+    { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+
+    { name: 'Login/Signup', icon: <AccountCircle />, nav:'navigateToLogin()' },
+]);
+
+    useEffect(() => {
+        if (localStorage.getItem('username')) {
+            // setLoginStatusName('Login/Signup')
+            // setLoginStatusFunc('navigateToLogin()')
+            setData((prevState) => ([
+                prevState[0],
+                prevState[1],
+                prevState[2],
+                { name: 'Logout', icon: <AccountCircle />, nav:'logout()' },
+                
+            ]))
+        }
+        else {
+            setData((prevState) => ([
+                prevState[0],
+                prevState[1],
+                prevState[2],
+                { name: 'Login/Signup', icon: <AccountCircle />, nav:'navigateToLogin()' }
+                
+            ]))
+            
+        //     setLoginStatusName('Logout')
+        //     setLoginStatusFunc('logout()')
+        }
+    },[open])
+
     const navigate = useNavigate();
+    const logout = () => {
+        localStorage.clear()
+        navigate('/login')
+    }
+
+    const navigatetoprofile = () => {
+        navigate('/profile')
+    }
+    
     const navigateToCategories = () => {
         navigate('/categories')
     }
@@ -91,19 +143,14 @@ function Navbar() {
     }
 
     const navigateToLogin = () => {
+        // setLoginStatusName('Logout')
+        // setLoginStatusFunc('logout()')
         navigate('/login')
     }
-    const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        if (open) {
-            //   document.body.style.opacity = 0.4
-
-        }
-        else {
-            // document.body.style.opacity = 1
-        }
-    }, [open])
+    // const logout = () => {
+        
+    // }
 
 
     // const handleDrawerOpen = () => {
@@ -141,10 +188,27 @@ function Navbar() {
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><MenuIcon></MenuIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
 
-                        <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
-                            worKonnect
+                        <Box sx={{ flexGrow: 1 }}>
+                            <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
+                                worKonnect
 
-                        </Typography>
+                            </Typography>
+                        </Box>
+                        { (localStorage.getItem('username'))&&
+                            <motion.div initial={{ borderRadius: '100%' }}
+                                whileHover={{
+                                    scale: 1.1,
+                                    outline: 'solid 3px #a63446'
+                                }}>
+
+                                <Avatar
+
+                                    onClick={navigatetoprofile}
+                                //src="/broken-image.jpg" 
+                                />
+
+                            </motion.div>
+                        }
                     </Toolbar>
                 </AppBar >
 
