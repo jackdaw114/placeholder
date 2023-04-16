@@ -55,4 +55,9 @@ router.post('/register', async (req, res) => {
     })
 })
 
+
+router.get('/gettransactions',async(req,res)=>{
+    res.send('sdfa;l')
+})
+
 module.exports = router;    

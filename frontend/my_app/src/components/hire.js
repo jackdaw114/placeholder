@@ -1,21 +1,60 @@
 import { Typography,Box, TextareaAutosize , Grid} from "@mui/material";
+import axios from 'axios';
+import {useState} from 'react';
+import Button from '@mui/material/Button';
+
+import { useLocation } from "react-router";
 
 export default function Hire() {
+    const location = useLocation();
     const form_description = [
         {
-            placeholder:'Job Description'
+            placeholder:'Job Description',
+            name:'jobdescription'
         },
         {
-            placeholder:'Address'
+            placeholder:'Address',
+            name:'address'
         },
         {
-            placeholder:'Date of Service'
+            placeholder:'Date of Service',
+            name:'dos'
         },
         {
-            placeholder:'Comments'
+            placeholder:'Comments',
+            name:'comments'
         },
         
     ]
+
+       const [inputs, setInputs] = useState({
+        workerID: location.state.workerID,
+        address: "",
+        dos: "",
+        jobdescription: "",
+        comments: "",
+        userID:location.state.userID
+    })
+       const handleChange = (e) => {
+        setInputs((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+
+        }))
+    }
+
+    function sendForm(){
+        axios.post("/user/maketransaction",inputs,{
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }).then((data)=>{
+            console.log(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <>
             <Box className='body-box'>
@@ -28,16 +67,18 @@ export default function Hire() {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
-                style={{ minHeight: '50vh' }}
->
-                    {
-                        form_description.map((item) => {
+                style={{ minHeight: '50vh' }}>
+                {
+                        form_description.map((item,index) => {
                             
                         return( <Grid item xs={3}>
                             <TextareaAutosize
+                            onChange={handleChange}
                                 minRows={3}
                 aria-label="empty textarea"
-                placeholder={item.placeholder}
+                value={inputs[item.name]}
+                name={item.name}
+                placeholder={item.name}
                 style={{ minWidth: 400 }}
                 />
                         </Grid>      
@@ -50,7 +91,9 @@ export default function Hire() {
 </Grid> 
                     
                 
-                
+            <Button variant="contaned" onClick={sendForm}>
+                login
+                </Button>
                 
             </Box>
             
