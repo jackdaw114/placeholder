@@ -20,6 +20,7 @@ import ClickAwayListener from '@mui/base/ClickAwayListener';
 import MenuIcon from '@mui/icons-material/Menu';
 import { motion } from 'framer-motion'
 import { MotionConfig } from "framer-motion";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 //import MenuIcon from '@mui/icons-material'
 import {
@@ -32,12 +33,6 @@ import {
 } from "@mui/icons-material";
 import { margin } from "@mui/system";
 
-
-
-
-
-
-let test = localStorage.getItem('username') ? 'login/signup' : 'logout';
 
 const drawerWidth = 240;
 
@@ -80,54 +75,76 @@ const DrawerBox = styled(MuiBox, {
 function Navbar() {
 
     // let login_status_name = localStorage.getItem('username') ? 'Logout' : 'Login/Signup';
-const [loginStatusName,setLoginStatusName] = useState('Login/Signup')
-const [loginStatusFunc,setLoginStatusFunc] = useState('navigateToLogin()')
+    const [loginStatusName, setLoginStatusName] = useState('Login/Signup')
+    const [loginStatusFunc, setLoginStatusFunc] = useState('navigateToLogin()')
 
-// let login_status_function = localStorage.getItem('username') ? 'logout()' : 'navigateToLogin()';
+    // let login_status_function = localStorage.getItem('username') ? 'logout()' : 'navigateToLogin()';
 
-const [open, setOpen] = useState(false);
-const [data,setData] = useState([
-    {
-        name: "Home",
-        icon: <HomeOutlined />, nav: 'navigateToHome()',
-    },
-    { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [data, setData] = useState([
+        {
+            name: "Home",
+            icon: <HomeOutlined />, nav: 'navigateToHome()',
+        },
+        { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
 
-    { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+        { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+        
+        { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
+        
+        { name: 'Login/Signup', icon: <AccountCircle />, nav: 'navigateToLogin()' },
 
-    { name: 'Login/Signup', icon: <AccountCircle />, nav:'navigateToLogin()' },
-]);
+    ]);
 
-    useEffect(() => {
-        if (localStorage.getItem('username')) {
-            // setLoginStatusName('Login/Signup')
-            // setLoginStatusFunc('navigateToLogin()')
-            setData((prevState) => ([
-                prevState[0],
-                prevState[1],
-                prevState[2],
-                { name: 'Logout', icon: <AccountCircle />, nav:'logout()' },
-                
-            ]))
-        }
-        else {
-            setData((prevState) => ([
-                prevState[0],
-                prevState[1],
-                prevState[2],
-                { name: 'Login/Signup', icon: <AccountCircle />, nav:'navigateToLogin()' }
-                
-            ]))
+
+    const handleClick = () => {
+        setOpen((prev) => !prev);
+    };
+
+    const handleClickAway = () => {
+        setOpen(false);
+    };
+
+    const setDataLoggedIn = () => {
+        setData((prevState) => ([
+            prevState[0],
+            prevState[1],
+            prevState[2],
+            { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
+            { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
             
-        //     setLoginStatusName('Logout')
-        //     setLoginStatusFunc('logout()')
-        }
+        ]))
+    }
+
+    const setDataLoggedOut = () => {
+        setData((prevState) => ([
+            prevState[0],
+            prevState[1],
+            prevState[2],
+            { name: 'Login/Signup', icon: <AccountCircle />, nav: 'navigateToLogin()' }
+            
+        ]))
+    }
+
+    //decision making of Login or Logout display for drawer button
+    useEffect(() => {
+        loggedIn?setDataLoggedIn():setDataLoggedOut() 
+    }, [loggedIn])
+
+    
+    useEffect(() => {
+        const temp = localStorage.getItem('loggedIn') ? true : false;
+        setLoggedIn(temp);
+        loggedIn?setDataLoggedIn():setDataLoggedOut()  
     },[open])
+
 
     const navigate = useNavigate();
     const logout = () => {
         localStorage.clear()
-        navigate('/login')
+        setLoggedIn(false)
+        navigateToLogin()
     }
 
     const navigatetoprofile = () => {
@@ -144,15 +161,14 @@ const [data,setData] = useState([
         navigate('/')
     }
 
-    const navigateToLogin = () => {
-        // setLoginStatusName('Logout')
-        // setLoginStatusFunc('logout()')
-        navigate('/login')
+    const navigateToTransactions = () => {
+        navigate('/transactions')
     }
 
-    // const logout = () => {
+    const navigateToLogin = () => {
         
-    // }
+        navigate('/login')
+    }
 
 
     // const handleDrawerOpen = () => {
@@ -163,13 +179,6 @@ const [data,setData] = useState([
     //     setOpen(false);
     // };
 
-    const handleClick = () => {
-        setOpen((prev) => !prev);
-    };
-
-    const handleClickAway = () => {
-        setOpen(false);
-    };
 
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'block',
@@ -196,7 +205,7 @@ const [data,setData] = useState([
 
                             </Typography>
                         </Box>
-                        { (localStorage.getItem('username'))&&
+                        { (localStorage.getItem('loggedIn'))&&
                             <motion.div initial={{ borderRadius: '100%' }}
                                 whileHover={{
                                     scale: 1.1,
@@ -238,12 +247,14 @@ const [data,setData] = useState([
                     <Divider sx={{ background: theme.palette.black.main }} />
                     <DrawerHeader>
                         <List>
+                            {
+                                
 
-                            {data.map((item, index) => (
+                            data.map((item, index) => (
 
                                 <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
                                     eval(item.nav)
-                                    handleClick()
+                                    setTimeout(() => { handleClick() }, 300);
                                 }}>
                                     <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.name} />

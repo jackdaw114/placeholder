@@ -80,7 +80,8 @@ const Auth = () => {
             localStorage.setItem('username', res.data.username)
             localStorage.setItem('phoneNo', res.data.phoneNo)
             localStorage.setItem('email', res.data.email)
-
+            if (res.data.password !== undefined)
+                localStorage.setItem('loggedIn', true);
             console.log(res.data)
             if (res.data._id) {
 
