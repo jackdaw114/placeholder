@@ -33,10 +33,12 @@ const WorkerSchema = mongoose.Schema({
     rating: {
         type: Number,
     },
+
+
     rcount:{
         type:Number,
     },
-    phone: {
+    phoneNo: {
         type: Number,
         required: true
     }

@@ -37,6 +37,7 @@ const Auth = () => {
         lastname: "",
         job: "",
         location: "",
+        
 
     })
 
@@ -77,6 +78,9 @@ const Auth = () => {
         }).then(res => {
             localStorage.clear();
             localStorage.setItem('username', res.data.username)
+            localStorage.setItem('phoneNo', res.data.phoneNo)
+            localStorage.setItem('email', res.data.email)
+
             console.log(res.data)
             if (res.data._id) {
 

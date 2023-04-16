@@ -53,6 +53,16 @@ export default function WorkerForm(props) {
                 sx={{
                     width: "300px"
                 }}
+                value={props.inputs.phoneNo}
+                name="phoneNo"
+                variant="outlined"
+                placeholder='phoneNo'
+                margin="normal" />
+            <TextField
+                onChange={props.func}
+                sx={{
+                    width: "300px"
+                }}
                 value={props.inputs.password}
                 name="password"
                 variant="outlined"
