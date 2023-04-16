@@ -8,7 +8,6 @@ import { Box } from "@mui/system";
 import Services from "./components/Services.js";
 import img from './img/plumbing.jpg'
 import SearchBar from "./components/SearchBar";
-import ImageHandler from './components/ImageHandler'
 import Catagories from "./components/Catagories";
 import HomeNigel from "./components/HomeNigel";
 import WorkerProfile from "./components/WorkerProfile";
@@ -18,10 +17,9 @@ import Hire from "./components/hire";
 function App() {
 
   return (
-    <Box >
+    <Box sx={{minHeight:'100vh', background: 'radial-gradient(circle at right 40%,rgba(166, 52, 70, 0.2),transparent 50% )'}} >
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <ImageHandler></ImageHandler>
           <Navbar />
           <Routes>
 

@@ -43,6 +43,7 @@ router.post('/register', async (req, res) => {
                 password: hash,
                 location: req.body.location,
                 rating: 3,
+                rcount:1,
             })
             try {
                 const saved = await newWorker.save()

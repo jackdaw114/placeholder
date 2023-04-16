@@ -3,7 +3,6 @@ import { Card, CardMedia, Divider, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import ImageHandler from "./ImageHandler";
 import SearchBar from "./SearchBar";
 import Services from "./Services";
 import './Catagories.css'

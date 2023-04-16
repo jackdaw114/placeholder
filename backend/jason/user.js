@@ -1,5 +1,6 @@
 const express = require('express')
 const User = require('../Schemas/UserSchema')
+const Worker =require('../Schemas/WorkerSchema')
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const Transaction = require('../Schemas/TransactionSchema')
@@ -73,6 +74,48 @@ router.post('/maketransaction',async(req,res)=>{
         console.log(transaction)
     }catch(err){
         res.send('incomplete transaction').status(500);
+    }
+})
+
+router.post('/rate',async(req,res)=>{
+    try{
+        console.log(req.body)
+        const findWorker = await Worker.findOne({email:req.body.workerID})
+        if(findWorker){
+            const count = findWorker.rcount + 1;
+            const newrating = (findWorker.rating * findWorker.rcount + req.body.rating)/count;
+            let update = await Worker.updateOne(
+                {emai:req.body.workerID},
+                {
+                    $set:{
+                        rcount:count,
+                        rating:newrating
+                    }
+                }
+            )
+            console.log(update)
+            res.send(update)
+            
+
+        }
+    }catch(err){
+        console.log(err)
+        res.send(err).status(500)
+    }
+})
+
+router.post('/gettransactions',async(req,res)=>{
+    try{
+        const find = await Transaction.find()
+    
+    if(find){
+        console.log(find)
+        res.send(find).status(200)
+    }
+    else{
+        res.send('no transactions found').status(400)
+    }}catch(err){
+        res.send(err).status(500)
     }
 })
 
