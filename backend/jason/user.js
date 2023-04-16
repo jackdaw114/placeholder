@@ -1,6 +1,6 @@
 const express = require('express')
 const User = require('../Schemas/UserSchema')
-const Worker =require('../Schemas/WorkerSchema')
+const Worker = require('../Schemas/WorkerSchema')
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const Transaction = require('../Schemas/TransactionSchema')
@@ -19,13 +19,13 @@ router.post('/register', async (req, res) => {
                 jobs: req.body.jobs,
                 password: hash,
                 location: req.body.location,
-                username:req.body.username
+                username: req.body.username
             })
-            try{
-            const user = await newUser.save()
-            console.log(user)
-            res.send(user);
-            }catch(err){
+            try {
+                const user = await newUser.save()
+                console.log(user)
+                res.send(user);
+            } catch (err) {
                 res.send(err).status(500)
             }
         }
@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         console.log("The request:", req.body)
-        let user = await User.findOne({ username: req.body.username});
+        let user = await User.findOne({ username: req.body.username });
 
         console.log(user);
         if (user) {
@@ -58,63 +58,66 @@ router.post("/login", async (req, res) => {
     }
 })
 
-router.post('/maketransaction',async(req,res)=>{
-    try{
+router.post('/maketransaction', async (req, res) => {
+    try {
         console.log(req.body.jobdescription)
         let newTransaction = new Transaction({
             jobdescription: req.body.jobdescription,
             address: req.body.address,
-            dos:req.body.dos,
+            dos: req.body.dos,
             comments: req.body.comments,
             workerID: req.body.workerID,
-            userID:req.body.userID
+            userID: req.body.userID
         }
         )
         const transaction = await newTransaction.save()
         console.log(transaction)
-    }catch(err){
+    } catch (err) {
         res.send('incomplete transaction').status(500);
     }
 })
 
-router.post('/rate',async(req,res)=>{
-    try{
+router.post('/rate', async (req, res) => {
+    try {
         console.log(req.body)
-        const findWorker = await Worker.findOne({email:req.body.workerID})
-        if(findWorker){
+        const findWorker = await Worker.findOne({ email: req.body.workerID })
+        if (findWorker) {
             const count = findWorker.rcount + 1;
-            const newrating = (findWorker.rating * findWorker.rcount + req.body.rating)/count;
+            const newrating = (findWorker.rating * findWorker.rcount + req.body.rating) / count;
             let update = await Worker.updateOne(
-                {emai:req.body.workerID},
+                { emai: req.body.workerID },
                 {
-                    $set:{
-                        rcount:count,
-                        rating:newrating
+                    $set: {
+                        rcount: count,
+                        rating: newrating
                     }
                 }
             )
             console.log(update)
             res.send(update)
-            
+
 
         }
-    }catch(err){
+    } catch (err) {
         console.log(err)
         res.send(err).status(500)
     }
 })
 
-router.post('/gettransactions',async(req,res)=>{
-    try{
-        const find = await Transaction.find()
-    
-    if(find){
-        console.log(find)
-        res.send(find).status(200)
-    }
-    else{
-        res.send('no transactions found').status(400)
-    }}catch(err){
+router.post('/gettransactions', async (req, res) => {
+    try {
+        console.log(req.body)
+        const find = await Transaction.find({ userID: req.body.username })
+
+        if (find.length != 0) {
+            console.log(find)
+            res.send(find).status(200)
+        }
+        else {
+            console.log('no transactions')
+            res.send('no transactions found').status(400)
+        }
+    } catch (err) {
         res.send(err).status(500)
     }
 })

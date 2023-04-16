@@ -14,10 +14,11 @@ import WorkerProfile from "./components/WorkerProfile";
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom'
 import Rel from './components/Rel'
 import Hire from "./components/hire";
+import UserTransactions from "./components/UserTransactions";
 function App() {
 
   return (
-    <Box sx={{minHeight:'100vh', background: 'radial-gradient(circle at right 40%,rgba(166, 52, 70, 0.2),transparent 50% )'}} >
+    <Box sx={{ minHeight: '100vh', background: 'radial-gradient(circle at right 40%,rgba(166, 52, 70, 0.2),transparent 50% )' }} >
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Navbar />
@@ -30,7 +31,7 @@ function App() {
             <Route path='/worker' element={<><Worker /></>}></Route>
             <Route path='/workerProfile' element={<><WorkerProfile /></>}></Route>
             <Route path='/hire' element={<><Hire /></>}></Route>
-
+            <Route path='/transactions' element={<><UserTransactions /></>}></Route>
             <Route path='/rel' element={<><Rel /></>}></Route>
           </Routes>
 
