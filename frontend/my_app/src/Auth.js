@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
@@ -6,6 +6,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import theme from './design/palette';
+import { Route, Router, Routes, useLocation, useNavigate } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import UserForm from './components/authcomponents/UserForm'
+import CompanyForm from './components/authcomponents/CompanyForm';
+import WorkerForm from './components/authcomponents/WorkerForm';
+import LoginForm from './components/authcomponents/LoginForm'
+import axios from 'axios';
+
 // import { JavascriptTwoTone } from '@mui/icons-material';
 // import { bgcolor } from '@mui/system';
 const Auth = () => {
@@ -14,7 +22,7 @@ const Auth = () => {
     // let phoneNo = ""
     // let email = ""
     // let password = ""
-
+    const navigate = useNavigate()
     const [isSignup, setIsSignup] = useState(false);
     const [isCompany, setIsCompany] = useState(false);
     const [isWorker, setIsWorker] = useState(false);
@@ -24,48 +32,84 @@ const Auth = () => {
         username: "",
         phoneNo: "",
         email: "",
-        password: ""
+        password: "",
+        firstname: "",
+        lastname: "",
+        job: "",
+        location: "",
 
     })
+
     const handleChange = (e) => {
         setInputs((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-            // companyName =inputs.companyName,
-            // username = inputs.username,
-            // phoneNo= inputs.phoneNo,
-            // email=inputs.email,
-            // password=inputs.password,
 
         }))
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
-        fetch("http://localhost:3010/register", {
-            method: "POST",
-            crossDomain: true,
+        let url;
+        if (isUser) {
+            url = '/user'
+        }
+        else if (isWorker) {
+            url = '/worker'
+        }
+        else {
+            url = '/company'
+        }
+
+        if (isSignup) {
+            url = url + '/register'
+        }
+        else {
+            url = url + '/login'
+        }
+        console.log(url)
+        axios.post(url, inputs, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({
-                inputs
-            }),
-
-        }).then((res) => res.json()).then((data) => {
-            console.log(data, "UserDetails")
+            }
+        }).then(res => {
+            localStorage.clear();
+            localStorage.setItem('username', res.data.username)
+            console.log(res.data)
+            if (res.data) {
+                navigate('/')
+            }
         })
 
 
     }
     const resetState = () => {
         setIsSignup(!isSignup);
-        setInputs({ companyName: '', username: '', phoneNo: '', email: '', password: '' });
+        setInputs({ companyname: '', username: '', phoneNo: '', email: '', password: '' });
     }
-    console.log(isSignup);
-    console.log(isCompany);
+
+
+
+
+    const CustForm = () => {
+        if (!isSignup)
+            return (<LoginForm func={handleChange} inputs={inputs} />)
+        if (isSignup && isWorker)
+            return (<WorkerForm func={handleChange} inputs={inputs} />)
+        else if (isSignup && isCompany)
+            return (<CompanyForm func={handleChange} inputs={inputs} />)
+        else {
+            return (
+                <UserForm func={handleChange} inputs={inputs} />
+            )
+        }
+    }
+
+
+
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -100,25 +144,21 @@ const Auth = () => {
                     >
                         <Button
                             onClick={() => {
-                                setIsUser(!isUser);
                                 setIsWorker(false);
                                 setIsCompany(false);
 
-                                if (isCompany && isWorker === false) {
-                                    setIsUser(true);
-                                }
+                                setIsUser(true);
+
                             }}
                             endIcon={<AccountCircleIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }} >User</Button>
                         <Button
                             onClick={() => {
-                                setIsWorker(!isWorker);
                                 setIsCompany(false);
                                 setIsUser(false);
 
-                                if (isCompany && isWorker === false) {
-                                    setIsUser(true);
-                                }
+                                setIsWorker(true);
+
                             }}
                             endIcon={<EngineeringIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}>Worker</Button>
@@ -126,80 +166,14 @@ const Auth = () => {
                             endIcon={<ApartmentIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}
                             onClick={() => {
-                                setIsCompany(!isCompany);
-                                setIsWorker(false);
-                                setIsUser(true);
 
-                                if (isCompany && isWorker === false) {
-                                    setIsUser(true);
-                                }
+                                setIsCompany(true);
+                                setIsUser(false);
+                                setIsWorker(false);
                             }}>Company</Button>
                     </Box>
 
-                    {isCompany && isSignup &&
-                        <TextField
-                            onChange={handleChange}
-                            sx={{
-                                width: "300px"
-                            }}
-                            value={inputs.companyName}
-                            name="companyName"
-                            variant="outlined"
-                            placeholder='company name'
-                            margin="normal" />
-                    }
-
-                    {
-                        <TextField
-                            onChange={handleChange}
-                            sx={{
-                                width: "300px"
-                            }}
-                            value={inputs.username}
-                            name="username"
-                            variant="outlined"
-                            placeholder='username'
-                            margin="normal" />
-                    }
-                    {isSignup &&
-                        <TextField
-                            onChange={handleChange}
-                            sx={{
-                                width: "300px"
-                            }}
-                            value={inputs.phoneNo}
-                            name="phoneNo"
-                            variant="outlined"
-                            placeholder='phone no.'
-                            margin="normal" />
-                    }
-
-                    {isSignup &&
-                        <TextField
-                            onChange={handleChange}
-                            sx={{
-                                width: "300px"
-                            }}
-                            value={inputs.email}
-                            name="email"
-                            type={'email'}
-                            variant="outlined"
-                            placeholder='email'
-                            margin="normal" />
-
-                    }
-
-                    <TextField
-                        onChange={handleChange}
-                        sx={{
-                            width: "300px"
-                        }}
-                        value={inputs.password}
-                        name="password"
-                        type={'password'}
-                        variant="outlined"
-                        placeholder='password'
-                        margin="normal" />
+                    {CustForm()}
 
                     <Button
                         endIcon={isSignup ? <AppRegistrationIcon /> : <LoginIcon />}
@@ -226,10 +200,14 @@ const Auth = () => {
                             color: 'white'
                         }}
 
-                    ><Typography color={'white'}>
+                    >
+                        <Typography color={'white'}>
                             {isSignup ? "Login" : "New Here? Signup instead"}
                         </Typography>
                     </Button>
+                    <Button onClick={() => {
+                        console.log(inputs)
+                    }} sx={{ width: 100, height: 100 }}></Button>
                 </Box>
             </form>
         </div>

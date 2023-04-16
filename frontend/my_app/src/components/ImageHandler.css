@@ -5,3 +5,8 @@
 .crop {
     margin-left: -90%;
 }
+
+.opacity {
+    filter: saturate(0);
+    opacity: 0.5;
+}

@@ -1,0 +1,51 @@
+.flexdiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 3em;
+    flex-wrap: wrap;
+    border-radius: 20px;
+
+}
+
+.flexdiv2 {
+    display: flex;
+    justify-content: left;
+    max-width: 90vw;
+    min-width: 90vw;
+    height: 100%;
+    flex-wrap: wrap;
+    border-radius: 5px;
+}
+
+.coldiv {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.work-typo {
+    color: black;
+    font-family: gloock;
+    padding: 0.2em;
+}
+
+.work-typo-grad {
+    background: linear-gradient(to right, #CAA8F5 0%, #A63446 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.worker-div-card {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.workercard-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

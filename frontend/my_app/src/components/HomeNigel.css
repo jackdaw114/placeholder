@@ -1,0 +1,86 @@
+.typography-h1 {
+    background: linear-gradient(to right, #DDC54A 0%, #A63446 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.typography-h4 {
+    background: #A63446;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+.review-container-heading {
+    /* margin-left: 20px; */
+    margin-bottom: 10px;
+}
+
+.reviewer-pfp {
+    padding-top: 6.26%;
+    /* justify-self: center; */
+}
+
+.review-container {
+    margin-top: 70px;
+    padding: 20px 0px;
+}
+
+.review-card {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-content {
+    flex-grow: 1;
+}
+
+.home-footer {
+    margin: 200px 0px;
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    /* max-height: 0px; */
+}
+
+.mission-container {
+    margin-top: 70px;
+}
+
+.mission-scenario-us-container {
+    margin-top: 30px;
+
+}
+
+/* .mission-super-container{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+} */
+
+.stepper-container {
+    /* margin-left: 100px;
+     */
+    justify-self: center;
+}
+
+.div-stepper {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

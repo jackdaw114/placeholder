@@ -7,16 +7,17 @@ const theme = createTheme({
         fontFamily: 'Tilt Neon',
     },
 
+
     palette:
     {
         primary: {
-            main: '#0A100D',
+            main: '#000000  ',
             contrastText: '#FFFFFF',
-            light: '#222B30'
-
+            light: '#34a694',
+            paper: '#f2eecb'
         },
         secondary: {
-            light: '#fcdebe',
+            light: '#358b7e',
             main: '#A63446  ',
             contrastText: '#fcdebe',
         },
@@ -37,13 +38,10 @@ const theme = createTheme({
             main: '#2c302e',
         },
         background: {
-            default: '#e8e8e8',
+            default: '#010000 ',
             paper: '#2c302e'
         },
-        shadows: {
-            default: '#ffffff',
-            main: '#ffffff'
-        }
+
     },
 })
 
