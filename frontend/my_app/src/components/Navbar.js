@@ -40,6 +40,8 @@ const data = [
     { name: "Login/Signup", icon: <AccountCircle />, nav: 'navigateToLogin()' },
 ];
 
+let test = localStorage.getItem('username') ? 'login/signup' : 'logout';
+
 const drawerWidth = 240;
 
 const Toolbar = styled(MuiToolbar, {

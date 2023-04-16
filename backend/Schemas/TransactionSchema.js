@@ -18,8 +18,11 @@ const transactionSchema = mongoose.Schema({
     workerID: {
         type: String,
     },
-    userID:{
-        type:String,
+    userID: {
+        type: String,
+    },
+    status: {
+        type: String,
     }
 
 });
