@@ -85,7 +85,7 @@ function Navbar() {
     const [data, setData] = useState([
         {
             name: "Home",
-            icon: <HomeOutlined />, nav: 'navigateToHome()',
+            icon: <HomeOutlined />, nav:'navigateToHome()',
         },
         { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
 
@@ -107,24 +107,45 @@ function Navbar() {
     };
 
     const setDataLoggedIn = () => {
-        setData((prevState) => ([
-            prevState[0],
-            prevState[1],
-            prevState[2],
-            { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
-            { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
+        if (localStorage.getItem('isWorker'))
+        {
+            setData((prevState) => ([
+                prevState[0],
+                { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
+                
+            ]))
+        }
+        else {
             
-        ]))
+            setData((prevState) => ([
+                {
+                    name: "Home",
+                    icon: <HomeOutlined />, nav:'navigateToHome()',
+                },
+                { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+        
+                { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+                { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
+                { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
+                
+            ]))
+        }
     }
 
     const setDataLoggedOut = () => {
-        setData((prevState) => ([
-            prevState[0],
-            prevState[1],
-            prevState[2],
+        
+            setData((prevState) => ([
+                {
+                    name: "Home",
+                    icon: <HomeOutlined />, nav:'navigateToHome()',
+                },
+                { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+        
+                { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
             { name: 'Login/Signup', icon: <AccountCircle />, nav: 'navigateToLogin()' }
             
         ]))
+
     }
 
     //decision making of Login or Logout display for drawer button
@@ -151,6 +172,7 @@ function Navbar() {
         navigate('/profile')
     }
     
+    
     const navigateToCategories = () => {
         navigate('/categories')
     }
@@ -158,7 +180,10 @@ function Navbar() {
         navigate('/rel')
     }
     const navigateToHome = () => {
-        navigate('/')
+        if (localStorage.getItem('isWorker'))
+            navigate('/workerHome');
+        else
+            navigate('/');
     }
 
     const navigateToTransactions = () => {
@@ -205,7 +230,8 @@ function Navbar() {
 
                             </Typography>
                         </Box>
-                        { (localStorage.getItem('loggedIn'))&&
+                        {
+                         (localStorage.getItem('loggedIn')&&(!localStorage.getItem('isWorker')))&&
                             <motion.div initial={{ borderRadius: '100%' }}
                                 whileHover={{
                                     scale: 1.1,
@@ -214,11 +240,12 @@ function Navbar() {
 
                                 <Avatar
 
-                                    onClick={navigatetoprofile}
+                                onClick={navigatetoprofile}
                                 //src="/broken-image.jpg" 
                                 />
 
-                            </motion.div>
+                                </motion.div>
+                                
                         }
                     </Toolbar>
                 </AppBar >

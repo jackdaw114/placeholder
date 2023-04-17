@@ -81,11 +81,26 @@ const Auth = () => {
             localStorage.setItem('phoneNo', res.data.phoneNo)
             localStorage.setItem('email', res.data.email)
             if (res.data.password !== undefined)
+            {
+                
                 localStorage.setItem('loggedIn', true);
+                if (isWorker) {
+                    localStorage.setItem('isWorker', true);
+                }
+                else if (isUser) {
+                    localStorage.setItem('isUser', true);
+                }
+                else {
+                    localStorage.setItem('isCompany', true);
+                }
+            }
+                    
             console.log(res.data)
             if (res.data._id) {
-
-                navigate('/')
+                if (isWorker)
+                    navigate('/workerHome')
+                else
+                    navigate('/')
             }
         })
 

@@ -14,6 +14,8 @@ import WorkerProfile from "./components/WorkerProfile";
 import { BrowserRouter, Route, Router, Routes, useLocation } from 'react-router-dom'
 import Rel from './components/Rel'
 import Hire from "./components/hire";
+import WorkerHome from "./components/WorkerComponents/workerHome";
+import WorkerProf from "./components/WorkerComponents/workerHome";
 
 import UserTransactions from "./components/UserTransactions";
 import Profile from "./components/MyProfile";
@@ -37,6 +39,8 @@ function App() {
             <Route path='/transactions' element={<><UserTransactions /></>}></Route>
             <Route path='/rel' element={<><Rel /></>}></Route>
             <Route path="/profile" element={<><Profile /></>}></Route>
+            <Route path="/workerHome" element={<><WorkerHome/></>}></Route>
+            {/* <Route path="/workerprof" element={<><WorkerProf/></>}></Route> */}
 
           </Routes>
 

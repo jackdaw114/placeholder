@@ -58,6 +58,32 @@ router.post('/register', async (req, res) => {
     })
 })
 
+router.post("/login", async (req, res) => {
+    try {
+        console.log("The request:", req.body)
+        let user = await Worker.findOne({ username: req.body.username });
+
+        console.log(user);
+        if (user) {
+            //bcrypt compare
+            const match = await bcrypt.compare(req.body.password, user.password);
+            if (match) {
+                console.log('match')
+                res.send(user); //dont think we should send user!!!!
+            }
+            else {
+                console.log('incorrect password')
+                res.send('incorrect password').status(400)
+            }
+        } else {
+            res.send("No user found").status(400);
+        }
+    } catch (error) {
+        res.send(error).status(500);
+        console.log(error);
+    }
+})
+
 
 router.get('/gettransactions',async(req,res)=>{
     res.send('sdfa;l')
