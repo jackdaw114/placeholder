@@ -2,6 +2,8 @@ const express = require('express')
 const Worker = require('../Schemas/WorkerSchema')
 const router = express.Router();
 const bcrypt = require('bcrypt')
+const Transaction = require('../Schemas/TransactionSchema');
+const { default: mongoose } = require('mongoose');
 
 router.get("/getworkers", async (req, res) => {
 
@@ -46,7 +48,7 @@ router.post('/register', async (req, res) => {
 
                 rcount: 1,
                 phoneNo: req.body.phoneNo
-         })
+            })
             try {
                 const saved = await newWorker.save()
                 res.send(saved).status(200)
@@ -85,8 +87,69 @@ router.post("/login", async (req, res) => {
 })
 
 
-router.get('/gettransactions',async(req,res)=>{
-    res.send('sdfa;l')
+router.post('/gettransactions', async (req, res) => {
+    try {
+        console.log(req.body)
+        const find = await Transaction.find({ workerID: req.body.email })
+        console.log(find)
+        if (find.length != 0) {
+            console.log(find)
+            res.send(find).status(200)
+        }
+        else {
+            console.log('no transactions')
+            res.status(400).send('no transactions found')
+        }
+    } catch (err) {
+        res.send(err).status(500)
+    }
+})
+
+router.post('/updatetransaction', async (req, res) => {
+    console.log(req.body)
+    try {
+
+        const find = await Transaction.findOne({ _id: req.body.id })
+        if (find) {
+            if (req.body.action === 'Accept') {
+                const update = await Transaction.updateOne(
+                    { _id: req.body.id },
+                    {
+                        $set: {
+                            status: 'ongoing'
+                        }
+                    })
+                res.status(200)
+            }
+
+            else if (req.body.action === 'Complete') {
+                const update = await Transaction.updateOne(
+                    { _id: req.body.id },
+                    {
+                        $set: {
+                            status: 'completed'
+                        }
+                    })
+                res.status(200)
+            }
+            else if (req.body.action == 'Decline') {
+                const update = await Transaction.updateOne(
+                    { _id: req.body.id },
+                    {
+                        $set: {
+                            status: 'declined'
+                        }
+                    })
+                res.status(200)
+
+            }
+        }
+        else {
+            res.status(400)
+        }
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router;    

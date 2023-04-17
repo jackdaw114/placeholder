@@ -69,7 +69,8 @@ router.post('/maketransaction', async (req, res) => {
             dos: req.body.dos,
             comments: req.body.comments,
             workerID: req.body.workerID,
-            userID: req.body.userID
+            userID: req.body.userID,
+            status: 'pending'
         }
         )
         const transaction = await newTransaction.save()
@@ -78,6 +79,8 @@ router.post('/maketransaction', async (req, res) => {
         res.send('incomplete transaction').status(500);
     }
 })
+
+
 
 router.post('/rate', async (req, res) => {
     try {
