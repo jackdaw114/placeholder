@@ -8,6 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, Button, Typography } from '@mui/material';
 import './renderTable.css';
+import { useNavigate } from 'react-router';
+
 
 
 
@@ -46,7 +48,12 @@ export default function renderTable(props) {
                       const color1 = 'warning';
                       return (
                            <Box>   
-                              <Button variant="contained" color={color1} className='button'>{item}</Button>
+                              <Button variant="contained" color={color1} className='button'
+                                //   onClick={
+                                //   () => {
+                                    
+                                // }}
+                              >{item}</Button>
                             </Box>
                           )
                           })}
