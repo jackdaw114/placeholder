@@ -10,6 +10,7 @@ import { Box, Button, Typography } from '@mui/material';
 import './renderTable.css';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import theme from '../../design/palette';
 
 
 
@@ -27,6 +28,8 @@ export default function renderTable(props) {
       console.log(res)
     }).catch(err => console.log(err))
   }
+
+
 
 
   return (
@@ -58,11 +61,12 @@ export default function renderTable(props) {
                 <TableCell align="center">
                   <Box className='status-button-box'>
                     {props.buttons_arr && (props.buttons_arr).map((item) => {
-                      const color1 = (item === 'Complete') ? 'blue' : (item === 'Decline') ? 'warning' : 'success';
+
+                      const color1 = (item == 'Complete') ? theme.palette.secondary.main : (item == 'Decline') ? 'warning' : 'success';
                       //const color1 = 'warning';
                       return (
                         <Box>
-                          <Button variant="contained" color={color1} className='button'
+                          <Button variant="contained" sx={{ backgroundColor: color1 }} className='button'
                             onClick={() => update(item, row._id)}
                           //   () => {
 
