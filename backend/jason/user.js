@@ -113,7 +113,7 @@ router.post('/gettransactions', async (req, res) => {
     try {
         console.log(req.body)
         const find = await Transaction.find({ userID: req.body.username })
-
+        const findWorker = await Worker.findOne({ email: find.workerID })
         if (find.length != 0) {
             console.log(find)
             res.send(find).status(200)

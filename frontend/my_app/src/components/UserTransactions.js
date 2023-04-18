@@ -38,13 +38,16 @@ export default function UserTransactions() {
                             <Typography variant="h5">Worker Name:{item.workerID}</Typography>
                             <Typography variant="h6">Job: {item.jobdescription}</Typography>
                             <Typography variant="h6">date: {item.dos}</Typography>
+                            <Typography variant="h6">status:{item.status}</Typography>
                             <Box sx={{ justifySelf: 'center', justifyContent: 'center', display: 'flex' }}>
-                                <Button sx={{ height: 'auto', width: 'auto', backgroundColor: theme.palette.secondary.main }}>rate</Button>
+                                {item.status == 'completed' ?
+                                    < Button sx={{ height: 'auto', width: 'auto', backgroundColor: theme.palette.secondary.main }}>rate</Button> : <></>}
                             </Box>
                         </Box>
                     </Card>
                 </Tilt>
-            ))}
-        </Box>
+            ))
+            }
+        </Box >
     )
 }
