@@ -1,7 +1,6 @@
 import { Avatar, Box, Button, Divider, Typography } from "@mui/material";
 import theme from "../design/palette";
 import './WorkerProfile.css';
-import image2 from '../img/MODI.jpeg';
 import { useLocation, useNavigate } from "react-router";
 
 
@@ -75,7 +74,7 @@ export default function WorkerProfile() {
 			</Box>
 			</Box>
 			<Box className="right-profile-box">
-				<Avatar className="pfp" alt="Remy Sharp" src={image2} sx={{ width: 300, height: 300  }}/>
+				<Avatar className="pfp" alt="Remy Sharp" sx={{ width: 300, height: 300  }}/>
 			</Box>
 
 		</Box>

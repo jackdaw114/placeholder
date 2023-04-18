@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 const steps = [
   {
     label: 'Register/Login to our website',
-    description: `To hire a service you must first register with our website. Click on the '+' icon on the top-left portion of the screen to pull out the drawer menu. From there head over to the Login/SignUp section and register yourself as a user.`,
+    description: `To hire a service you must first register with our website. Click on the '☰' icon on the top-left portion of the screen to pull out the drawer menu. From there head over to the Login/SignUp section and register yourself as a user or a as a worker.`,
   },
   {
     label: 'Hire a service',

@@ -130,16 +130,16 @@ export default function HomeNigel() {
                             <WorkspacePremiumIcon sx={{ width: 40 , height:40}} />
                         </Typography>
                         <Typography variant='subtitle1'>
-                        The internet has transformed the way that we access and interact with services. Today, it is possible to access a wide range of services, including home services, through online platforms. Even so , other online platforms have their own limitations such as :
+                        The internet has transformed the way that we access and interact with services. Today, it is possible to access a wide range of services, including home services, through online platforms.
                         </Typography>
                         <Typography variant='subtitle1'>
-                        Limited access to services : Currently companies are unable to provide services at all locations.
+                        Workonnect offers a practical solution to the challenges associated with finding reliable home services, by providing a platform that connects clients with skilled workers in a timely and efficient manner.
                         </Typography>
                         <Typography variant='subtitle1'>
-                        Team based contracts are non existent.
+                        The Workonnect project aims to provide a user-friendly platform for clients and workers to connect and facilitate the booking of home services.
                         </Typography>
                         <Typography variant='subtitle1'>
-                        Limited amount of services (also dictated by location). 
+                        
                         </Typography>
                         <Typography variant='subtitle1'>
                             Our aim is to revolutionize the platforms by providing local daily-wage workers employment through our website and allow workers to , based on their merit , be rewarded.
