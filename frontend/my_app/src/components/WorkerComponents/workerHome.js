@@ -175,6 +175,9 @@ function WorkerHome() {
             <ProfilePaper className='completed-paper' sx={{ minWidth: 1300 }}>
                 {renderTable(sup[2])}
             </ProfilePaper>
+            <ProfilePaper className='completed-paper' sx={{ minWidth: 1300 }}>
+                {renderTable(sup[3])}
+            </ProfilePaper>
 
 
         </ThemeProvider>
