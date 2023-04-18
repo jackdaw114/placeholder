@@ -2,6 +2,7 @@ import { Typography,Box, TextareaAutosize , Grid} from "@mui/material";
 import axios from 'axios';
 import {useState} from 'react';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router";
 
 import { useLocation } from "react-router";
 
@@ -43,14 +44,19 @@ export default function Hire() {
         }))
     }
 
+    const navigate=useNavigate();
+    const onSubmit = () =>{
+        navigate('/transactions')
+    }
+    
     function sendForm(){
         axios.post("/user/maketransaction",inputs,{
             headers:{
                 'Content-Type':'application/json'
             }
-        }).then((data)=>{
-            console.log(data)
-        }).catch((err)=>{
+        }).then (
+            onSubmit()
+        ).catch((err)=>{
             console.log(err)
         })
     }
