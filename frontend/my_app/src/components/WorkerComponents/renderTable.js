@@ -57,9 +57,9 @@ export default function renderTable(props) {
                 <TableCell align="right">{row.address}</TableCell>
                 <TableCell align="center">
                   <Box className='status-button-box'>
-                    {props.buttons__arr && (props.buttons_arr).map((item) => {
-                      //   const color1=(item == 'Complete') ? 'blue' : (item == 'Decline') ? 'warning' : 'success';
-                      const color1 = 'warning';
+                    {props.buttons_arr && (props.buttons_arr).map((item) => {
+                      const color1 = (item === 'Complete') ? 'blue' : (item === 'Decline') ? 'warning' : 'success';
+                      //const color1 = 'warning';
                       return (
                         <Box>
                           <Button variant="contained" color={color1} className='button'
