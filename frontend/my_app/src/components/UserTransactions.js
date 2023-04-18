@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import Tilt from 'react-parallax-tilt'
 import theme from "../design/palette";
 import './UserTransactions.css'
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+
 
 export default function UserTransactions() {
 
@@ -50,6 +53,7 @@ export default function UserTransactions() {
             })
     }
 
+    const test = [1,2,3,4,5]
 
     return (
 
@@ -62,6 +66,22 @@ export default function UserTransactions() {
                             <Typography variant="h6">Job: {item.jobdescription}</Typography>
                             <Typography variant="h6">date: {item.dos}</Typography>
                             <Typography variant="h6">status:{item.status}</Typography>
+                            {item.rating !== 0 ? <Typography variant="h6">Rating: {test.map((num) => {
+                                if (item.rating >= num) {
+                                    
+                                        return (
+                                            <Star />
+                                        )
+                                    
+                                    
+                                } else {
+                                    return (
+                                        <StarBorderIcon/>
+                                    )
+                                    
+                                }
+                            })}</Typography>:<></>}
+                            
                             <Box sx={{ justifySelf: 'center', justifyContent: 'center', display: 'flex' }}>
                                 {item.status == 'completed' && item.rating == 0 ?
                                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>

@@ -18,19 +18,19 @@ import image3 from '../img/walter2.jpeg';
 // }));
 const review_cards = [
     {
-        name: "Greta Thunderberg" ,
-        avatar: image1,
-        review_content: "This website has helped me so much. Urban clap is so bad .I really really appreciate the amazing help that worKonnect could provide me. I once again recommend worKonnect to ALL my fellow indians."
+        name: "Anonymous" ,
+        avatar: "",
+        review_content: "This website has helped me so much. I really really appreciate the amazing help that WorKonnect could provide me. I once again recommend WorKonnect to ALL my fellow indians."
     },
     {
-        name: "Mahindra Bodi" ,
-        avatar: image2,
+        name: "Anonymous" ,
+        avatar: "",
         review_content: "मेरे प्यारे भाई बहनों को नमस्कार। मैं यहां आपको वर्ककनेक्ट से प्राप्त अद्भुत पेडीक्योर के बारे में बताने चाहता हूॅं। मैं वास्तव में पसंद करता हूं कि वे स्थानीय श्रमिकों को अधिक रोजगार देकर वे अच्छा काम कर रहे हैं। मुझे उम्मीद है कि यह समीक्षा इस बात की पुष्टि कर सकती है कि यह वेबसाइट कितनी अच्छी है।"
     },
     {
-        name: "Travis Scott" ,
-        avatar: image3,
-        review_content: "In my honest opinion, UrbanClap < worKonnect. This website is a saving grace for those skilled workers who really deserve a chance."
+        name: "Anonymous" ,
+        avatar: "",
+        review_content: "In my honest opinion, this website is a saving grace for those skilled workers who really deserve a chance."
     },
 ]
 const footer_test = [

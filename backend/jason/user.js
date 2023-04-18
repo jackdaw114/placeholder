@@ -112,7 +112,7 @@ router.post('/rate', async (req, res) => {
                 { _id: req.body.id },
                 {
                     $set: {
-                        rating: transaction.rating + 1
+                        rating: req.body.rating
                     }
                 }
             )

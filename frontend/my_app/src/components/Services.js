@@ -128,7 +128,7 @@ export default function Services(props) {
                                     }} >
                                         <Typography textAlign='right' className='desc' sx={{ position: 'absolute' }}>{item.desc}</Typography>
                                         <Icon sx={{ margin: 5, marginTop: 4, color: '#e8f6f4' }} className='svg_icon'>{item.icon}</Icon>
-                                        <Typography variant='h6' sx={{ bottom: 0, width: '100%', position: 'absolute', padding: '1em 0' }}>{item.name}</Typography>
+                                        <Typography variant='h6' sx={{ bottom: 2, width: '100%', position: 'relative', padding: '0' }}>{item.name}</Typography>
 
                                     </CardContent>
                                 </Card>
