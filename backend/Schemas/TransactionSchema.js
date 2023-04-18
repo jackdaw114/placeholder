@@ -23,6 +23,12 @@ const transactionSchema = mongoose.Schema({
     },
     status: {
         type: String,
+    },
+    rating: {
+        type: Number,
+    },
+    workerName: {
+        type: String
     }
 
 });

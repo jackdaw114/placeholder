@@ -63,14 +63,18 @@ router.post("/login", async (req, res) => {
 router.post('/maketransaction', async (req, res) => {
     try {
         console.log(req.body.jobdescription)
+        const find = await Worker.findOne({ email: req.body.workerID })
+        console.log(find)
         let newTransaction = new Transaction({
             jobdescription: req.body.jobdescription,
             address: req.body.address,
             dos: req.body.dos,
             comments: req.body.comments,
             workerID: req.body.workerID,
+            workerName: find.username,
             userID: req.body.userID,
-            status: 'pending'
+            status: 'pending',
+            rating: 0
         }
         )
         const transaction = await newTransaction.save()
@@ -85,23 +89,41 @@ router.post('/maketransaction', async (req, res) => {
 router.post('/rate', async (req, res) => {
     try {
         console.log(req.body)
-        const findWorker = await Worker.findOne({ email: req.body.workerID })
-        if (findWorker) {
-            const count = findWorker.rcount + 1;
-            const newrating = (findWorker.rating * findWorker.rcount + req.body.rating) / count;
+        const findWorker = await Worker.findOne({ email: req.body.email })
+        const transaction = await Transaction.findOne({ _id: req.body.id })
+        console.log(findWorker)
+        console.log(transaction.rating)
+        if (findWorker && !transaction.rating) {
+            const count = findWorker.rcount + 1
+            const rate_w = (findWorker.rating * findWorker.rcount + req.body.rating) / (findWorker.rcount + 1)
+            console.log(count)
+            console.log(rate_w)
             let update = await Worker.updateOne(
-                { emai: req.body.workerID },
+                { email: req.body.email },
                 {
                     $set: {
                         rcount: count,
-                        rating: newrating
+                        rating: rate_w
                     }
                 }
             )
+
+            let updatetransaction = await Transaction.updateOne(
+                { _id: req.body.id },
+                {
+                    $set: {
+                        rating: transaction.rating + 1
+                    }
+                }
+            )
+
+            console.log(updatetransaction)
             console.log(update)
             res.send(update)
 
 
+        } else {
+            res.send('worker already rated')
         }
     } catch (err) {
         console.log(err)
@@ -113,7 +135,6 @@ router.post('/gettransactions', async (req, res) => {
     try {
         console.log(req.body)
         const find = await Transaction.find({ userID: req.body.username })
-        const findWorker = await Worker.findOne({ email: find.workerID })
         if (find.length != 0) {
             console.log(find)
             res.send(find).status(200)

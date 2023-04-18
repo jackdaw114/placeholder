@@ -85,14 +85,14 @@ function Navbar() {
     const [data, setData] = useState([
         {
             name: "Home",
-            icon: <HomeOutlined />, nav:'navigateToHome()',
+            icon: <HomeOutlined />, nav: 'navigateToHome()',
         },
         { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
 
         { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
-        
-        { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
-        
+
+        { name: 'My History', icon: <AccessTimeIcon />, nav: 'navigateToTransactions()' },
+
         { name: 'Login/Signup', icon: <AccountCircle />, nav: 'navigateToLogin()' },
 
     ]);
@@ -107,58 +107,57 @@ function Navbar() {
     };
 
     const setDataLoggedIn = () => {
-        if (localStorage.getItem('isWorker'))
-        {
+        if (localStorage.getItem('isWorker')) {
             setData((prevState) => ([
                 prevState[0],
                 { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
-                
+
             ]))
         }
         else {
-            
+
             setData((prevState) => ([
                 {
                     name: "Home",
-                    icon: <HomeOutlined />, nav:'navigateToHome()',
+                    icon: <HomeOutlined />, nav: 'navigateToHome()',
                 },
                 { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
-        
+
                 { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
-                { name: 'My History' , icon: <AccessTimeIcon/>, nav: 'navigateToTransactions()'},
+                { name: 'My History', icon: <AccessTimeIcon />, nav: 'navigateToTransactions()' },
                 { name: 'Logout', icon: <AccountCircle />, nav: 'logout()' },
-                
+
             ]))
         }
     }
 
     const setDataLoggedOut = () => {
-        
-            setData((prevState) => ([
-                {
-                    name: "Home",
-                    icon: <HomeOutlined />, nav:'navigateToHome()',
-                },
-                { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
-        
-                { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
+
+        setData((prevState) => ([
+            {
+                name: "Home",
+                icon: <HomeOutlined />, nav: 'navigateToHome()',
+            },
+            { name: "Categories", icon: <InboxOutlined />, nav: 'navigateToCategories()' },
+
+            { name: "Workers", icon: <BuildCircleOutlined />, nav: 'navigateToWorkers()' },
             { name: 'Login/Signup', icon: <AccountCircle />, nav: 'navigateToLogin()' }
-            
+
         ]))
 
     }
 
     //decision making of Login or Logout display for drawer button
     useEffect(() => {
-        loggedIn?setDataLoggedIn():setDataLoggedOut() 
+        loggedIn ? setDataLoggedIn() : setDataLoggedOut()
     }, [loggedIn])
 
-    
+
     useEffect(() => {
         const temp = localStorage.getItem('loggedIn') ? true : false;
         setLoggedIn(temp);
-        loggedIn?setDataLoggedIn():setDataLoggedOut()  
-    },[open])
+        loggedIn ? setDataLoggedIn() : setDataLoggedOut()
+    }, [open])
 
 
     const navigate = useNavigate();
@@ -171,8 +170,8 @@ function Navbar() {
     const navigatetoprofile = () => {
         navigate('/profile')
     }
-    
-    
+
+
     const navigateToCategories = () => {
         navigate('/categories')
     }
@@ -191,7 +190,7 @@ function Navbar() {
     }
 
     const navigateToLogin = () => {
-        
+
         navigate('/login')
     }
 
@@ -226,12 +225,12 @@ function Navbar() {
 
                         <Box sx={{ flexGrow: 1 }}>
                             <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
-                                worKonnect
+                                WorKonnect
 
                             </Typography>
                         </Box>
                         {
-                         (localStorage.getItem('loggedIn')&&(!localStorage.getItem('isWorker')))&&
+                            (localStorage.getItem('loggedIn') && (!localStorage.getItem('isWorker'))) &&
                             <motion.div initial={{ borderRadius: '100%' }}
                                 whileHover={{
                                     scale: 1.1,
@@ -240,12 +239,12 @@ function Navbar() {
 
                                 <Avatar
 
-                                onClick={navigatetoprofile}
+                                    onClick={navigatetoprofile}
                                 //src="/broken-image.jpg" 
                                 />
 
-                                </motion.div>
-                                
+                            </motion.div>
+
                         }
                     </Toolbar>
                 </AppBar >
@@ -275,18 +274,18 @@ function Navbar() {
                     <DrawerHeader>
                         <List>
                             {
-                                
 
-                            data.map((item, index) => (
 
-                                <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
-                                    eval(item.nav)
-                                    setTimeout(() => { handleClick() }, 300);
-                                }}>
-                                    <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
-                                    <ListItemText primary={item.name} />
-                                </ListItem>
-                            ))}
+                                data.map((item, index) => (
+
+                                    <ListItem sx={{ width: 'auto' }} button key={index} onClick={() => {
+                                        eval(item.nav)
+                                        setTimeout(() => { handleClick() }, 300);
+                                    }}>
+                                        <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
+                                        <ListItemText primary={item.name} />
+                                    </ListItem>
+                                ))}
                         </List>
 
                     </DrawerHeader>

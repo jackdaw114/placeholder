@@ -15,17 +15,23 @@ import Tilt from 'react-parallax-tilt'
 import image1 from '../img/png1.png'
 import { useLocation, useNavigate } from 'react-router'
 import React from 'react'
-// const data = [
-//     {
-//         name: "Hairdresser",
-//         icon: <ContentCut />,
-//     },
-//     { name: "plumbing", icon: <Plumbing /> },
-//     { name: "electrician", icon: <ElectricBolt /> },
-//     { name: "dry cleaning", icon: <DryCleaningIcon /> },
-//     { name: "repair", icon: <Handyman /> },
-//     { name: "painting", icon: <FormatPaint /> },
-// ];
+import MapIcon from '@mui/icons-material/Map';
+import ChairIcon from '@mui/icons-material/Chair';
+import TagIcon from '@mui/icons-material/Tag';
+import PestControlIcon from '@mui/icons-material/PestControl';
+import LocalCarWashIcon from '@mui/icons-material/LocalCarWash';
+import DiamondIcon from '@mui/icons-material/Diamond';
+import SpaIcon from '@mui/icons-material/Spa';
+import PowerIcon from '@mui/icons-material/Power';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import LightIcon from '@mui/icons-material/Light';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import DeckIcon from '@mui/icons-material/Deck';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
 
 const service_info = [
     {
@@ -37,11 +43,24 @@ const service_info = [
     { name: "dry cleaning", icon: <DryCleaningIcon /> },
     { name: "repair", icon: <Handyman /> },
     { name: "painting", icon: <FormatPaint /> },
-    { name: 'test', icon: <AutoAwesome /> },
-    { name: 'test', icon: <Verified /> },
-    { name: 'test', icon: <AssistantPhoto /> },
-    { name: 'test', main: 2, icon: <NotStarted /> },
-    { name: 'test', icon: <Star />, main: 2 },
+    { name: 'babysitting', icon: <ChildFriendlyIcon /> },
+    { name: 'cooking/catering', icon: <RestaurantIcon /> },
+    { name: 'gardening', icon: <DeckIcon /> },
+    { name: 'personal trainer', icon: <FitnessCenterIcon /> },
+    { name: 'photography', icon: <CameraAltIcon /> },
+    { name: 'interior designing', icon: <LightIcon /> },
+    { name: 'musitians', icon: <MusicNoteIcon /> },
+    { name: 'graphic designing', icon: <DesignServicesIcon /> },
+    { name: 'electronic repair', icon: <PowerIcon /> },
+    { name: 'massage therapy', icon: <SpaIcon /> },
+    { name: 'fashion consultant', icon: <DiamondIcon /> },
+    { name: 'car washing', icon: <LocalCarWashIcon /> },
+    { name: 'pest control', icon: <PestControlIcon /> },
+    { name: 'writing and editing', icon: <StickyNote2Icon /> },
+    { name: 'upholstry/furniture repair', icon: <ChairIcon /> },
+    { name: 'travel planning', icon: <MapIcon /> },
+    //{ name: 'test', main: 2, icon: <NotStarted /> },
+    //{ name: 'test', icon: <Star />, main: 2 },
 
 ]
 
