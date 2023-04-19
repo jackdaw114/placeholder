@@ -133,6 +133,7 @@ router.post('/rate', async (req, res) => {
 
 router.post('/gettransactions', async (req, res) => {
     try {
+        // localStorage.setItem('deleted', false)
         console.log(req.body)
         const find = await Transaction.find({ userID: req.body.username })
         if (find.length != 0) {
@@ -147,6 +148,18 @@ router.post('/gettransactions', async (req, res) => {
         res.send(err).status(500)
     }
 })
+
+// router.post('/cleartransactions', async (req, res) => {
+//     try {
+//         console.log(req.body)
+//         // db.Transaction.deleteMany({});
+//         localStorage.setItem('deleted', true)
+//         res.send(status(200))
+//     }
+//     catch (err) {
+//         res.send(err).status(500)
+//     }
+// })
 
 
 module.exports = router;    
