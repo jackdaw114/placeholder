@@ -13,6 +13,7 @@ import CompanyForm from './components/authcomponents/CompanyForm';
 import WorkerForm from './components/authcomponents/WorkerForm';
 import LoginForm from './components/authcomponents/LoginForm'
 import axios from 'axios';
+import './Auth.css';
 
 // import { JavascriptTwoTone } from '@mui/icons-material';
 // import { bgcolor } from '@mui/system';
@@ -164,7 +165,9 @@ const Auth = () => {
                         paddingLeft={1}
                     >
                         <Button
+                            className='category-button'
                             onClick={() => {
+                                
                                 setIsWorker(false);
                                 setIsCompany(false);
 
@@ -174,6 +177,7 @@ const Auth = () => {
                             endIcon={<AccountCircleIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }} >User</Button>
                         <Button
+                            className='category-button'
                             onClick={() => {
                                 setIsCompany(false);
                                 setIsUser(false);
@@ -184,6 +188,7 @@ const Auth = () => {
                             endIcon={<EngineeringIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}>Worker</Button>
                         <Button
+                            className='category-button'
                             endIcon={<ApartmentIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}
                             onClick={() => {

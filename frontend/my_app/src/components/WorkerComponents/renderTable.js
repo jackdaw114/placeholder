@@ -10,7 +10,12 @@ import './renderTable.css';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import theme from '../../design/palette';
-
+// Complete icon
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+// Accept icon
+import DoneIcon from '@mui/icons-material/Done';
+// Decline Icon
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -62,14 +67,12 @@ export default function renderTable(props) {
                     {props.buttons_arr && (props.buttons_arr).map((item) => {
 
                       const color1 = (item == 'Complete') ? theme.palette.secondary.main : (item == 'Decline') ? 'red' : 'green';
+                      const icon1 = (item == 'Complete') ? <TaskAltIcon/>:(item == 'Decline') ?<CloseIcon/>:<DoneIcon/>
                       //const color1 = 'warning';
                       return (
                         <Box>
                           <Button variant="contained" sx={{ backgroundColor: color1 }} className='button'
-                            onClick={() => update(item, row._id)}
-                          //   () => {
-
-                          // }}
+                            onClick={() => update(item, row._id)} endIcon={icon1}
                           >{item}</Button>
                         </Box>
                       )

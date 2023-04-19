@@ -9,6 +9,7 @@ import './UserTransactions.css'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 
+
 export default function UserTransactions() {
 
     // const clearHistory = () => {
