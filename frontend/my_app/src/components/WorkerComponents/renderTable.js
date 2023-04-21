@@ -52,7 +52,7 @@ export default function renderTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.arr.map((row) => (
+            {props.arr.slice(0).reverse().map((row) => (
               <TableRow
                 key={row.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

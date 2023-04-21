@@ -19,6 +19,7 @@ import WorkerProf from "./components/WorkerComponents/workerHome";
 
 import UserTransactions from "./components/UserTransactions";
 import Profile from "./components/MyProfile";
+import Receipt from "./components/receipt";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route path='/rel' element={<><Rel /></>}></Route>
             <Route path="/profile" element={<><Profile /></>}></Route>
             <Route path="/workerHome" element={<><WorkerHome/></>}></Route>
+            <Route path="/receipt" element={<><Receipt/></>}></Route>
             {/* <Route path="/workerprof" element={<><WorkerProf/></>}></Route> */}
 
           </Routes>
