@@ -142,7 +142,7 @@ router.post('/gettransactions', async (req, res) => {
         }
         else {
             console.log('no transactions')
-            res.send('no transactions found').status(400)
+            res.status(400)
         }
     } catch (err) {
         res.send(err).status(500)

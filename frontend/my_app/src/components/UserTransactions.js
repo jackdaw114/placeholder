@@ -28,6 +28,8 @@ export default function UserTransactions() {
     //             console.log(err)
     //         })
     // };
+
+    
     const [data, setData] = useState([])
     const [temp, updateTemp] = useState('')
     useEffect(() => {
@@ -44,6 +46,7 @@ export default function UserTransactions() {
             }).then((res) => {
                 console.log(res)
                 setData(res.data)
+                console.log(res.data.length)
             }).catch((err) => {
                 console.log(err)
             })
@@ -79,7 +82,7 @@ export default function UserTransactions() {
         
 
         <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', margin: 4, backgroundColor: 'transparent' }}>
-            {data[0] && Array.from(data).map((item) => (
+            {data[0] && data.map((item) => (
                 <Tilt glareEnable glareColor="#FFFFFF" glarePosition="all" glareMaxOpacity={0.1} tiltMaxAngleY={1} tiltMaxAngleX={1}>
                     <Card sx={{ backgroundColor: theme.palette.black[900] }} className="transactions_card">
                         <Box sx={{ margin: 2, display: 'flex', justifyContent: 'left', flexDirection: 'column', border: '1em' }}>
