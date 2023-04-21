@@ -35,12 +35,15 @@ const WorkerSchema = mongoose.Schema({
     },
 
 
-    rcount:{
-        type:Number,
+    rcount: {
+        type: Number,
     },
     phoneNo: {
         type: Number,
         required: true
+    },
+    visitngcharge: {
+        type: Number
     }
 });
 

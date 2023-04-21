@@ -3,7 +3,9 @@ const User = require('../Schemas/UserSchema')
 const Worker = require('../Schemas/WorkerSchema')
 const router = express.Router();
 const bcrypt = require('bcrypt')
-const Transaction = require('../Schemas/TransactionSchema')
+const Transaction = require('../Schemas/TransactionSchema');
+const ChatSchema = require('../Schemas/ChatSchema');
+const RecieptSchema = require('../Schemas/RecieptSchema');
 
 router.post('/register', async (req, res) => {
     const saltRounds = 10;
@@ -25,7 +27,7 @@ router.post('/register', async (req, res) => {
             })
             try {
                 const user = await newUser.save()
-                console.log(user)
+                console.log(user._id)
                 res.send(user);
             } catch (err) {
                 res.send(err).status(500)
@@ -65,7 +67,25 @@ router.post('/maketransaction', async (req, res) => {
         console.log(req.body.jobdescription)
         const find = await Worker.findOne({ email: req.body.workerID })
         console.log(find)
-        let newTransaction = new Transaction({
+
+        const newChat = new ChatSchema({
+            workerID: find.username,
+            userID: req.body.username,
+            chat: []
+        })
+        const saveChat = await newChat.save();
+
+        const newReciept = new RecieptSchema({
+
+            servicecost: 0,
+            materialcost: 0,
+            visitingcharge: find.visitingcharge
+        })
+
+        const saveReciept = await newReciept.save();
+
+
+        const newTransaction = new Transaction({
             jobdescription: req.body.jobdescription,
             address: req.body.address,
             dos: req.body.dos,
@@ -74,7 +94,9 @@ router.post('/maketransaction', async (req, res) => {
             workerName: find.username,
             userID: req.body.userID,
             status: 'pending',
-            rating: 0
+            rating: 0,
+            chatID: saveChat._id,
+            recieptID: saveReciept._id
         }
         )
         const transaction = await newTransaction.save()
@@ -148,6 +170,25 @@ router.post('/gettransactions', async (req, res) => {
         res.send(err).status(500)
     }
 })
+
+
+router.post('/appendchat', async (req, res) => {
+    try {
+        const updatechat = await ChatSchema.updateOne({ _id: req.body.id },
+            {
+                $push: {
+                    chat: { 'user': req.body.chatdata }
+                }
+            })
+
+        res.send(updatechat).status(200)
+    } catch (err) {
+        console.log(err)
+        res.status(500)
+    }
+})
+
+
 
 // router.post('/cleartransactions', async (req, res) => {
 //     try {

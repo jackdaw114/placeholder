@@ -29,10 +29,17 @@ const transactionSchema = mongoose.Schema({
     },
     workerName: {
         type: String
+    },
+    recieptID: {
+        type: String
+    },
+    chatID: {
+        type: String
     }
+
 
 });
 
 
 
-module.exports = mongoose.model('Transaction', transactionSchema);
+module.exports = mongoose.model('Transaction', transactionSchema); 

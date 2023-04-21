@@ -4,6 +4,9 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const Transaction = require('../Schemas/TransactionSchema');
 const { default: mongoose } = require('mongoose');
+const { Router } = require('express');
+const RecieptSchema = require('../Schemas/RecieptSchema');
+const ChatSchema = require('../Schemas/ChatSchema');
 
 router.get("/getworkers", async (req, res) => {
 
@@ -45,7 +48,7 @@ router.post('/register', async (req, res) => {
                 password: hash,
                 location: req.body.location,
                 rating: 3,
-
+                visitingcharge: req.body.visitingcharge,
                 rcount: 1,
                 phoneNo: req.body.phoneNo
             })
@@ -149,6 +152,36 @@ router.post('/updatetransaction', async (req, res) => {
         }
     } catch (error) {
         console.log(error)
+    }
+})
+
+router.post('/updatereciept', async (req, res) => {
+    try {
+        const updatereciept = await RecieptSchema.updateOne({ _id: req.body.id },
+            {
+                $set: req.body.updatedata
+            })
+        console.log(updatereciept)
+        res.status(200);
+    } catch (err) {
+        console.log(err)
+        res.status(500)
+    }
+})
+
+
+router.post('/appendchat', async (req, res) => {
+    try {
+        const updatechat = await ChatSchema.updateOne({ _id: req.body.id },
+            {
+                $push: {
+                    chat: { 'worker': req.body.chatdata }
+                }
+            })
+        res.send(updatechat).status(200)
+    } catch (err) {
+        console.log(err)
+        res.status(500)
     }
 })
 
