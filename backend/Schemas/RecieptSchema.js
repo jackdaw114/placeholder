@@ -6,7 +6,7 @@ const recieptSchema = mongoose.Schema({
         type: String
     },
     userID: {
-        tyep: String
+        type: String
     },
     service_cost: {
         type: Number

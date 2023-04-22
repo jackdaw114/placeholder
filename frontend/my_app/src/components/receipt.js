@@ -28,6 +28,7 @@ export default function Receipt() {
                 }
             }).then((res) => {
                 setData(res.data)
+                console.log(res.data)
             }).catch((err) => {
                 console.log(err)
             })
@@ -63,7 +64,7 @@ export default function Receipt() {
                                     <Typography variant="subtitle1">WorkerName:</Typography>
                                 </Grid>
                                 <Grid item xs={3} className='container-grid'>
-                                    <Typography variant="body1">{data.workerid}</Typography>
+                                    <Typography variant="body1">{data.workerID}</Typography>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={1} alignItems="center" className='container-grid'>
@@ -71,7 +72,7 @@ export default function Receipt() {
                                     <Typography variant="subtitle1">CustomerName:</Typography>
                                 </Grid>
                                 <Grid item xs={3} className='container-grid'>
-                                    <Typography variant="body1">{data.clientid}</Typography>
+                                    <Typography variant="body1">{data.userID}</Typography>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={1} alignItems="center" className='container-grid'>
@@ -87,7 +88,7 @@ export default function Receipt() {
                                     <Typography variant="subtitle1">Material charge:</Typography>
                                 </Grid>
                                 <Grid item xs={3} className='container-grid'>
-                                    <Typography variant="body1">{data.material_charge}</Typography>
+                                    <Typography variant="body1">{data.material_cost}</Typography>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={1} alignItems="center" className='container-grid'>
@@ -95,7 +96,7 @@ export default function Receipt() {
                                     <Typography variant="subtitle1">Service charge:</Typography>
                                 </Grid>
                                 <Grid item xs={3} className='container-grid'>
-                                    <Typography variant="body1">{data.service_charge}</Typography>
+                                    <Typography variant="body1">{data.service_cost}</Typography>
                                 </Grid>
                             </Grid>
                         </UserInfo>

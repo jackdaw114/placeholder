@@ -73,6 +73,7 @@ router.post('/maketransaction', async (req, res) => {
             userID: req.body.userID,
             chat: []
         })
+        console.log(`this is userID:  ${ req.body.userID }`)
         const saveChat = await newChat.save();
 
         const newReciept = new RecieptSchema({
