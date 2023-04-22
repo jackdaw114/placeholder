@@ -92,6 +92,17 @@ export default function WorkerForm(props) {
                 placeholder='job'
                 margin="normal" />
 
+            <TextField
+                onChange={props.func}
+                sx={{
+                    width: "300px"
+                }}
+                value={props.inputs.visiting_charge}
+                name="visiting_charge"
+                variant="outlined"
+                placeholder='Visiting Charge'
+                margin="normal" />
+
         </Box >
     )
 }

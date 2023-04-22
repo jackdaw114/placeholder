@@ -42,7 +42,7 @@ const WorkerSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    visitngcharge: {
+    visitng_charge: {
         type: Number
     }
 });

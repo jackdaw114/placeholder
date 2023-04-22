@@ -70,16 +70,17 @@ router.post('/maketransaction', async (req, res) => {
 
         const newChat = new ChatSchema({
             workerID: find.username,
-            userID: req.body.username,
+            userID: req.body.userID,
             chat: []
         })
         const saveChat = await newChat.save();
 
         const newReciept = new RecieptSchema({
-
-            servicecost: 0,
-            materialcost: 0,
-            visitingcharge: find.visitingcharge
+            userID: req.body.userID,
+            workerID: find.username,
+            service_cost: 0,
+            material_cost: 0,
+            visiting_charge: find.visiting_charge
         })
 
         const saveReciept = await newReciept.save();
@@ -188,7 +189,16 @@ router.post('/appendchat', async (req, res) => {
     }
 })
 
-
+router.post('/getreciept', async (req, res) => {
+    try {
+        const findreciept = await RecieptSchema.findOne({ _id: req.body.id })
+        res.send(findreciept).status(200)
+        console.log(findreciept)
+    } catch (err) {
+        console.log(err)
+        res.status(500)
+    }
+})
 
 // router.post('/cleartransactions', async (req, res) => {
 //     try {

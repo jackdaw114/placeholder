@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
                 password: hash,
                 location: req.body.location,
                 rating: 3,
-                visitingcharge: req.body.visitingcharge,
+                visiting_charge: req.body.visiting_charge,
                 rcount: 1,
                 phoneNo: req.body.phoneNo
             })
@@ -185,4 +185,4 @@ router.post('/appendchat', async (req, res) => {
     }
 })
 
-module.exports = router;    
+module.exports = router;

@@ -2,13 +2,19 @@ const mongoose = require('mongoose')
 
 
 const recieptSchema = mongoose.Schema({
-    servicecost: {
+    workerID: {
+        type: String
+    },
+    userID: {
+        tyep: String
+    },
+    service_cost: {
         type: Number
     },
-    materialcost: {
+    material_cost: {
         type: Number
     },
-    visitingcharge: {
+    visiting_charge: {
         type: Number
     }
 });
