@@ -1,10 +1,12 @@
 import { Typography, CssBaseline, CardContent, Grid, Card, CardMedia, Avatar } from '@mui/material';
 import ReviewsIcon from '@mui/icons-material/Reviews';
+import InstagramIcon from "@mui/icons-material/Instagram";
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Container } from '@mui/system';
 import { AnimatePresence, motion } from 'framer-motion';
 import './HomeNigel.css'
 import VerticalLinearStepper from './HomeComponents/stepper'
+import { IconButton } from '@material-ui/core';
 
 const review_cards = [
     {
