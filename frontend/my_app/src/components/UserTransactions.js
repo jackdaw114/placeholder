@@ -80,6 +80,9 @@ export default function UserTransactions() {
         navigate('/receipt', { state: { data: data } });
     }
 
+    const sendPayment = () => {
+
+    }
     return (
         <>
             {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -144,7 +147,7 @@ export default function UserTransactions() {
                                         }
                                     })}</Grid>
                                 </Grid> : <></>}
-                                {item.status == 'on'}
+
                                 <Box sx={{ justifySelf: 'center', justifyContent: 'space-evenly', display: 'flex' }}>
                                     {item.status == 'completed' && item.rating == 0 ?
                                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -164,6 +167,11 @@ export default function UserTransactions() {
 
 
                                 </Box>
+                                {item.status == 'completed' ?
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
+                                        <Button sx={{ backgroundColor: theme.palette.secondary.main }} variant="contained" onClick={sendPayment}>Pay</Button>
+                                    </Box>
+                                    : <></>}
                                 <Box sx={{ alignSelf: 'center', justifySelf: 'flex-end', display: 'flex', maxHeight: 200, marginTop: 3 }}>
                                     <Button variant="contained" color="warning" onClick={() => navigateToReceipt(item.recieptID)}>View Receipt</Button>
                                 </Box>
