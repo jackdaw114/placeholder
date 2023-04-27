@@ -57,9 +57,9 @@ export default function Worker() {
                     </Box>
 
                     <div className="worker-div-card">
-                        {data.map((item, index) => (
+                        {data.sort((a, b) => b.rating - a.rating).map((item, index) => (
 
-                            <Workercard email={item.email} name={item.firstname + " " + item.lastname} rating={item.rating} jobs={item.jobs} location={item.location} phone={ item.phone} />
+                            <Workercard email={item.email} name={item.firstname + " " + item.lastname} rating={(item.rating).toFixed(1)} jobs={item.jobs} location={item.location} phone={item.phone} />
 
                         ))}
                     </div>

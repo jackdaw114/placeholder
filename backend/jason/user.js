@@ -202,6 +202,15 @@ router.post('/getreceipt', async (req, res) => {
     }
 })
 
+
+router.post('/gettotal', async (req, res) => {
+    try {
+
+    } catch (error) {
+        console.log(err)
+        res.status(500)
+    }
+})
 // router.post('/cleartransactions', async (req, res) => {
 //     try {
 //         console.log(req.body)
