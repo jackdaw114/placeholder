@@ -81,7 +81,8 @@ export default function UserTransactions() {
     }
 
     const sendPayment = () => {
-
+        navigate('/payment')
+        // console.log('test')
     }
     return (
         <>

@@ -21,6 +21,7 @@ import UserTransactions from "./components/UserTransactions";
 import Profile from "./components/MyProfile";
 import Receipt from "./components/receipt";
 import UpdateReciept from "./components/UpdateReciept";
+import Payment from "./components/payment";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/profile" element={<><Profile /></>}></Route>
             <Route path="/workerHome" element={<><WorkerHome /></>}></Route>
             <Route path="/receipt" element={<><Receipt /></>}></Route>
+            <Route path="/payment" element={<><Payment /></>}></Route>
             <Route path="/updatereceipt" element={<><UpdateReciept></UpdateReciept></>}></Route>
             {/* <Route path="/workerprof" element={<><WorkerProf/></>}></Route> */}
 

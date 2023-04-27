@@ -78,7 +78,7 @@ export default function Receipt() {
                             </Grid>
                             <Grid container spacing={1} alignItems="center" className='container-grid'>
                                 <Grid item xs={3} className='container-grid'>
-                                    <Typography variant="subtitle1">Visting charge:</Typography>
+                                    <Typography variant="subtitle1">Visiting charge:</Typography>
                                 </Grid>
                                 <Grid item xs={3} className='container-grid'>
                                     <Typography variant="body1">{data.visiting_charge}</Typography>

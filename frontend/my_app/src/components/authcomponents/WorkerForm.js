@@ -84,6 +84,7 @@ export default function WorkerForm(props) {
             <Select onChange={props.func}
                 name="job"
                 value={props.inputs.job}
+                placeholder="job"
                 label='job'
                 sx={{ color: 'white' }}
             >

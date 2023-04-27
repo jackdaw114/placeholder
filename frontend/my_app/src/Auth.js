@@ -119,8 +119,8 @@ const Auth = () => {
             return (<LoginForm func={handleChange} inputs={inputs} />)
         if (isSignup && isWorker)
             return (<WorkerForm func={handleChange} inputs={inputs} />)
-        else if (isSignup && isCompany)
-            return (<CompanyForm func={handleChange} inputs={inputs} />)
+        // else if (isSignup && isCompany)
+        //     return (<CompanyForm func={handleChange} inputs={inputs} />)
         else {
             return (
                 <UserForm func={handleChange} inputs={inputs} />
@@ -186,7 +186,8 @@ const Auth = () => {
                             }}
                             endIcon={<EngineeringIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}>Worker</Button>
-                        <Button
+                        
+                        {/* <Button
                             className='category-button'
                             endIcon={<ApartmentIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}
@@ -195,7 +196,7 @@ const Auth = () => {
                                 setIsCompany(true);
                                 setIsUser(false);
                                 setIsWorker(false);
-                            }}>Company</Button>
+                            }}>Company</Button> */}
                     </Box>
 
                     {CustForm()}
