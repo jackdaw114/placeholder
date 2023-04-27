@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const Transaction = require('../Schemas/TransactionSchema');
 const { default: mongoose } = require('mongoose');
 const { Router } = require('express');
-const RecieptSchema = require('../Schemas/RecieptSchema');
+const RecieptSchema = require('../Schemas/ReceiptSchema');
 const ChatSchema = require('../Schemas/ChatSchema');
 
 router.get("/getworkers", async (req, res) => {
@@ -155,14 +155,20 @@ router.post('/updatetransaction', async (req, res) => {
     }
 })
 
-router.post('/updatereciept', async (req, res) => {
+router.post('/updatereceipt', async (req, res) => {
     try {
-        const updatereciept = await RecieptSchema.updateOne({ _id: req.body.id },
+        console.log(req.body)
+        const find = await Transaction.findOne({ _id: req.body.id })
+        console.log(find)
+        const updatereciept = await RecieptSchema.updateOne({ _id: find.receiptID },
             {
-                $set: req.body.updatedata
+                $set: {
+                    material_cost: req.body.material_cost,
+                    service_cost: req.body.service_cost
+                }
             })
         console.log(updatereciept)
-        res.status(200);
+        res.send(updatereciept).status(200);
     } catch (err) {
         console.log(err)
         res.status(500)

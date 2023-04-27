@@ -36,7 +36,9 @@ export default function RenderTable(props) {
       }).catch(err => console.log(err))
     }
     if (action == 'Update') {
-      navigate('/updatereceipt', props._id)
+
+      console.log(props.arr[0]._id)
+      navigate('/updatereceipt', { state: { id: props.arr[0]._id } })
     }
   }
 

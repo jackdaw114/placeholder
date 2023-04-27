@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt')
 const Transaction = require('../Schemas/TransactionSchema');
 const ChatSchema = require('../Schemas/ChatSchema');
-const RecieptSchema = require('../Schemas/RecieptSchema');
+const ReceiptSchema = require('../Schemas/ReceiptSchema');
 
 router.post('/register', async (req, res) => {
     const saltRounds = 10;
@@ -73,10 +73,10 @@ router.post('/maketransaction', async (req, res) => {
             userID: req.body.userID,
             chat: []
         })
-        console.log(`this is userID:  ${ req.body.userID }`)
+        console.log(`this is userID:  ${req.body.userID}`)
         const saveChat = await newChat.save();
 
-        const newReciept = new RecieptSchema({
+        const newReceipt = new ReceiptSchema({
             userID: req.body.userID,
             workerID: find.username,
             service_cost: 0,
@@ -84,7 +84,7 @@ router.post('/maketransaction', async (req, res) => {
             visiting_charge: find.visiting_charge
         })
 
-        const saveReciept = await newReciept.save();
+        const saveReceipt = await newReceipt.save();
 
 
         const newTransaction = new Transaction({
@@ -98,7 +98,7 @@ router.post('/maketransaction', async (req, res) => {
             status: 'pending',
             rating: 0,
             chatID: saveChat._id,
-            recieptID: saveReciept._id
+            receiptID: saveReceipt._id
         }
         )
         const transaction = await newTransaction.save()
@@ -190,11 +190,11 @@ router.post('/appendchat', async (req, res) => {
     }
 })
 
-router.post('/getreciept', async (req, res) => {
+router.post('/getreceipt', async (req, res) => {
     try {
-        const findreciept = await RecieptSchema.findOne({ _id: req.body.id })
-        res.send(findreciept).status(200)
-        console.log(findreciept)
+        const findreceipt = await receiptSchema.findOne({ _id: req.body.id })
+        res.send(findreceipt).status(200)
+        console.log(findreceipt)
     } catch (err) {
         console.log(err)
         res.status(500)

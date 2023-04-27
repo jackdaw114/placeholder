@@ -30,7 +30,7 @@ const transactionSchema = mongoose.Schema({
     workerName: {
         type: String
     },
-    recieptID: {
+    receiptID: {
         type: String
     },
     chatID: {
