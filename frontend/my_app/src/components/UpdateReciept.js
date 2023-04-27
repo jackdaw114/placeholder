@@ -1,19 +1,33 @@
 import { InputSharp } from "@mui/icons-material";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import axios from "axios";
 import { useState } from "react";
+import { useLocation } from "react-router";
 import theme from "../design/palette";
 
 export default function UpdateReciept() {
+    const location = useLocation();
 
     const handleSubmit = () => {
+        axios.post('/updatereceipt', inputs, {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            }
+        }).then((res) => {
 
+            console.log(res.data)
+        }).catch((err) => {
+            console.log(err)
+        })
     }
+
+
     const [inputs, setInputs] = useState({
         service_cost: "",
         material_cost: "",
-
-
+        id: location.state.id
     })
 
     const handleChange = (e) => {
@@ -23,6 +37,7 @@ export default function UpdateReciept() {
 
         }))
     }
+
 
     return (
         <Box>

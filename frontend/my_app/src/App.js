@@ -43,7 +43,7 @@ function App() {
             <Route path="/profile" element={<><Profile /></>}></Route>
             <Route path="/workerHome" element={<><WorkerHome /></>}></Route>
             <Route path="/receipt" element={<><Receipt /></>}></Route>
-            <Route path="/updatereciept" element={<><UpdateReciept></UpdateReciept></>}></Route>
+            <Route path="/updatereceipt" element={<><UpdateReciept></UpdateReciept></>}></Route>
             {/* <Route path="/workerprof" element={<><WorkerProf/></>}></Route> */}
 
           </Routes>

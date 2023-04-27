@@ -36,7 +36,7 @@ export default function RenderTable(props) {
       }).catch(err => console.log(err))
     }
     if (action == 'Update') {
-      navigate('/updatereciept')
+      navigate('/updatereceipt', props._id)
     }
   }
 
