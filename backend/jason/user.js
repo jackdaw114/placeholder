@@ -205,6 +205,7 @@ router.post('/getreceipt', async (req, res) => {
 
 router.post('/gettotal', async (req, res) => {
     try {
+        const find_transaction = Transaction.findOne()
 
     } catch (error) {
         console.log(err)

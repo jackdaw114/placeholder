@@ -21,4 +21,4 @@ const recieptSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Reciept', recieptSchema);
+module.exports = mongoose.model('Receipt', recieptSchema);
