@@ -20,17 +20,24 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 
-export default function renderTable(props) {
+export default function RenderTable(props) {
 
+  const navigate = useNavigate();
   const update = (action, id) => {
-    axios.post('worker/updatetransaction', { action: action, id: id }, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      }
-    }).then((res) => {
-      console.log(res)
-    }).catch(err => console.log(err))
+
+    if (action !== 'Update') {
+      axios.post('worker/updatetransaction', { action: action, id: id }, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        }
+      }).then((res) => {
+        console.log(res)
+      }).catch(err => console.log(err))
+    }
+    if (action == 'Update') {
+      navigate('/updatereciept')
+    }
   }
 
 
@@ -67,7 +74,7 @@ export default function renderTable(props) {
                     {props.buttons_arr && (props.buttons_arr).map((item) => {
 
                       const color1 = (item == 'Complete') ? theme.palette.secondary.main : (item == 'Decline') ? 'red' : 'green';
-                      const icon1 = (item == 'Complete') ? <TaskAltIcon/>:(item == 'Decline') ?<CloseIcon/>:<DoneIcon/>
+                      const icon1 = (item == 'Complete') ? <TaskAltIcon /> : (item == 'Decline') ? <CloseIcon /> : <DoneIcon />
                       //const color1 = 'warning';
                       return (
                         <Box>

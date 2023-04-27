@@ -112,7 +112,7 @@ function WorkerHome() {
         {
             arr: ongoing_jobs,
             heading: 'Ongoing Jobs',
-            buttons_arr: ['Complete']
+            buttons_arr: ['Complete', 'Update']
         },
 
         {
