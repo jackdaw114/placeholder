@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { MenuItem, Select, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 
 export default function WorkerForm(props) {
@@ -81,17 +81,16 @@ export default function WorkerForm(props) {
                 placeholder='location'
                 margin="normal" />
 
-            <TextField
-                onChange={props.func}
-                sx={{
-                    width: "300px"
-                }}
-                value={props.inputs.job}
+            <Select onChange={props.func}
                 name="job"
-                variant="outlined"
-                placeholder='job'
-                margin="normal" />
-
+                value={props.inputs.job}
+                label='job'
+                sx={{ color: 'white' }}
+            >
+                <MenuItem value="plumbing">Plumber</MenuItem>
+                <MenuItem value="">electrition</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
             <TextField
                 onChange={props.func}
                 sx={{
