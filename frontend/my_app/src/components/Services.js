@@ -29,39 +29,34 @@ import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import LightIcon from '@mui/icons-material/Light';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import DeckIcon from '@mui/icons-material/Deck';
+import YardIcon from '@mui/icons-material/Yard';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ChildFriendlyIcon from '@mui/icons-material/ChildFriendly';
+import LockIcon from '@mui/icons-material/Lock';
+import CarpenterIcon from '@mui/icons-material/Carpenter';
 
 const service_info = [
-    {
-        name: "Hairdresser",
-        icon: <ContentCut />,
-    },
-    { name: "plumbing", icon: <Plumbing /> },
-    { name: "electrician", icon: <ElectricBolt /> },
-    { name: "dry cleaning", icon: <DryCleaningIcon /> },
-    { name: "repair", icon: <Handyman /> },
-    { name: "painting", icon: <FormatPaint /> },
-    { name: 'babysitting', icon: <ChildFriendlyIcon /> },
-    { name: 'cooking/catering', icon: <RestaurantIcon /> },
-    { name: 'gardening', icon: <DeckIcon /> },
-    { name: 'personal trainer', icon: <FitnessCenterIcon /> },
-    { name: 'photography', icon: <CameraAltIcon /> },
-    { name: 'interior designing', icon: <LightIcon /> },
-    { name: 'musitians', icon: <MusicNoteIcon /> },
-    { name: 'graphic designing', icon: <DesignServicesIcon /> },
-    { name: 'electronic repair', icon: <PowerIcon /> },
-    { name: 'massage therapy', icon: <SpaIcon /> },
-    { name: 'fashion consultant', icon: <DiamondIcon /> },
-    { name: 'car washing', icon: <LocalCarWashIcon /> },
-    { name: 'pest control', icon: <PestControlIcon /> },
-    { name: 'writing and editing', icon: <StickyNote2Icon /> },
-    { name: 'upholstry/furniture repair', icon: <ChairIcon /> },
-    { name: 'travel planning', icon: <MapIcon /> },
-    //{ name: 'test', main: 2, icon: <NotStarted /> },
-    //{ name: 'test', icon: <Star />, main: 2 },
-
+    {name: "Salon", icon: <ContentCut />},
+    { name: "Plumbing", icon: <Plumbing /> },
+    { name: "Carpenter", icon: <CarpenterIcon />},
+    { name: "Electrician", icon: <ElectricBolt /> },
+    { name: "Dry Cleaning", icon: <DryCleaningIcon /> },
+    { name: "Repair", icon: <Handyman /> },
+    { name: "Painting", icon: <FormatPaint /> },
+    { name: 'Babysitting', icon: <ChildFriendlyIcon /> },
+    { name: 'Cooking/Catering', icon: <RestaurantIcon /> },
+    { name: 'Gardening', icon: <YardIcon /> },
+    { name: 'Personal Trainer', icon: <FitnessCenterIcon /> },
+    { name: 'Photography', icon: <CameraAltIcon /> },
+    { name: 'Interior Designing', icon: <LightIcon /> },
+    { name: 'Graphic Designing', icon: <DesignServicesIcon /> },
+    { name: 'Electronic Repair', icon: <PowerIcon /> },
+    { name: 'Massage Therapy', icon: <SpaIcon /> },
+    { name: 'Home Security',icon: <LockIcon />},
+    { name: 'Fashion Consultant', icon: <DiamondIcon /> },
+    { name: 'Car Washing', icon: <LocalCarWashIcon /> },
+    { name: 'Pest Control', icon: <PestControlIcon /> },
+    { name: 'Furniture Repair', icon: <ChairIcon /> },
 ]
 
 const useMousePosition = () => {
