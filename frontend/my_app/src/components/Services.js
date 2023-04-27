@@ -36,9 +36,9 @@ import LockIcon from '@mui/icons-material/Lock';
 import CarpenterIcon from '@mui/icons-material/Carpenter';
 
 const service_info = [
-    {name: "Salon", icon: <ContentCut />},
+    { name: "Salon", icon: <ContentCut /> },
     { name: "Plumbing", icon: <Plumbing /> },
-    { name: "Carpenter", icon: <CarpenterIcon />},
+    { name: "Carpenter", icon: <CarpenterIcon /> },
     { name: "Electrician", icon: <ElectricBolt /> },
     { name: "Dry Cleaning", icon: <DryCleaningIcon /> },
     { name: "Repair", icon: <Handyman /> },
@@ -52,7 +52,7 @@ const service_info = [
     { name: 'Graphic Designing', icon: <DesignServicesIcon /> },
     { name: 'Electronic Repair', icon: <PowerIcon /> },
     { name: 'Massage Therapy', icon: <SpaIcon /> },
-    { name: 'Home Security',icon: <LockIcon />},
+    { name: 'Home Security', icon: <LockIcon /> },
     { name: 'Fashion Consultant', icon: <DiamondIcon /> },
     { name: 'Car Washing', icon: <LocalCarWashIcon /> },
     { name: 'Pest Control', icon: <PestControlIcon /> },
@@ -114,7 +114,7 @@ export default function Services(props) {
                                     delay: index / 50, duration: 0.3
                                 }}
                             >
-                                <Card onClick={() => routeChange(item.name.toLowerCase())} options={{ max: 45, scale: 1, speed: 450, }} className='card' sx={{
+                                <Card onClick={() => routeChange(item.name)} options={{ max: 45, scale: 1, speed: 450, }} className='card' sx={{
                                     marginTop: 5, borderRadius: 5, filter: `contrast(1)`,
                                     maxWidth: '100vw', minWidth: `${10 * (item.main ? item.main : 1)}vw`, minHeight: '8vw', boxShadow: 'theme.shadow.md', textAlign: 'center',
                                 }}>

@@ -144,7 +144,7 @@ export default function UserTransactions() {
                                         }
                                     })}</Grid>
                                 </Grid> : <></>}
-
+                                {item.status == 'on'}
                                 <Box sx={{ justifySelf: 'center', justifyContent: 'space-evenly', display: 'flex' }}>
                                     {item.status == 'completed' && item.rating == 0 ?
                                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
