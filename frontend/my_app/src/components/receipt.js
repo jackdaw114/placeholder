@@ -20,8 +20,9 @@ export default function Receipt() {
     const location = useLocation()
     const [data, setData] = useState({})
     useEffect(() => {
+        console.log('test', location.state.data)
         if (location.state.data) {
-            axios.post('/user/getreciept', { id: location.state.data }, {
+            axios.post('/user/getreceipt', { id: location.state.data }, {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",

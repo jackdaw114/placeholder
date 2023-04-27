@@ -192,7 +192,8 @@ router.post('/appendchat', async (req, res) => {
 
 router.post('/getreceipt', async (req, res) => {
     try {
-        const findreceipt = await receiptSchema.findOne({ _id: req.body.id })
+        console.log('test')
+        const findreceipt = await ReceiptSchema.findOne({ _id: req.body.id })
         res.send(findreceipt).status(200)
         console.log(findreceipt)
     } catch (err) {

@@ -173,7 +173,7 @@ export default function UserTransactions() {
                                     </Box>
                                     : <></>}
                                 <Box sx={{ alignSelf: 'center', justifySelf: 'flex-end', display: 'flex', maxHeight: 200, marginTop: 3 }}>
-                                    <Button variant="contained" color="warning" onClick={() => navigateToReceipt(item.recieptID)}>View Receipt</Button>
+                                    <Button variant="contained" color="warning" onClick={() => navigateToReceipt(item.receiptID)}>View Receipt</Button>
                                 </Box>
 
                             </Box>
