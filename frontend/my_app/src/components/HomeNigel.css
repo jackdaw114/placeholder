@@ -48,12 +48,20 @@
     margin: 200px 0px;
 }
 
+.footer-container{
+    margin: '0 auto';
+}
+
 .footer-grid {
     display: flex;
     flex-direction: row;
 
     justify-content: center;
     /* max-height: 0px; */
+}
+
+.footer-item{
+    text-align: center;
 }
 
 .mission-container {
