@@ -205,8 +205,9 @@ router.post('/getreceipt', async (req, res) => {
 
 router.post('/gettotal', async (req, res) => {
     try {
-        const find_transaction = Transaction.findOne()
-
+        const find_transaction = await Transaction.findOne({ _id: req.body.id })
+        const find_receipt = await ReceiptSchema.findOne({ _id: find_transaction.receiptID })
+        res.send(find_receipt.service_cost + find_receipt.material_cost + find_receipt.visiting_charge)
     } catch (error) {
         console.log(err)
         res.status(500)

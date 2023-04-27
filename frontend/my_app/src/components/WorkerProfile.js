@@ -39,56 +39,58 @@ export default function WorkerProfile() {
 		<><Box className="main-profile-box">
 			<Box className="left-profile-box">
 
-			<Box className='profile-name-and-pfp-box'>
-				
-			<Typography className="typography-h1" variant="h3" gutterBottom>
-				Profile
-			</Typography>
-			</Box>
-			<Divider sx={{ background: theme.palette.black.main }} className="divider"/>
-			<Box className="profile-fields">
-				{
-					profile_data.map((field) => {
-						return (
-							<><Typography  variant='h5' gutterBottom>
-								{field.label+field.value}
-							</Typography>
-							</>	
+				<Box className='profile-name-and-pfp-box'>
+
+					<Typography className="typography-h1" variant="h3" gutterBottom>
+						Profile
+					</Typography>
+				</Box>
+				<Divider sx={{ background: theme.palette.black.main }} className="divider" />
+				<Box className="profile-fields">
+					{
+						profile_data.map((field) => {
+							return (
+								<><Typography variant='h5' gutterBottom>
+									{field.label + field.value}
+								</Typography>
+								</>
 							)
 						})
 					}
 				</Box>
-				
-			<Divider sx={{ background: theme.palette.black.main}} className="divider"/>
-			<Box className="profile-fields">
-				{
-					contact_details.map((field) => {
-						return (
-							<><Typography  variant='h5' gutterBottom>
-								{field.label+field.value}
-							</Typography>
-							</>	
+
+				<Divider sx={{ background: theme.palette.black.main }} className="divider" />
+				<Box className="profile-fields">
+					{
+						contact_details.map((field) => {
+							return (
+								<><Typography variant='h5' gutterBottom>
+									{field.label + field.value}
+								</Typography>
+								</>
 							)
 						})
 					}
-			</Box>
+				</Box>
 			</Box>
 			<Box className="right-profile-box">
-				<Avatar className="pfp" alt="Remy Sharp" sx={{ width: 300, height: 300  }}/>
+				<Avatar className="pfp" alt="Remy Sharp" sx={{ width: 300, height: 300 }} />
 			</Box>
 
 		</Box>
 			<Box classname="button-box" alignItems={'center'} onClick={() => {
-				navigate('/hire',{state:{
-					workerID:location.state.props.email,
-					userID: localStorage.getItem("username")
-				}})
+				navigate('/hire', {
+					state: {
+						workerID: location.state.props.email,
+						userID: localStorage.getItem("username")
+					}
+				})
 			}}>
-			<Box sx={{display:'flex', justifyContent:'center'}}>
-			<Button variant='contained'  sx={{backgroundColor:'red' ,alignItems:'center'}}>HIRE</Button>	
+				<Box sx={{ display: 'flex', justifyContent: 'center' }}>
+					<Button variant='contained' sx={{ backgroundColor: 'red', alignItems: 'center' }}>HIRE</Button>
 				</Box>
-		</Box>
-			
+			</Box>
+
 		</>
 	)
 }

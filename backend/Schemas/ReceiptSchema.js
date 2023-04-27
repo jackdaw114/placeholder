@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const recieptSchema = mongoose.Schema({
+const receiptSchema = mongoose.Schema({
     workerID: {
         type: String
     },
@@ -21,4 +21,4 @@ const recieptSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Receipt', recieptSchema);
+module.exports = mongoose.model('Receipt', receiptSchema);
