@@ -105,7 +105,7 @@ function WorkerHome() {
     let ongoing_jobs = Array.from(data.filter(job => job.status === 'ongoing'))
 
     let pending_jobs = Array.from(data.filter(job => job.status === 'pending'))
-    let completed_jobs = Array.from(data.filter(job => job.status === 'completed' || job.status == 'payed'))
+    let completed_jobs = Array.from(data.filter(job => job.status === 'completed' || job.status == 'paid'))
     let declined_jobs = Array.from(data.filter(job => job.status === 'declined'))
 
     const sup = [
