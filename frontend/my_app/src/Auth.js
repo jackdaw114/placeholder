@@ -186,7 +186,7 @@ const Auth = () => {
                             }}
                             endIcon={<EngineeringIcon />}
                             sx={{ padding: "20px", width: "auto", color: 'white' }}>Worker</Button>
-                        
+
                         {/* <Button
                             className='category-button'
                             endIcon={<ApartmentIcon />}
@@ -231,9 +231,7 @@ const Auth = () => {
                             {isSignup ? "Login" : "New Here? Signup instead"}
                         </Typography>
                     </Button>
-                    <Button onClick={() => {
-                        console.log(inputs)
-                    }} sx={{ width: 100, height: 100 }}></Button>
+
                 </Box>
             </form>
         </div>

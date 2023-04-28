@@ -80,8 +80,8 @@ export default function UserTransactions() {
         navigate('/receipt', { state: { data: data } });
     }
 
-    const sendPayment = () => {
-        navigate('/payment')
+    const sendPayment = (e, receiptID) => {
+        navigate('/payment', { state: { id: e, data: receiptID } })
         // console.log('test')
     }
     return (
@@ -170,7 +170,7 @@ export default function UserTransactions() {
                                 </Box>
                                 {item.status == 'completed' ?
                                     <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
-                                        <Button sx={{ backgroundColor: theme.palette.secondary.main }} variant="contained" onClick={sendPayment}>Pay</Button>
+                                        <Button sx={{ backgroundColor: theme.palette.secondary.main }} variant="contained" onClick={() => sendPayment(item._id, item.receiptID)}>Pay</Button>
                                     </Box>
                                     : <></>}
                                 <Box sx={{ alignSelf: 'center', justifySelf: 'flex-end', display: 'flex', maxHeight: 200, marginTop: 3 }}>
