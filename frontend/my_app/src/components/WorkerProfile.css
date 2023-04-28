@@ -1,0 +1,62 @@
+.typography-h1 {
+    background: linear-gradient(to right, #DDC54A 0%, #A63446 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.typography-h4 {
+    background: #A63446;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.main-profile-box{
+    display: flex;
+    margin: 20px 70px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    
+    /* width: 50%; */
+}
+
+.profile-name-and-pfp-box{
+    margin:10px;
+}
+.profile-fields{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.divider{
+    width: 100%;
+}
+
+.left-profile-box{
+    width: 50%;
+}
+
+.right-profile-box{
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    /* height:0% */
+}
+
+.button-box{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+

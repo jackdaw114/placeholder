@@ -1,10 +1,20 @@
-import React , { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import  LoginIcon  from '@mui/icons-material/Login';
+import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import theme from './design/palette';
+import { Route, Router, Routes, useLocation, useNavigate } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import UserForm from './components/authcomponents/UserForm'
+import CompanyForm from './components/authcomponents/CompanyForm';
+import WorkerForm from './components/authcomponents/WorkerForm';
+import LoginForm from './components/authcomponents/LoginForm'
+import axios from 'axios';
+import './Auth.css';
+
 // import { JavascriptTwoTone } from '@mui/icons-material';
 // import { bgcolor } from '@mui/system';
 const Auth = () => {
@@ -13,223 +23,219 @@ const Auth = () => {
     // let phoneNo = ""
     // let email = ""
     // let password = ""
-    
+    const navigate = useNavigate()
     const [isSignup, setIsSignup] = useState(false);
     const [isCompany, setIsCompany] = useState(false);
     const [isWorker, setIsWorker] = useState(false);
     const [isUser, setIsUser] = useState(true);
     const [inputs, setInputs] = useState({
-        companyName:"",
+        companyName: "",
         username: "",
-        phoneNo:"",
-        email:"",
-        password: ""
-        
+        phoneNo: "",
+        email: "",
+        password: "",
+        firstname: "",
+        lastname: "",
+        job: "",
+        location: "",
+        visiting_charge: '',
+
     })
+
     const handleChange = (e) => {
         setInputs((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-                // companyName =inputs.companyName,
-                // username = inputs.username,
-                // phoneNo= inputs.phoneNo,
-                // email=inputs.email,
-                // password=inputs.password,
 
         }))
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
-        fetch("http://localhost:3010/register", {
-            method: "POST",
-            crossDomain: true,
+        let url;
+        if (isUser) {
+            url = '/user'
+        }
+        else if (isWorker) {
+            url = '/worker'
+        }
+        else {
+            url = '/company'
+        }
+
+        if (isSignup) {
+            url = url + '/register'
+        }
+        else {
+            url = url + '/login'
+        }
+        console.log(url)
+        axios.post(url, inputs, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                "Access-Control-Allow-Origin":"*",
-            },
-            body: JSON.stringify({
-                inputs
-            }),
+            }
+        }).then(res => {
+            localStorage.clear();
+            localStorage.setItem('username', res.data.username)
+            localStorage.setItem('phoneNo', res.data.phoneNo)
+            localStorage.setItem('email', res.data.email)
+            if (res.data.password !== undefined) {
 
-        }).then((res) => res.json()).then((data) => {
-            console.log(data,"UserDetails")
+                localStorage.setItem('loggedIn', true);
+                if (isWorker) {
+                    localStorage.setItem('isWorker', true);
+                }
+                else if (isUser) {
+                    localStorage.setItem('isUser', true);
+                }
+                else {
+                    localStorage.setItem('isCompany', true);
+                }
+            }
+
+            console.log(res.data)
+            if (res.data._id) {
+                if (isWorker)
+                    navigate('/workerHome')
+                else
+                    navigate('/')
+            }
         })
-        
+
 
     }
     const resetState = () => {
         setIsSignup(!isSignup);
-        setInputs({ companyName: '', username: '', phoneNo: '', email: '', password: '' });
+        setInputs({ companyname: '', username: '', phoneNo: '', email: '', password: '' });
     }
-    console.log(isSignup);
-    console.log(isCompany);
+
+
+
+
+    const CustForm = () => {
+        if (!isSignup)
+            return (<LoginForm func={handleChange} inputs={inputs} />)
+        if (isSignup && isWorker)
+            return (<WorkerForm func={handleChange} inputs={inputs} />)
+        // else if (isSignup && isCompany)
+        //     return (<CompanyForm func={handleChange} inputs={inputs} />)
+        else {
+            return (
+                <UserForm func={handleChange} inputs={inputs} />
+            )
+        }
+    }
+
+
+
+
     return (
-      <div>
-          <form onSubmit={handleSubmit}>
-              <Box display="flex"
-                  flexDirection={"column"}
-                  maxWidth={400}
-                  alignItems="center"
-                  justifyContent={"center"}
-                  margin="auto"
-                  marginTop={4.9}
+        <div>
+            <form onSubmit={handleSubmit}>
+                <Box display="flex"
+                    flexDirection={"column"}
+                    maxWidth={400}
+                    alignItems="center"
+                    justifyContent={"center"}
+                    margin="auto"
+                    marginTop={4.9}
 
-                  padding={3}
-                  borderRadius={4}
-                  boxShadow={"6px 6px 10px #ccc"}
-              
-                  sx={{
-                      ":hover": {
-                          boxShadow: "10px 10px 20px #ccc",
-                        //   backgroundColor: "grey"
-                      },
-                    //   fontFamily: 'Ubuntu',
-              }}>
-                  <Typography
-                      variant="h2"
-                      padding={3}
-                      
-                      textAlign="center">{isSignup ? "Sign Up" : "Login"}</Typography>
-                  
-                  <Box
-                      display="flex"
-                      paddingLeft={1}
-                  >
-                      <Button
-                          onClick={() => {
-                            setIsUser(!isUser);
-                            setIsWorker(false);
-                            setIsCompany(false);
+                    padding={3}
+                    borderRadius={4}
+                    boxShadow={"0px 0px 10px #00000A"}
 
-                            if (isCompany && isWorker === false) {
+                    sx={{
+                        backgroundColor: theme.palette.black.main,
+                        ":hover": {
+                            boxShadow: "0px 0px 20px #000",
+                        },
+                        //   fontFamily: 'Ubuntu',
+                    }}>
+                    <Typography
+                        variant="h2"
+                        padding={3}
+                        color={theme.palette.secondary.main}
+                        textAlign="center">{isSignup ? "Sign Up" : "Login"}</Typography>
+
+                    <Box
+                        display="flex"
+                        paddingLeft={1}
+                    >
+                        <Button
+                            className='category-button'
+                            onClick={() => {
+
+                                setIsWorker(false);
+                                setIsCompany(false);
+
                                 setIsUser(true);
-                            }
-                        }}
-                          endIcon={<AccountCircleIcon />}
-                          sx = {{padding:"20px",width:"auto"}} >User</Button>
-                      <Button
-                          onClick={() => {
-                            setIsWorker(!isWorker);
-                            setIsCompany(false);
-                            setIsUser(false);
 
-                            if (isCompany && isWorker === false) {
-                                setIsUser(true);
-                            }
-                        }}
-                          endIcon={<EngineeringIcon/>}
-                          sx = {{padding:"20px",width:"auto"}}>Worker</Button>
-                      <Button
-                          endIcon={<ApartmentIcon/>}
-                          sx={{ padding: "20px", width: "auto" }}
-                          onClick={() => {
-                              setIsCompany(!isCompany);
-                              setIsWorker(false);
-                              setIsUser(true);
-
-                              if (isCompany && isWorker === false) {
-                                  setIsUser(true);
-                              }
-                          }}>Company</Button>
-                  </Box>
-
-                  { isCompany && isSignup &&
-                      <TextField
-                        onChange={handleChange}
-                        sx={{
-                            width:"300px"
-                        }}
-                      value={inputs.companyName }
-                      name="companyName"
-                      variant="outlined"
-                      placeholder='company name'
-                      margin="normal" />
-                  }
-
-                  { 
-                      <TextField
-                            onChange={handleChange}
-                            sx={{
-                                width:"300px"
                             }}
-                          value={inputs.username }
-                          name="username"
-                          variant="outlined"
-                          placeholder='username'
-                          margin="normal" />
-                        }
-                  {isSignup && 
-                      <TextField
-                        onChange={handleChange}
+                            endIcon={<AccountCircleIcon />}
+                            sx={{ padding: "20px", width: "auto", color: 'white' }} >User</Button>
+                        <Button
+                            className='category-button'
+                            onClick={() => {
+                                setIsCompany(false);
+                                setIsUser(false);
+
+                                setIsWorker(true);
+
+                            }}
+                            endIcon={<EngineeringIcon />}
+                            sx={{ padding: "20px", width: "auto", color: 'white' }}>Worker</Button>
+
+                        {/* <Button
+                            className='category-button'
+                            endIcon={<ApartmentIcon />}
+                            sx={{ padding: "20px", width: "auto", color: 'white' }}
+                            onClick={() => {
+
+                                setIsCompany(true);
+                                setIsUser(false);
+                                setIsWorker(false);
+                            }}>Company</Button> */}
+                    </Box>
+
+                    {CustForm()}
+
+                    <Button
+                        endIcon={isSignup ? <AppRegistrationIcon /> : <LoginIcon />}
+                        type="submit"
                         sx={{
-                            width:"300px"
+                            marginTop: 3,
+                            borderRadius: 1.4,
+                            color: "white",
+                            backgroundColor: "black"
                         }}
-                          value={inputs.phoneNo }
-                          name="phoneNo"
-                          variant="outlined"
-                          placeholder='phone no.'
-                          margin="normal" />
-                        }
-                  
-                  {isSignup &&
-                      <TextField
-                        onChange={handleChange}
+                        variant="contained"
+
+                    >{isSignup ? "Sign Up" : "Login"}</Button>
+                    <Button
+
+                        endIcon={isSignup ? <LoginIcon /> : <AppRegistrationIcon />}
+                        onClick={resetState}
                         sx={{
-                            width:"300px"
+                            //   ":hover":{
+                            //     backgroundColor:"blanchedalmond",
+                            //   }
+                            marginTop: 3,
+                            borderRadius: 1.4,
+                            color: 'white'
                         }}
-                      value={inputs.email }
-                      name="email"
-                      type={'email'}
-                      variant="outlined"
-                      placeholder='email' 
-                      margin = "normal"/>
-                      
-                    }
-                  
-                  <TextField
-                        onChange={handleChange}
-                        sx={{
-                            width:"300px"
-                        }}
-                    value={inputs.password }
-                      name="password"
-                      type={'password'}
-                      variant="outlined"
-                      placeholder='password' 
-                      margin = "normal"/>
-                  
-                  <Button
-                    endIcon={isSignup?<AppRegistrationIcon/> :<LoginIcon/>}
-                      type="submit"
-                      sx={{
-                          marginTop: 3,
-                          borderRadius: 1.4,
-                          color: "white",
-                          backgroundColor:"black"
-                      }}
-                      variant="contained"
-                      
-                  >{isSignup ? "Sign Up" : "Login"}</Button>
-                  <Button
-                        endIcon={isSignup?<LoginIcon/>:<AppRegistrationIcon/> }
-                      onClick={resetState}
-                      sx={{
-                        //   ":hover":{
-                        //     backgroundColor:"blanchedalmond",
-                        //   }
-                          marginTop: 3,
-                          borderRadius: 1.4
-                      }}
-                      
-                  >
-                      {isSignup ? "Login" : "New Here? Signup instead"}
-                  </Button>
-              </Box>
-          </form>
-    </div>
-  )
+
+                    >
+                        <Typography color={'white'}>
+                            {isSignup ? "Login" : "New Here? Signup instead"}
+                        </Typography>
+                    </Button>
+
+                </Box>
+            </form>
+        </div>
+    )
 }
 
 export default Auth

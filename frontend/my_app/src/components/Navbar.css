@@ -1,8 +1,10 @@
-.Drawer-list {
+.drawer-list {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: flex-end;
+    position: absolute;
+    bottom: 0px;
 }
 
 .listdiv {
@@ -10,3 +12,56 @@
     flex-direction: column;
 
 }
+
+.normal_button {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+}
+
+.Drawer-list-bot {
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 1px;
+    float: bottom;
+}
+
+.bot {
+    justify-content: baseline;
+}
+
+.div-top {
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+    justify-content: space-between;
+}
+
+.botdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    text-align: right;
+}
+
+/* .overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(126, 124, 124, 0.5);
+    filter: blur(8px);
+    z-index: -1; 
+}
+
+.drawer{
+    z-index: 1;
+}
+
+.Nav-main{
+    z-index: 1;
+} */

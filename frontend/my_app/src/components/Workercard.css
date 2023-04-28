@@ -1,0 +1,33 @@
+.workercard-component {
+    background: linear-gradient(rgb(20, 20, 20), rgb(0, 0, 0)) padding-box,
+        radial-gradient(at center, rgb(95, 82, 110) 70%, #80295b) border-box;
+    border: 1px solid transparent;
+    min-height: 100px;
+    backdrop-filter: brightness(120%) hue-rotate(180deg) invert(4%);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0px 0px 10px #2c302e;
+}
+
+.workercard-img {
+
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+        linear-gradient(to bottom, #b93a4e, #caa8f5) border-box;
+    border: 1px solid transparent;
+    border-radius: 100%;
+    height: 100px;
+    width: auto;
+    object-fit: cover;
+}
+
+.workercard-main {
+    background-color: transparent;
+    margin-left: 1em;
+    margin-top: 1em;
+
+    width: 15%;
+}
