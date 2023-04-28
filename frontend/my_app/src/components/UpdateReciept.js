@@ -3,11 +3,14 @@ import { Button, Card, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import theme from "../design/palette";
+
 
 export default function UpdateReciept() {
     const location = useLocation();
+    const navigate = useNavigate();
+
 
     const handleSubmit = () => {
 
@@ -18,7 +21,7 @@ export default function UpdateReciept() {
                 Accept: "application/json",
             }
         }).then((res) => {
-
+            navigate('/workerHome')
             console.log(res.data)
         }).catch((err) => {
             console.log(err)
