@@ -43,9 +43,18 @@ export default function Worker() {
             })
         }
     }, [])
+    const [search, setSearch] = useState('');
+    const childToParent = (info) => {
+        setSearch(info)
+    }
+    if (search.length > 0) {
+        data.filter(item => {
+            return item.username.match(search)
+        })
+    }
     return (
         <Box >
-            <SearchBar />
+            <SearchBar childToParent={childToParent} />
             <Box className="flexdiv">
 
                 <Box className="flexdiv2" >
@@ -57,7 +66,7 @@ export default function Worker() {
                     </Box>
 
                     <div className="worker-div-card">
-                        {data.sort((a, b) => b.rating - a.rating).map((item, index) => (
+                        {data.filter(item => { return (item.firstname + item.lastname).toLowerCase().match(search) }).sort((a, b) => b.rating - a.rating).map((item, index) => (
 
                             <Workercard email={item.email} name={item.firstname + " " + item.lastname} rating={(item.rating).toFixed(1)} jobs={item.jobs} location={item.location} phone={item.phoneNo} />
 

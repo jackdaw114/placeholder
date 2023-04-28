@@ -114,7 +114,7 @@ export default function Services(props) {
                                     delay: index / 50, duration: 0.3
                                 }}
                             >
-                                <Card onClick={() => routeChange(item.name)} options={{ max: 45, scale: 1, speed: 450, }} className='card' sx={{
+                                <Card onClick={() => routeChange(item.name.toLowerCase())} options={{ max: 45, scale: 1, speed: 450, }} className='card' sx={{
                                     marginTop: 5, borderRadius: 5, filter: `contrast(1)`,
                                     maxWidth: '100vw', minWidth: `${10 * (item.main ? item.main : 1)}vw`, minHeight: '8vw', boxShadow: 'theme.shadow.md', textAlign: 'center',
                                 }}>
