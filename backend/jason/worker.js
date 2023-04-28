@@ -146,6 +146,17 @@ router.post('/updatetransaction', async (req, res) => {
                 res.status(200)
 
             }
+            else if (req.body.action == 'Paid') {
+                const update = await Transaction.updateOne(
+                    { _id: req.body.id },
+                    {
+                        $set: {
+                            status: 'declined'
+                        }
+                    })
+                res.status(200)
+
+            }
         }
         else {
             res.status(400)
