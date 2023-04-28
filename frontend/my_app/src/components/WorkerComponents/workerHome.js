@@ -78,27 +78,28 @@ function WorkerHome() {
     // }
     const [data, setData] = useState([])
     const [update, setUpdate] = useState('')
+
     useEffect(() => {
+        const interval = setInterval(() => {
+            axios.post('/worker/gettransactions', {
+                email: localStorage.getItem('email')
+            },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    }
+                }).then((res) => {
 
-    })
-    useEffect(() => {
+                    setData(res.data)
 
-        console.log(localStorage.getItem('username'))
-        axios.post('/worker/gettransactions', {
-            email: localStorage.getItem('email')
-        },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                }
-            }).then((res) => {
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }, 1000)
 
-                setData(res.data)
-                console.log(res.data)
-            }).catch((err) => {
-                console.log(err)
-            })
+
+        return () => clearInterval(interval)
     }, [])
 
     //const ongoing_jobs = data && data.filter(job => job.status === 'ongoing')

@@ -13,6 +13,11 @@
 
 }
 
+.normal_button {
+    background-color: transparent;
+    border: none;
+}
+
 .Drawer-list-bot {
 
     display: flex;

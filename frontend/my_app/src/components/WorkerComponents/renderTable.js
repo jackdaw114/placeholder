@@ -33,6 +33,7 @@ export default function RenderTable(props) {
         }
       }).then((res) => {
         console.log(res)
+        navigate('/workerHome')
       }).catch(err => console.log(err))
     }
     if (action == 'Update') {

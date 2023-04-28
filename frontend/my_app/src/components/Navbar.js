@@ -202,7 +202,12 @@ function Navbar() {
     // const handleDrawerClose = () => {
     //     setOpen(false);
     // };
-
+    const navToHome = () => {
+        if (localStorage.getItem('isWorker') != null)
+            navigate('/workerHome')
+        else
+            navigate('/')
+    }
 
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'block',
@@ -223,12 +228,12 @@ function Navbar() {
                         <IconButton edge="start" color="inherit" sx={{ mr: 2, ...(open && { display: 'none' }) }} onClick={handleClick}><MenuIcon></MenuIcon></IconButton>
                         <Divider sx={{ background: 'black.main' }} />
 
-                        <Box sx={{ flexGrow: 1 }}>
+                        <button className="normal_button" onClick={navToHome} sx={{ flexGrow: 1 }}>
                             <Typography variant="h4" noWrap color={theme.palette.secondary.main} fontFamily={"Tilt Neon"}  >
                                 WorKonnect
 
                             </Typography>
-                        </Box>
+                        </button>
                         {
                             (localStorage.getItem('loggedIn') && (!localStorage.getItem('isWorker'))) &&
                             <motion.div initial={{ borderRadius: '100%' }}

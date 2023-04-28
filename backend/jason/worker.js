@@ -122,7 +122,7 @@ router.post('/updatetransaction', async (req, res) => {
                             status: 'ongoing'
                         }
                     })
-                res.status(200)
+                res.send(update).status(200)
             }
 
             else if (req.body.action === 'Complete') {
@@ -133,7 +133,7 @@ router.post('/updatetransaction', async (req, res) => {
                             status: 'completed'
                         }
                     })
-                res.status(200)
+                res.send(update).status(200)
             }
             else if (req.body.action == 'Decline') {
                 const update = await Transaction.updateOne(
@@ -143,7 +143,7 @@ router.post('/updatetransaction', async (req, res) => {
                             status: 'declined'
                         }
                     })
-                res.status(200)
+                res.send(update).status(200)
 
             }
             else if (req.body.action == 'Paid') {
