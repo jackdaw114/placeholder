@@ -151,10 +151,11 @@ router.post('/updatetransaction', async (req, res) => {
                     { _id: req.body.id },
                     {
                         $set: {
-                            status: 'declined'
+                            status: 'paid'
                         }
                     })
-                res.status(200)
+                console.log(update)
+                res.send('paid').status(200)
 
             }
         }
