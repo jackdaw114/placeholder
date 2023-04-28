@@ -16,6 +16,7 @@
 .normal_button {
     background-color: transparent;
     border: none;
+    flex-grow: 1;
 }
 
 .Drawer-list-bot {
