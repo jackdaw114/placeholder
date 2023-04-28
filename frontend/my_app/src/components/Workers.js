@@ -26,6 +26,7 @@ export default function Worker() {
                     job: location.state.reqpage,
                 }
             }).then((res) => {
+                console.log(location.state.reqpage)
                 console.log(res)
                 setData(res.data)
             }).catch((err) => {

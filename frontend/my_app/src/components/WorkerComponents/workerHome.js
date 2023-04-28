@@ -77,7 +77,7 @@ function WorkerHome() {
     //     navigate('/')
     // }
     const [data, setData] = useState([])
-
+    const [update, setUpdate] = useState('')
     useEffect(() => {
 
     })
