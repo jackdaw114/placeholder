@@ -1,17 +1,6 @@
-# placeholder
-# stuff to do 
-- create pages
-  - home page
-  - user sign up
-  - user login 
-  - worker sign up
-  - worker login
-- backend requests
-  - sign up 
-    - user
-    - worker
-    - company
-  - login 
-    - user 
-    - worker
-    - company
+Workonnect is a website designed to facilitate the connection between clients in need of home services and skilled workers offering such services. The website offers a platform for clients to book a variety of services ranging from salon services to carpentry. 
+The website also provides a platform for workers to sign up, create their profiles, and showcase their skills, experience, and availability to potential clients. Workonnect aims to streamline the process of finding reliable home services by providing a convenient and accessible platform for clients and workers to connect. The website is user-friendly, easy to navigate, and offers a seamless booking experience for clients.
+
+Furthermore, Workonnect places a strong emphasis on quality assurance, ensuring that all workers are vetted, trained, and qualified to provide high-quality services. This approach sets Workonnect apart from other home service platforms that may not prioritize quality assurance, resulting in poor service experiences for clients.
+Lastly, Workonnect aims to offer competitive pricing for both clients and workers, allowing clients to access affordable services while ensuring workers are compensated fairly.
+Overall, Workonnect offers a practical solution to the challenges associated with finding reliable home services, by providing a platform that connects clients with skilled workers in a timely and efficient manner.
