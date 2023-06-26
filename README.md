@@ -12,4 +12,6 @@
   - Allow reviews to be posted + Display reviews
   - Display some message for empty user history
   - Send verification email on signup
+  - Add profile icon
+  - edit profile
     
